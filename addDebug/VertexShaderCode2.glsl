@@ -1,0 +1,20 @@
+#version 430
+
+in layout(location=0) vec3 position;
+in layout(location=1) vec3 vertexColor;
+in layout(location=2) vec3 vertexNormal;
+
+uniform mat4 modelToProjectionMatrix;
+uniform mat4 modelToWorldMatrix;
+
+out vec3 normalWorld;
+out vec3 vertexPositionWorld;
+out vec3 theColor;
+
+void main()
+{
+	gl_Position = modelToProjectionMatrix * vec4(position, 1);
+	normalWorld = vertexNormal;
+	vertexPositionWorld = position;
+	theColor = vertexNormal;
+}
