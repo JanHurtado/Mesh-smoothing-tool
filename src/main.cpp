@@ -1,6 +1,4 @@
 
-#include "myGLWindow.h"
-#include "myShader.h"
 #include "myMainWindow.h"
 
 int main(int argc, char **argv)

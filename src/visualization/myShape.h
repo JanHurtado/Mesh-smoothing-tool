@@ -3,7 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <GL/glew.h>
-#include "mesh/iomesh.h"
+#include "../mesh/iomesh.h"
 
 struct Vertex
 {

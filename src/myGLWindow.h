@@ -19,9 +19,7 @@
 #include <QtGui/qkeyevent>
 #include <QtGui/qwheelevent>
 
-#include "myCamera.h"
-#include "myShape.h"
-#include "myRenderer.h"
+#include "visualization/myRenderer.h"
 
 
 using namespace std;
