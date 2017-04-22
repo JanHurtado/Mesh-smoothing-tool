@@ -17,6 +17,17 @@ UP(0.0f, 1.0f, 0.0f)
 	strafeDirection = glm::normalize(strafeDirection);
 }
 
+void myCamera::reinitialize()
+{
+	viewDirection = glm::vec3(0.0f, 0.0f, -1.0f);
+	position = glm::vec3(0.f, 0.f, 80.f);
+	UP = glm::vec3(0.0f, 1.0f, 0.0f);
+	viewDirection = glm::normalize(objectCentroid - position);
+	UP = glm::normalize(UP);
+	strafeDirection = glm::cross(viewDirection, UP);
+	strafeDirection = glm::normalize(strafeDirection);
+}
+
 bool myCamera::mouseUpdate(const glm::vec2& newMousePosition)
 {
 	glm::vec2 mouseDelta = newMousePosition - oldMousePosition;

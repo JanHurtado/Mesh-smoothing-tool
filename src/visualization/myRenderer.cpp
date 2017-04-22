@@ -66,10 +66,44 @@ void myRenderer::addShader(GLenum _shaderType, const string & _fileName)
 	m_shaders.push_back(t_ptr_shader);
 }
 
+void myRenderer::addShader(myShader * _shader)
+{
+	m_shaders.push_back(_shader);
+}
+
+void myRenderer::clearShapes()
+{
+	m_shapes.clear();
+	m_vertexOffsets.clear();
+	m_elementOffsets.clear();
+	m_vertexArrayObjectIDs.clear();
+}
+
+void myRenderer::clearAndDeleteShapes()
+{
+	for (size_t i = 0; i < m_shapes.size(); i++)
+		delete m_shapes[i];
+	m_shapes.clear();
+	m_vertexOffsets.clear();
+	m_elementOffsets.clear();
+	m_vertexArrayObjectIDs.clear();
+}
+
+void myRenderer::clearShaders()
+{
+	m_shaders.clear();
+}
+
+void myRenderer::clearAndDeleteShaders()
+{
+	for (size_t i = 0; i < m_shaders.size(); i++)
+		delete m_shaders[i];
+	m_shaders.clear();
+}
+
 void myRenderer::createProgram()
 {
 	m_programID = glCreateProgram();
-	cout << m_programID << endl;
 }
 
 bool myRenderer::installShaders()
@@ -102,7 +136,7 @@ void myRenderer::sendDataSingleBuffer()
 
 	glGenBuffers(1, &m_vertexBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, totalVertexBufferSize, 0, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, totalVertexBufferSize, 0, GL_DYNAMIC_DRAW);
 	GLsizeiptr currentVertexOffset = 0;
 	for (size_t i = 0; i < m_shapes.size(); i++)
 	{
@@ -124,6 +158,7 @@ void myRenderer::sendDataSingleBuffer()
 
 	for (size_t i = 0; i < m_shapes.size(); i++)
 	{
+		//glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[i]);
 		glGenVertexArrays(1, &m_vertexArrayObjectIDs[i]);
 		
 		glBindVertexArray(m_vertexArrayObjectIDs[i]);
@@ -136,6 +171,7 @@ void myRenderer::sendDataSingleBuffer()
 		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, VERTEX_BYTE_SIZE, (void*)(m_vertexOffsets[i] + sizeof(float)* 6));
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferID);
 	}
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferID);
 
 }
 
@@ -155,15 +191,80 @@ void myRenderer::initializeInteractor()
 	camera.setPosition(sceneCentralPoint+glm::vec3(0.0f,0.0f,300.0f));
 }
 
+void myRenderer::setDefaultValues()
+{
+	currentDrawFlag = e_draw_faces;
+	sceneCentralPoint = glm::vec3(0.0f, 0.0f, 0.0f);
+	m_width = 1000;
+	m_height = 800;
+	m_fov = 45.0f;
+	m_near = 1.0f;
+	m_far = 1000.0f;
+	modelToWorldMatrix = glm::translate(glm::vec3(0.0f, 0.0f, 0.0f));
+	camera.reinitialize();
+	initializeInteractor();
+}
+
+void myRenderer::resendDataSingleBuffer()
+{
+	const uint NUM_FLOATS_PER_VERTICE = 9;
+	const uint VERTEX_BYTE_SIZE = NUM_FLOATS_PER_VERTICE * sizeof(float);
+
+	GLsizeiptr totalVertexBufferSize = 0;
+	GLsizeiptr totalElementBufferSize = 0;
+	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		totalVertexBufferSize += m_shapes[i]->vertexBufferSize();
+		totalElementBufferSize += m_shapes[i]->indexBufferSize();
+	}
+
+	//glGenBuffers(1, &m_vertexBufferID);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferID);
+	glBufferData(GL_ARRAY_BUFFER, totalVertexBufferSize, 0, GL_DYNAMIC_DRAW);
+	GLsizeiptr currentVertexOffset = 0;
+	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		m_vertexOffsets[i] = currentVertexOffset;
+		glBufferSubData(GL_ARRAY_BUFFER, currentVertexOffset, m_shapes[i]->vertexBufferSize(), m_shapes[i]->vertices);
+		currentVertexOffset += m_shapes[i]->vertexBufferSize();
+	}
+
+	//glGenBuffers(1, &m_elementBufferID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, totalElementBufferSize, 0, GL_STATIC_DRAW);
+	GLsizeiptr currentElementOffset = 0;
+	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		m_elementOffsets[i] = currentElementOffset;
+		glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, currentElementOffset, m_shapes[i]->indexBufferSize(), m_shapes[i]->indices);
+		currentElementOffset += m_shapes[i]->indexBufferSize();
+	}
+	cout << "vertex buffer : "<< m_vertexBufferID << endl;
+	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[i]);
+		glGenVertexArrays(1, &m_vertexArrayObjectIDs[i]);
+		
+		glBindVertexArray(m_vertexArrayObjectIDs[i]);
+
+		cout << m_vertexArrayObjectIDs[i] << endl;
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferID);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, VERTEX_BYTE_SIZE, (void*)(m_vertexOffsets[i]));
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, VERTEX_BYTE_SIZE, (void*)(m_vertexOffsets[i] + sizeof(float)* 3));
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, VERTEX_BYTE_SIZE, (void*)(m_vertexOffsets[i] + sizeof(float)* 6));
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferID);
+	}
+}
+
 void myRenderer::draw()
 {
 
 	glViewport(0, 0, m_width, m_height);
 	//glClearColor(0, 0, 0, 1);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferID);
-	glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, m_elementOffsets[0], m_shapes[0]->indexBufferSize(), m_shapes[0]->indices);
 
 	glm::mat4 modelToProjectionMatrix;
 	glm::mat4 viewToProjectionMatrix = glm::perspective(m_fov, ((float)m_width) / ((float)(m_height)), m_near, m_far);
@@ -199,6 +300,12 @@ void myRenderer::draw()
 			break;
 		}
 	}
+}
+
+void myRenderer::updateVertexBuffer(size_t index)
+{
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferID);
+	glBufferSubData(GL_ARRAY_BUFFER, m_vertexOffsets[index], m_shapes[index]->vertexBufferSize(), m_shapes[index]->vertices);
 }
 
 void myRenderer::computeCentralPoint()

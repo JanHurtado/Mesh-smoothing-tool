@@ -16,6 +16,7 @@ class myCamera
 	glm::vec3 strafeDirection;
 public:
 	myCamera();
+	void reinitialize();
 	bool mouseUpdate(const glm::vec2& newMousePosition);
 	glm::mat4 getWorldToViewMatrix() const;
 

@@ -17,10 +17,13 @@
 #include <QtWidgets\qscrollarea.h>
 
 #include "myGLWindow.h"
+#include "myDataManager.h"
 
 class myMainWindow : public QMainWindow
 {
 	//Q_OBJECT
+
+	myDataManager data;
 
 	myGLWindow * input_mesh_visualizer_ptr;
 	myGLWindow * output_mesh_visualizer_ptr;

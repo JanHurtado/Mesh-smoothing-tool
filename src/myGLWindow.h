@@ -27,15 +27,13 @@ using namespace std;
 class myGLWindow : public QOpenGLWidget
 {
 protected:
-	myCamera mainCamera;
-	GLuint mainProgramID;
-	ShapeData sd;
-	ShapeData sd2;
+
 	myRenderer * renderer;
 
 
 	void initializeGL();
 	void paintGL();
+	void resizeGL();
 	void mouseMoveEvent(QMouseEvent*);
 	void keyPressEvent(QKeyEvent*);
 	void wheelEvent(QWheelEvent *event);
@@ -47,9 +45,14 @@ protected:
 	void installShaders();
 	void sendDataToOpenGL();
 
+
 public:
 
+	ShapeData current_shape;
+
 	void setVisualizationMode(int mode){ renderer->currentDrawFlag = mode; repaint(); }
+	void setShape(ShapeData * _shape);
+	void updateMesh();
 
 
 	myGLWindow::myGLWindow(QWidget *parent = 0);

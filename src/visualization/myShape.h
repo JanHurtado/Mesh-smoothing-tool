@@ -83,11 +83,12 @@ struct ShapeData
 	{
 		return numIndices * sizeof(GLuint);
 	}
-	void cleanup()
+	void clear()
 	{
 		delete[] vertices;
 		delete[] indices;
 		numVertices = numIndices = 0;
+		centroid = glm::vec3(0.0f,0.0f,0.0f);
 	}
 };
 

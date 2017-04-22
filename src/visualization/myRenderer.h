@@ -35,12 +35,21 @@ public:
 	virtual ~myRenderer();
 	void addShape(ShapeData * _sd);
 	void addShader(GLenum _shaderType, const string & _fileName);
+	void addShader(myShader * _shader);
+	void clearShapes();
+	void clearAndDeleteShapes();
+	void clearShaders();
+	void clearAndDeleteShaders();
 	void createProgram();
 	bool installShaders();
 	void sendDataSingleBuffer();
+	void updateVertexBuffer(size_t index);
+	void resendDataSingleBuffer();
+
 	void draw();
 	void initialize();
 	void initializeInteractor();
+	void setDefaultValues();
 	void computeCentralPoint();
 	void rotateObjects(const glm::vec2& newMousePosition);
 	void translateCamera(const glm::vec2& newMousePosition);
@@ -54,7 +63,6 @@ public:
 private:
 	vector<myShader*> m_shaders;
 	GLuint m_programID;
-
 
 	vector<ShapeData*> m_shapes;
 	vector<GLsizeiptr> m_elementOffsets;

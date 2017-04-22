@@ -93,8 +93,8 @@ myMainWindow::myMainWindow()
 	statusBar()->showMessage(message);
 
 	setWindowTitle(tr("Mesh Smoothing Tool"));
-	setMinimumSize(160, 160);
-	resize(480, 320);
+	setMinimumSize(480, 320);
+	resize(1200, 600);
 
 	enableSmoothingType();
 }
@@ -180,8 +180,12 @@ void myMainWindow::loadMesh()
 	QString fileName = QFileDialog::getOpenFileName(this,
 		tr("Load Mesh"), "",
 		tr("mesh file format (*.obj *.off *.ply *.stl);;All Files (*)"));
-	cout << fileName.toStdString() << endl;
-	//input_mesh_visualizer_ptr->
+	statusBar()->showMessage("Loading ... "+fileName);
+	data.loadInputMesh(fileName.toStdString());
+	data.updateShapes();
+	input_mesh_visualizer_ptr->setShape(&data.input_mesh_shape);
+	output_mesh_visualizer_ptr->setShape(&data.output_mesh_shape);
+	statusBar()->showMessage("Done");
 }
 
 void myMainWindow::saveMesh()
@@ -189,7 +193,9 @@ void myMainWindow::saveMesh()
 	QString fileName = QFileDialog::getSaveFileName(this,
 		tr("Save Mesh"), "",
 		tr("mesh file format (*.obj *.off *.ply *.stl);;All Files (*)"));
-	cout << fileName.toStdString() << endl;
+	statusBar()->showMessage("Saving ... " + fileName);
+	data.saveOutputMesh(fileName.toStdString());
+	statusBar()->showMessage("Done");
 }
 
 void myMainWindow::exit()

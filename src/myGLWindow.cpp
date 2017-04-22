@@ -3,7 +3,7 @@
 myGLWindow::myGLWindow(QWidget *parent)
 : QOpenGLWidget(parent)
 {
-	sd.loadFromFile("test3.off");
+	//current_shape.loadFromFile("test.off");
 	//sd2.loadFromFile("test3.off");
 }
 
@@ -17,7 +17,14 @@ void myGLWindow::initializeGL()
 {
 	//setMinimumSize(1000, 800);
 	renderer = new myRenderer;
-	renderer->addShape(&sd);
+	/*ShapeData * sd = new ShapeData;
+	sd->loadFromFile("test2.off");
+	renderer->addShape(sd);
+	ShapeData * sd2 = new ShapeData;
+	sd2->loadFromFile("test3.off");
+	renderer->addShape(sd2);*/
+
+	//renderer->addShape(&current_shape);
 	//renderer->addShape(&sd2);
 	renderer->addShader(GL_VERTEX_SHADER, "VertexShaderCode2.glsl");
 	renderer->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCode.glsl");
@@ -79,6 +86,25 @@ void myGLWindow::keyPressEvent(QKeyEvent* e)
 		renderer->currentDrawFlag = e_draw_points;
 		break;
 	}
+	repaint();
+}
+
+void myGLWindow::setShape(ShapeData * _shape)
+{
+	renderer->clearShapes();
+	renderer->addShape(_shape);
+	makeCurrent();
+	renderer->resendDataSingleBuffer();
+	doneCurrent();
+	renderer->setDefaultValues();
+	repaint();
+}
+
+void myGLWindow::updateMesh()
+{
+	makeCurrent();
+	renderer->updateVertexBuffer(0);
+	doneCurrent();
 	repaint();
 }
 
