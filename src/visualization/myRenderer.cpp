@@ -12,6 +12,7 @@ bool checkStatus(GLuint objectID, PFNGLGETSHADERIVPROC objectPropertyGetterFunc,
 		GLchar * buffer = new GLchar[infoLogLength];
 		GLsizei bufferSize;
 		getInfoLogFunc(objectID, infoLogLength, &bufferSize, buffer);
+		cout << buffer << endl;
 		delete[] buffer;
 		return false;
 	}
@@ -33,7 +34,9 @@ bool checkProgramStatus(GLuint programID)
 
 myRenderer::myRenderer()
 {
-	currentDrawFlag = e_draw_faces;
+	//currentDrawFlag = e_draw_faces;
+	light = glm::vec4(0.1f,0.1f,0.1f,1.0f);
+	lightPosition = glm::vec3(800.f, 800.f, 800.f);
 	sceneCentralPoint = glm::vec3(0.0f, 0.0f, 0.0f);
 	m_width = 1000;
 	m_height = 800;
@@ -57,6 +60,26 @@ void myRenderer::addShape(ShapeData * _sd)
 	m_vertexOffsets.push_back(0);
 	m_elementOffsets.push_back(0);
 	m_vertexArrayObjectIDs.push_back(0);
+	m_draw_modes.push_back(e_draw_faces);
+}
+
+void myRenderer::addShape(ShapeData * _sd , myDrawFlags _draw_mode)
+{
+	m_shapes.push_back(_sd);
+	m_vertexOffsets.push_back(0);
+	m_elementOffsets.push_back(0);
+	m_vertexArrayObjectIDs.push_back(0);
+	m_draw_modes.push_back(_draw_mode);
+}
+
+void myRenderer::removeShape(size_t index)
+{
+	glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[index]);
+	m_shapes.erase(m_shapes.begin() + index);
+	m_vertexOffsets.erase(m_vertexOffsets.begin() + index);
+	m_elementOffsets.erase(m_elementOffsets.begin() + index);
+	m_vertexArrayObjectIDs.erase(m_vertexArrayObjectIDs.begin() + index);
+	m_draw_modes.erase(m_draw_modes.begin() + index);
 }
 
 void myRenderer::addShader(GLenum _shaderType, const string & _fileName)
@@ -71,22 +94,36 @@ void myRenderer::addShader(myShader * _shader)
 	m_shaders.push_back(_shader);
 }
 
+void myRenderer::setShapeDrawMode(size_t _shape_index, myDrawFlags _mode)
+{
+	m_draw_modes[_shape_index] = _mode;
+}
+
 void myRenderer::clearShapes()
 {
+	for (size_t i = 0; i < m_vertexArrayObjectIDs.size(); i++)
+	{
+		glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[i]);
+	}
 	m_shapes.clear();
 	m_vertexOffsets.clear();
 	m_elementOffsets.clear();
 	m_vertexArrayObjectIDs.clear();
+	m_draw_modes.clear();
 }
 
 void myRenderer::clearAndDeleteShapes()
 {
 	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[i]);
 		delete m_shapes[i];
+	}
 	m_shapes.clear();
 	m_vertexOffsets.clear();
 	m_elementOffsets.clear();
 	m_vertexArrayObjectIDs.clear();
+	m_draw_modes.clear();
 }
 
 void myRenderer::clearShaders()
@@ -97,7 +134,10 @@ void myRenderer::clearShaders()
 void myRenderer::clearAndDeleteShaders()
 {
 	for (size_t i = 0; i < m_shaders.size(); i++)
+	{
+		glDetachShader(m_programID,m_shaders[i]->getShaderID());
 		delete m_shaders[i];
+	}
 	m_shaders.clear();
 }
 
@@ -179,6 +219,7 @@ void myRenderer::initialize()
 {
 	glewInit();
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 	createProgram();
 	sendDataSingleBuffer();
 	installShaders();
@@ -193,7 +234,7 @@ void myRenderer::initializeInteractor()
 
 void myRenderer::setDefaultValues()
 {
-	currentDrawFlag = e_draw_faces;
+	//currentDrawFlag = e_draw_faces;
 	sceneCentralPoint = glm::vec3(0.0f, 0.0f, 0.0f);
 	m_width = 1000;
 	m_height = 800;
@@ -239,15 +280,14 @@ void myRenderer::resendDataSingleBuffer()
 		glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, currentElementOffset, m_shapes[i]->indexBufferSize(), m_shapes[i]->indices);
 		currentElementOffset += m_shapes[i]->indexBufferSize();
 	}
-	cout << "vertex buffer : "<< m_vertexBufferID << endl;
+	//cout << "vertex buffer : "<< m_vertexBufferID << endl;
 	for (size_t i = 0; i < m_shapes.size(); i++)
 	{
-		glDeleteVertexArrays(1, &m_vertexArrayObjectIDs[i]);
 		glGenVertexArrays(1, &m_vertexArrayObjectIDs[i]);
 		
 		glBindVertexArray(m_vertexArrayObjectIDs[i]);
 
-		cout << m_vertexArrayObjectIDs[i] << endl;
+		//cout << m_vertexArrayObjectIDs[i] << endl;
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
@@ -271,20 +311,36 @@ void myRenderer::draw()
 	glm::mat4 worldToViewMatrix = camera.getWorldToViewMatrix();
 	glm::mat4 worldToProjectionMatrix = viewToProjectionMatrix * worldToViewMatrix;
 
+	// 0: pointSize            1: not defined             2: not defined
+	glm::vec3 aditionalProperties = glm::vec3(1.0f,0.0f,0.0f);
+
 	GLuint fullTransformationUniformLocation;
 	GLuint modelToWorldMatrixUniformLocation;
+	GLuint lightUniformLocation;
+	GLuint lightPositionUniformLocation;
+	GLuint cameraPositionUniformLocation;
+	GLuint aditionalPropertiesUniformLocation;
 
 	fullTransformationUniformLocation = glGetUniformLocation(m_programID, "modelToProjectionMatrix");
 	modelToWorldMatrixUniformLocation = glGetUniformLocation(m_programID, "modelToWorldMatrix");
+	lightUniformLocation = glGetUniformLocation(m_programID, "lightVector");
+	lightPositionUniformLocation = glGetUniformLocation(m_programID, "lightPositionVector");
+	cameraPositionUniformLocation = glGetUniformLocation(m_programID, "cameraPositionVector");
+	aditionalPropertiesUniformLocation = glGetUniformLocation(m_programID, "aditionalProperties");
 
 	modelToProjectionMatrix = worldToProjectionMatrix * modelToWorldMatrix;
 
 	glUniformMatrix4fv(fullTransformationUniformLocation, 1, GL_FALSE, &modelToProjectionMatrix[0][0]);
 	glUniformMatrix4fv(modelToWorldMatrixUniformLocation, 1, GL_FALSE, &modelToWorldMatrix[0][0]);
+	glUniform4fv(lightUniformLocation, 1, &light[0]);
+	glUniform3fv(lightPositionUniformLocation, 1, &lightPosition[0]);
+	glUniform3fv(cameraPositionUniformLocation, 1, &(camera.getPosition())[0]);
+	glUniform3fv(aditionalPropertiesUniformLocation, 1, &aditionalProperties[0]);
 
 	for (size_t i = 0; i < m_shapes.size(); i++)
 	{
 		glBindVertexArray(m_vertexArrayObjectIDs[i]);
+		int currentDrawFlag = m_draw_modes[i];
 		switch (currentDrawFlag)
 		{
 		case e_draw_faces:
@@ -298,7 +354,14 @@ void myRenderer::draw()
 		case e_draw_points:
 			glDrawArrays(GL_POINTS, 0, m_shapes[i]->numVertices);
 			break;
+		case e_draw_selection:
+			aditionalProperties[0] = 3.0f;
+			glUniform3fv(aditionalPropertiesUniformLocation, 1, &aditionalProperties[0]);
+			glDrawArrays(GL_POINTS, 0, m_shapes[i]->numVertices);
+			aditionalProperties[0] = 1.0f;
+			break;
 		}
+		glBindVertexArray(0);
 	}
 }
 
@@ -373,4 +436,26 @@ void myRenderer::zoom(float delta)
 	float t_sign = (delta < 0.0f) ? -1.0f : 1.0f;
 
 	camera.setPosition(camera.getPosition() + camera.getViewDirection() *(ZOOM_SPEED*t_sign));
+}
+
+glm::vec3 myRenderer::getRayDirection(glm::vec2 & pos)
+{
+	float x = (2.0f * pos.x) / m_width - 1.0f;
+	float y = 1.0f - (2.0f * pos.y) / m_height;
+	float z = 1.0f;
+	// normalised device space
+	glm::vec3 ray_nds = glm::vec3(x, y, z);
+	// clip space
+	glm::vec4 ray_clip = glm::vec4(ray_nds.x, ray_nds.y, -1.0, 1.0);
+	// eye space
+	glm::mat4 proj_mat = glm::perspective(m_fov, ((float)m_width) / ((float)(m_height)), m_near, m_far);
+	glm::mat4 view_mat = glm::lookAt(camera.getPosition(), camera.getPosition() + camera.getViewDirection(), camera.getUP());
+
+	glm::vec4 ray_eye = inverse(proj_mat) * ray_clip;
+	ray_eye = glm::vec4(ray_eye.x, ray_eye.y, -1.0, 0.0);
+	// world space
+	glm::vec3 ray_wor = glm::vec3(inverse(view_mat) * ray_eye);
+	// don't forget to normalise the vector at some point
+	ray_wor = glm::normalize(ray_wor);
+	return ray_wor;
 }

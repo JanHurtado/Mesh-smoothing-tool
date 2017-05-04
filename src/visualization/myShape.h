@@ -48,13 +48,15 @@ struct ShapeData
 		float n = 0.0f;
 		for (TriMesh::VertexIter v_it = _mesh.vertices_begin(); v_it != _mesh.vertices_end(); v_it++)
 		{
-			TriMesh::Point p = _mesh.point(*v_it);
-			c += p;
+			TriMesh::Color current_color = _mesh.color(*v_it);
+			TriMesh::Point current_point = _mesh.point(*v_it);
+			TriMesh::Normal current_normal = _mesh.normal(*v_it);
+			c += current_point;
 			n++;
-			TriMesh::Normal n = _mesh.normal(*v_it);
-			vertices[currentIndex].position = glm::vec3(p[0], p[1], p[2]);
-			vertices[currentIndex].color = glm::vec3(1.0f, 0.0f, 0.0f);
-			vertices[currentIndex].normal = glm::vec3(n[0], n[1], n[2]);
+			vertices[currentIndex].position = glm::vec3(current_point[0], current_point[1], current_point[2]);
+			//vertices[currentIndex].color = glm::vec3(current_color[0], current_color[1], current_color[2]);
+			vertices[currentIndex].color = glm::vec3(0.5f, 0.5f, 0.5f);
+			vertices[currentIndex].normal = glm::vec3(current_normal[0], current_normal[1], current_normal[2]);
 			//cout << vertices[currentIndex].position.x << " " << vertices[currentIndex].position.y << " " << vertices[currentIndex].position.z << endl;
 			currentIndex++;
 
@@ -75,6 +77,30 @@ struct ShapeData
 			//cout << endl;
 		}
 	}
+	void loadMeshVertexSelection(TriMesh & _mesh,vector<size_t> & selected_vertices)
+	{
+		numVertices = static_cast<GLuint>(_mesh.n_vertices());
+		vertices = new Vertex[numVertices];
+		numIndices = 0;
+		indices = new GLuint[numIndices];
+		TriMesh::Point c(0, 0, 0);
+		float n = 0.0f;
+		for (size_t i = 0; i < selected_vertices.size(); i++)
+		{
+			TriMesh::VertexHandle vh((int)selected_vertices[i]);
+			TriMesh::Point current_point = _mesh.point(vh);
+			TriMesh::Normal current_normal = _mesh.normal(vh);
+			c += current_point;
+			n++;
+			vertices[i].position = glm::vec3(current_point[0], current_point[1], current_point[2]);
+			vertices[i].color = glm::vec3(1.0f, 0.0f, 0.0f);
+			vertices[i].normal = glm::vec3(current_normal[0], current_normal[1], current_normal[2]);
+		}
+		c = c / n;
+		centroid[0] = c[0];
+		centroid[1] = c[1];
+		centroid[2] = c[2];
+	}
 	GLsizeiptr vertexBufferSize() const
 	{
 		return numVertices * sizeof(Vertex);
@@ -87,6 +113,8 @@ struct ShapeData
 	{
 		delete[] vertices;
 		delete[] indices;
+		vertices = 0;
+		indices = 0;
 		numVertices = numIndices = 0;
 		centroid = glm::vec3(0.0f,0.0f,0.0f);
 	}

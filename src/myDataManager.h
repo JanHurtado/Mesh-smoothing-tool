@@ -14,6 +14,8 @@ public:
 	ShapeData input_mesh_shape;
 	ShapeData output_mesh_shape;
 
+	ShapeData selection;
+
 	myDataManager();
 	~myDataManager();
 
@@ -24,5 +26,6 @@ public:
 	void updateOutputShape();
 	void updateOutputShape(vector<size_t> & indices);
 	void updateShapes();
+	void updateOutputSelection(vector<size_t> & indices);
 };
 #endif // MYDATAMANAGER_H

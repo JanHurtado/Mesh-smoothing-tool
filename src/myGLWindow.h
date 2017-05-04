@@ -30,19 +30,18 @@ protected:
 
 	myRenderer * renderer;
 
-
 	void initializeGL();
 	void paintGL();
 	void resizeGL();
 	void mouseMoveEvent(QMouseEvent*);
 	void keyPressEvent(QKeyEvent*);
 	void wheelEvent(QWheelEvent *event);
+	bool event(QEvent *event);
 
 	bool checkStatus(GLuint objectID, PFNGLGETSHADERIVPROC objectPropertyGetterFunc, PFNGLGETSHADERINFOLOGPROC getInfoLogFunc, GLenum statusType);
 	bool checkShaderStatus(GLuint shaderID);
 	bool checkProgramStatus(GLuint programID);
 	string readShaderCode(const char * fileName);
-	void installShaders();
 	void sendDataToOpenGL();
 
 
@@ -50,9 +49,18 @@ public:
 
 	ShapeData current_shape;
 
-	void setVisualizationMode(int mode){ renderer->currentDrawFlag = mode; repaint(); }
+	void setVisualizationMode(int mode){ renderer->setShapeDrawMode(0,(myDrawFlags)mode); repaint(); }
 	void setShape(ShapeData * _shape);
+	void removeSelection();
+	void setSelection(ShapeData * _selection);
 	void updateMesh();
+	void addShader(GLenum _shaderType, const string & _fileName);
+	void clearAndDeleteShaders();
+	void installShaders();
+	glm::vec2 getCurrentMousePosition();
+	glm::vec3 getRayDirection(glm::vec2 & pos){ return renderer->getRayDirection(pos); }
+	myCamera * getCamera(){return &(renderer->camera);}
+	glm::mat4 getModelToWorldMatrix(){ return renderer->modelToWorldMatrix; }
 
 
 	myGLWindow::myGLWindow(QWidget *parent = 0);

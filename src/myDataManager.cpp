@@ -67,3 +67,9 @@ void myDataManager::updateShapes()
 	updateInputShape();
 	updateOutputShape();
 }
+
+void myDataManager::updateOutputSelection(vector<size_t> & indices)
+{
+	selection.clear();
+	selection.loadMeshVertexSelection(output_mesh, indices);
+}

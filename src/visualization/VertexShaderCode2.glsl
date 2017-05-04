@@ -14,7 +14,7 @@ out vec3 theColor;
 void main()
 {
 	gl_Position = modelToProjectionMatrix * vec4(position, 1);
-	normalWorld = vertexNormal;
-	vertexPositionWorld = position;
+	normalWorld = vec3(modelToWorldMatrix * vec4(vertexNormal, 0));
+	vertexPositionWorld = vec3(modelToWorldMatrix * vec4(position,1));
 	theColor = vertexNormal;
 }

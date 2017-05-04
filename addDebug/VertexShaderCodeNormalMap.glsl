@@ -11,9 +11,11 @@ uniform vec3 aditionalProperties;
 out vec3 normalWorld;
 out vec3 vertexPositionWorld;
 out vec3 theColor;
+out vec3 normalModel;
 
 void main()
 {
+	normalModel = vertexNormal;
 	gl_Position = modelToProjectionMatrix * vec4(position, 1);
 	normalWorld = vec3(modelToWorldMatrix * vec4(vertexNormal, 0));
 	vertexPositionWorld = vec3(modelToWorldMatrix * vec4(position,1));

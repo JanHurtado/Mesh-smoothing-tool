@@ -87,6 +87,7 @@ myMainWindow::myMainWindow()
 
 	createActions();
 	createMenus();
+	setSmoothingThread();
 
 	QString message = tr("A context menu is available by right-clicking");
 
@@ -97,15 +98,33 @@ myMainWindow::myMainWindow()
 	resize(1200, 600);
 
 	enableSmoothingType();
+
+	//setMouseTracking(true);
+	output_mesh_visualizer_ptr->installEventFilter(this);
+
+	selectionMode = 0;
+	selectionStatus = 0;
+	runningStatus = 0;
+
+	globalSmoothingStopped = 0;
+
+	setGlobalSmoothingStatus(gs_status_init);
+
+	currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
+	currentFocalizedSmoothingAlgorithm = fs_algorithm_uniform_laplacian;
 }
 
 myMainWindow::~myMainWindow()
 {
+	smoothingThread.quit();
+	smoothingThread.wait();
 }
 
 void myMainWindow::createActions()
 {
-	connect(push_button_global_smoothing_run, &QPushButton::released, this, &myMainWindow::runSmoothingGlobal);
+	connect(push_button_global_smoothing_run, &QPushButton::released, this, &myMainWindow::runGlobalSmoothing);
+	connect(push_button_global_smoothing_stop, &QPushButton::released, this, &myMainWindow::stopGlobalSmoothing);
+	connect(push_button_global_smoothing_continue, &QPushButton::released, this, &myMainWindow::continueGlobalSmoothing);
 	connect(radio_button_smoothing_type_g, &QRadioButton::released, this, &myMainWindow::enableSmoothingType);
 	connect(radio_button_smoothing_type_f, &QRadioButton::released, this, &myMainWindow::enableSmoothingType);
 
@@ -141,9 +160,13 @@ void myMainWindow::createActions()
 	setShadersAct->setStatusTip(tr("Set shaders"));
 	connect(setShadersAct, &QAction::triggered, this, &myMainWindow::setShaders);
 
-	setAlgorithmsAct = new QAction(tr("&Set algorithms"), this);
-	setAlgorithmsAct->setStatusTip(tr("Set algorithms"));
-	connect(setAlgorithmsAct, &QAction::triggered, this, &myMainWindow::setAlgorithms);
+	setGlobalSmoothingAlgorithmAct = new QAction(tr("&Set global smoothing algorithm"), this);
+	setGlobalSmoothingAlgorithmAct->setStatusTip(tr("Set global smoothing algorithm"));
+	connect(setGlobalSmoothingAlgorithmAct, &QAction::triggered, this, &myMainWindow::setGlobalSmoothingAlgorithm);
+
+	setFocalizedSmoothingAlgorithmAct = new QAction(tr("&Set focalized smoothing algorithm"), this);
+	setFocalizedSmoothingAlgorithmAct->setStatusTip(tr("Set focalized smoothing algorithm"));
+	connect(setFocalizedSmoothingAlgorithmAct, &QAction::triggered, this, &myMainWindow::setFocalizedSmoothingAlgorithm);
 
 	aboutAct = new QAction(tr("&About"), this);
 	aboutAct->setStatusTip(tr("About"));
@@ -168,24 +191,58 @@ void myMainWindow::createMenus()
 
 	settingsMenu = menuBar()->addMenu(tr("&Settings"));
 	settingsMenu->addAction(setShadersAct);
-	settingsMenu->addAction(setAlgorithmsAct);
+	settingsMenu->addAction(setGlobalSmoothingAlgorithmAct);
+	settingsMenu->addAction(setFocalizedSmoothingAlgorithmAct);
 
 	helpMenu = menuBar()->addMenu(tr("&Help"));
 	helpMenu->addAction(aboutAct);
 	helpMenu->addAction(userGuideAct);
 }
 
+void myMainWindow::updateWidgetValues()
+{
+	///// initialize all widget values
+
+	progress_bar->setMaximum(100);
+	progress_bar->setMinimum(0);
+	progress_bar->setValue(0);
+
+	slider_gs_smoothness->setMaximum(100);
+	slider_gs_smoothness->setMinimum(0);
+	slider_gs_smoothness->setValue(5);
+
+	slider_gs_radius_ratio->setMaximum(100);
+	slider_gs_radius_ratio->setMinimum(0);
+	slider_gs_radius_ratio->setValue(10);
+
+	slider_gs_detail_preservation->setMaximum(100);
+	slider_gs_detail_preservation->setMinimum(0);
+	slider_gs_detail_preservation->setValue(50);
+
+	slider_fs_smoothness->setMaximum(50);
+	slider_fs_smoothness->setMinimum(0);
+	slider_fs_smoothness->setValue(3);
+
+	slider_fs_radius->setMaximum(20);
+	slider_fs_radius->setMinimum(0);
+	slider_fs_radius->setValue(3);
+}
+
+
+
 void myMainWindow::loadMesh()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
 		tr("Load Mesh"), "",
 		tr("mesh file format (*.obj *.off *.ply *.stl);;All Files (*)"));
+	if (fileName == "") return;
 	statusBar()->showMessage("Loading ... "+fileName);
 	data.loadInputMesh(fileName.toStdString());
 	data.updateShapes();
 	input_mesh_visualizer_ptr->setShape(&data.input_mesh_shape);
 	output_mesh_visualizer_ptr->setShape(&data.output_mesh_shape);
 	statusBar()->showMessage("Done");
+	updateWidgetValues();
 }
 
 void myMainWindow::saveMesh()
@@ -193,6 +250,7 @@ void myMainWindow::saveMesh()
 	QString fileName = QFileDialog::getSaveFileName(this,
 		tr("Save Mesh"), "",
 		tr("mesh file format (*.obj *.off *.ply *.stl);;All Files (*)"));
+	if (fileName == "") return;
 	statusBar()->showMessage("Saving ... " + fileName);
 	data.saveOutputMesh(fileName.toStdString());
 	statusBar()->showMessage("Done");
@@ -223,12 +281,112 @@ void myMainWindow::pointsMode()
 
 void myMainWindow::setShaders()
 {
+	QInputDialog qDialog;
 
+	QStringList items;
+	items << QString("Flat");
+	items << QString("Phong");
+	items << QString("Normal Map");
+
+	qDialog.setOptions(QInputDialog::UseListViewForComboBoxItems);
+	qDialog.setComboBoxItems(items);
+	qDialog.setWindowTitle("Shaders");
+	qDialog.setLabelText("Choose shader options: ");
+
+	if (!qDialog.exec()) return;
+
+	if (qDialog.textValue().toStdString() == "Flat")
+	{
+		input_mesh_visualizer_ptr->clearAndDeleteShaders();
+		input_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeFlat.glsl");
+		input_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeFlat.glsl");
+		input_mesh_visualizer_ptr->installShaders();
+
+		output_mesh_visualizer_ptr->clearAndDeleteShaders();
+		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeFlat.glsl");
+		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeFlat.glsl");
+		output_mesh_visualizer_ptr->installShaders();
+	}
+	else if (qDialog.textValue().toStdString() == "Phong")
+	{
+		input_mesh_visualizer_ptr->clearAndDeleteShaders();
+		input_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodePhong.glsl");
+		input_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodePhong.glsl");
+		input_mesh_visualizer_ptr->installShaders();
+
+		output_mesh_visualizer_ptr->clearAndDeleteShaders();
+		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodePhong.glsl");
+		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodePhong.glsl");
+		output_mesh_visualizer_ptr->installShaders();
+	}
+	else if (qDialog.textValue().toStdString() == "Normal Map")
+	{
+		input_mesh_visualizer_ptr->clearAndDeleteShaders();
+		input_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeNormalMap.glsl");
+		input_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeNormalMap.glsl");
+		input_mesh_visualizer_ptr->installShaders();
+
+		output_mesh_visualizer_ptr->clearAndDeleteShaders();
+		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeNormalMap.glsl");
+		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeNormalMap.glsl");
+		output_mesh_visualizer_ptr->installShaders();
+	}
 }
 
-void myMainWindow::setAlgorithms()
+void myMainWindow::setGlobalSmoothingAlgorithm()
 {
+	QInputDialog qDialog;
 
+	QStringList items;
+	items << QString(globalSmoothingAlgorithmLabels[gs_algorithm_bilateral_normal].c_str());
+	items << QString(globalSmoothingAlgorithmLabels[gs_algorithm_guided].c_str());
+
+	qDialog.setOptions(QInputDialog::UseListViewForComboBoxItems);
+	qDialog.setComboBoxItems(items);
+	qDialog.setWindowTitle("Global Smoothing Algorithm");
+	qDialog.setLabelText("Choose global smoothing algorithm: ");
+
+	qDialog.setTextValue(globalSmoothingAlgorithmLabels[currentGlobalSmoothingAlgorithm].c_str());
+	//qDialog.textValueSelected("Choice 3");
+
+	if (qDialog.exec())
+	{
+		if (qDialog.textValue().toStdString() == globalSmoothingAlgorithmLabels[gs_algorithm_bilateral_normal])
+			currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
+		else if (qDialog.textValue().toStdString() == globalSmoothingAlgorithmLabels[gs_algorithm_guided])
+			currentGlobalSmoothingAlgorithm = gs_algorithm_guided;
+		else
+			currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
+		cout << qDialog.textValue().toStdString() << " " <<currentGlobalSmoothingAlgorithm<< endl;
+	}
+}
+
+void myMainWindow::setFocalizedSmoothingAlgorithm()
+{
+	QInputDialog qDialog;
+
+	QStringList items;
+	items << QString(focalizedSmoothingAlgorithmLabels[fs_algorithm_uniform_laplacian].c_str());
+	items << QString(focalizedSmoothingAlgorithmLabels[fs_algorithm_hc_laplacian].c_str());
+
+	qDialog.setOptions(QInputDialog::UseListViewForComboBoxItems);
+	qDialog.setComboBoxItems(items);
+	qDialog.setWindowTitle("Focalized Smoothing Algorithm");
+	qDialog.setLabelText("Choose focalized smoothing algorithm: ");
+
+	qDialog.setTextValue(focalizedSmoothingAlgorithmLabels[currentFocalizedSmoothingAlgorithm].c_str());
+	//qDialog.textValueSelected("Choice 3");
+
+	if (qDialog.exec())
+	{
+		if (qDialog.textValue().toStdString() == focalizedSmoothingAlgorithmLabels[fs_algorithm_uniform_laplacian])
+			currentFocalizedSmoothingAlgorithm = fs_algorithm_uniform_laplacian;
+		else if (qDialog.textValue().toStdString() == focalizedSmoothingAlgorithmLabels[fs_algorithm_hc_laplacian])
+			currentFocalizedSmoothingAlgorithm = fs_algorithm_hc_laplacian;
+		else
+			currentFocalizedSmoothingAlgorithm = fs_algorithm_uniform_laplacian;
+		cout << qDialog.textValue().toStdString() << " " << currentFocalizedSmoothingAlgorithm << endl;
+	}
 }
 
 void myMainWindow::about()
@@ -241,9 +399,150 @@ void myMainWindow::userGuide()
 
 }
 
-void myMainWindow::runSmoothingGlobal()
+void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_status)
+{
+	if (current_status == gs_status_init)
+	{
+		push_button_global_smoothing_run->setEnabled(true);
+		push_button_global_smoothing_stop->setEnabled(false);
+		push_button_global_smoothing_continue->setEnabled(false);
+		group_box_smoothing_type->setEnabled(true);
+		menuBar()->setEnabled(true);
+		runningStatus = 0;
+		globalSmoothingStopped = 0;
+		QString message = tr("Ready ... ");
+		statusBar()->showMessage(message);
+	}
+	else if (current_status == gs_status_started)
+	{
+		runningStatus = 1;
+		globalSmoothingStopped = 0;
+		progress_bar->setValue(0);
+		push_button_global_smoothing_run->setEnabled(false);
+		push_button_global_smoothing_stop->setEnabled(true);
+		push_button_global_smoothing_continue->setEnabled(false);
+		group_box_smoothing_type->setEnabled(false);
+		menuBar()->setEnabled(false);
+		QString message = tr("Running ... ");
+		statusBar()->showMessage(message);
+	}
+	else if (current_status == gs_status_stopping)
+	{
+		globalSmoothingStopped = 1;
+		push_button_global_smoothing_stop->setEnabled(false);
+		push_button_global_smoothing_continue->setEnabled(false);
+		QString message = tr("Stopping ... ");
+		statusBar()->showMessage(message);
+	}
+	else if (current_status == gs_status_stopped)
+	{
+		push_button_global_smoothing_run->setEnabled(true);
+		group_box_smoothing_type->setEnabled(true);
+		menuBar()->setEnabled(true);
+		push_button_global_smoothing_stop->setEnabled(false);
+		push_button_global_smoothing_continue->setEnabled(true);
+		runningStatus = 0;
+		globalSmoothingStopped = 0;
+		QString message = tr("Stopped ... ");
+		statusBar()->showMessage(message);
+	}
+	else if (current_status == gs_status_continuing)
+	{
+		runningStatus = 1;
+		globalSmoothingStopped = 0;
+		push_button_global_smoothing_run->setEnabled(false);
+		push_button_global_smoothing_stop->setEnabled(true);
+		push_button_global_smoothing_continue->setEnabled(false);
+		group_box_smoothing_type->setEnabled(false);
+		menuBar()->setEnabled(false);
+		QString message = tr("Continuing ... ");
+		statusBar()->showMessage(message);
+	}
+}
+
+void myMainWindow::setSmoothingThread()
+{
+	smoothingTask = new GlobalSmoothingTask;
+	smoothingTask->moveToThread(&smoothingThread);
+	smoothingTask->current_thread = &smoothingThread;
+	connect(&smoothingThread, &QThread::started, smoothingTask, &GlobalSmoothingTask::run);
+	connect(&smoothingThread, &QThread::finished, this, &myMainWindow::updateGlobalSmoothing);
+	smoothingTask->data = &data;
+	//connect(smoothingTask, &GlobalSmoothingTask::update, this, &myMainWindow::updateProgressBar);
+}
+
+void myMainWindow::stopGlobalSmoothing()
+{
+	setGlobalSmoothingStatus(gs_status_stopping);
+}
+
+void myMainWindow::continueGlobalSmoothing()
+{
+	cout << "continue" << endl;
+	smoothingThread.start();
+	setGlobalSmoothingStatus(gs_status_continuing);
+}
+
+void myMainWindow::runGlobalSmoothing()
 {
 	cout << "Smoothing ..." << endl;
+
+	const int default_iteration_step_size = 1;
+
+	int smoothness_i = slider_gs_smoothness->value();
+	float smoothness = static_cast<float>(slider_gs_smoothness->value());
+	float radius_ratio = static_cast<float>(slider_gs_radius_ratio->value());
+	float detail_preservation = static_cast<float>(slider_gs_detail_preservation->value());
+	// smoothing task set values
+	smoothingTask->n_vertex_iterations = static_cast<int>(smoothness/30.0f + 7.0f);
+	cout << "n_vertex_iterations: " << smoothingTask->n_vertex_iterations << endl;
+	smoothingTask->sigma_c_ratio = 0.5 + radius_ratio / 20.0f + smoothness/100.0f;
+	cout<<"sigma_c_ratio: "<<smoothingTask->sigma_c_ratio<<endl;
+	smoothingTask->sigma_s = 0.2f+detail_preservation / 200.0f;
+	cout << "sigma_s: " << smoothingTask->sigma_s << endl;
+	smoothingTask->iteration_step_size = default_iteration_step_size;
+	smoothingTask->currentGlobalSmoothingIteration = 0;
+	smoothingTask->finalGlobalSmoothingIteration = smoothness_i / default_iteration_step_size;
+	smoothingThread.start();
+	setGlobalSmoothingStatus(gs_status_started);
+}
+
+void myMainWindow::updateGlobalSmoothing()
+{
+
+	int current_iteration = smoothingTask->currentGlobalSmoothingIteration;
+	int final_iteration = smoothingTask->finalGlobalSmoothingIteration;
+	if (globalSmoothingStopped)
+	{
+		if (current_iteration > 0)
+		{
+			smoothingTask->currentGlobalSmoothingIteration--;
+			current_iteration--;
+		}
+		setGlobalSmoothingStatus(gs_status_stopped);
+	}
+	else if (current_iteration >= final_iteration)
+	{
+		smoothingTask->updateData();
+		data.updateShapes();
+		setGlobalSmoothingStatus(gs_status_init);
+	}
+	else
+	{
+		smoothingTask->updateData();
+		data.updateShapes();
+		smoothingTask->currentGlobalSmoothingIteration ++;
+		smoothingThread.start();
+	}
+	output_mesh_visualizer_ptr->updateMesh();
+	output_mesh_visualizer_ptr->repaint();
+	progress_bar->setValue(static_cast<int>((static_cast<float>(current_iteration) / static_cast<float>(final_iteration))*100.0f));
+
+}
+
+void myMainWindow::updateProgressBar()
+{
+	cout << "updated" << endl;
 }
 
 void myMainWindow::enableSmoothingType()
@@ -258,4 +557,192 @@ void myMainWindow::enableSmoothingType()
 		group_box_global_smoothing->setEnabled(false);
 		group_box_focalized_smoothing->setEnabled(true);
 	}
+}
+
+void myMainWindow::keyPressEvent(QKeyEvent* e)
+{
+	switch (e->key())
+	{
+	case Qt::Key::Key_Shift:
+		if (selectionMode == 0)
+		{
+			selectionMode = 1;
+			updateSelection();
+			output_mesh_visualizer_ptr->repaint();
+		}
+		break;
+	}
+}
+
+void myMainWindow::keyReleaseEvent(QKeyEvent* e)
+{
+	switch (e->key())
+	{
+	case Qt::Key::Key_Shift:
+		if (selectionMode == 1)
+		{
+			selectionMode = 0;
+			removeSelection();
+		}
+		break;
+	}
+}
+
+bool myMainWindow::eventFilter(QObject *object, QEvent *event)
+{
+	if (object == output_mesh_visualizer_ptr)
+	{
+		if (event->type() == QEvent::MouseMove)
+		{
+			QMouseEvent * e = static_cast<QMouseEvent *>(event);
+			if (e->modifiers() & Qt::ShiftModifier)
+			{
+				selectionMode = 1;
+				updateSelection();
+				return true;
+			}
+			else
+			{
+				selectionMode = 0;
+				removeSelection();
+				return false;
+			}
+		}
+		if (event->type() == QEvent::MouseButtonRelease)
+		{
+			QMouseEvent * e = static_cast<QMouseEvent *>(event);
+			if (e->modifiers() & Qt::ShiftModifier)
+			{
+				if (e->button() == Qt::LeftButton)
+				{
+					cout << "Focalized Smoothing ... ";
+					selectionMode = 1;
+					selectAndSmooth();
+					return true;
+				}
+			}
+		}
+	}
+	return QWidget::eventFilter(object, event);
+}
+
+void myMainWindow::getSelection(vector<size_t> & selected_vertices_ids)
+{
+	selected_vertices_ids.clear();
+	int k = slider_fs_radius->value();
+	glm::vec2 mousePos = output_mesh_visualizer_ptr->getCurrentMousePosition();
+	glm::vec3 dir = output_mesh_visualizer_ptr->getRayDirection(mousePos);
+	//cout << dir.x << " " << dir.y << " " << dir.z << endl;
+	vector<TriMesh::VertexHandle> selected_vertices;
+	glm::mat4 trMatrix = output_mesh_visualizer_ptr->getModelToWorldMatrix();
+	//compute neighborhood
+	float min_dist = 999999.0f;
+	TriMesh::VertexHandle nearest_vertex_handle;
+	for (TriMesh::FaceIter f_it = data.output_mesh.faces_begin(); f_it != data.output_mesh.faces_end(); f_it++)
+	{
+		glm::vec3 a, b, c;
+		TriMesh::VertexHandle a_vh, b_vh, c_vh;
+
+		TriMesh::FaceVertexIter fv_it = data.output_mesh.fv_iter(*f_it);
+		a = glm::vec3(data.output_mesh.point(*fv_it)[0], data.output_mesh.point(*fv_it)[1], data.output_mesh.point(*fv_it)[2]);
+		a = glm::vec3(trMatrix*glm::vec4(a, 1.0));
+		a_vh = *fv_it;
+		fv_it++;
+		b = glm::vec3(data.output_mesh.point(*fv_it)[0], data.output_mesh.point(*fv_it)[1], data.output_mesh.point(*fv_it)[2]);
+		b = glm::vec3(trMatrix*glm::vec4(b, 1.0));
+		b_vh = *fv_it;
+		fv_it++;
+		c = glm::vec3(data.output_mesh.point(*fv_it)[0], data.output_mesh.point(*fv_it)[1], data.output_mesh.point(*fv_it)[2]);
+		c = glm::vec3(trMatrix*glm::vec4(c, 1.0));
+		c_vh = *fv_it;
+
+		glm::vec3 ab = b - a;
+		glm::vec3 ac = c - a;
+
+		glm::vec3 normal = glm::cross(ab, ac);
+
+		glm::vec3 o = output_mesh_visualizer_ptr->getCamera()->getPosition();
+		float val = glm::dot(dir, normal);
+		if (val == 0.0f) continue;
+		float ti = glm::dot((a - o), normal) / val;
+		glm::vec3 temp = dir*ti;
+		glm::vec3 pi = o + temp;
+		glm::vec3 v0 = b - a;
+		glm::vec3 v1 = c - a;
+		glm::vec3 v2 = pi - a;
+		float d00 = glm::dot(v0, v0);
+		float d01 = glm::dot(v0, v1);
+		float d11 = glm::dot(v1, v1);
+		float d20 = glm::dot(v2, v0);
+		float d21 = glm::dot(v2, v1);
+		double denom = glm::dot(d00, d11) - glm::dot(d01, d01);
+		float v = (d11 * d20 - d01 * d21) / denom;
+		float w = (d00 * d21 - d01 * d20) / denom;
+		float u = 1.0 - v - w;
+
+		bool liesOutside = v>1 || v<0 || w>1 || w<0 || u>1 || u<0;
+
+		if (!liesOutside)
+		{
+			//cout << "intersect" << endl;
+			if (ti < min_dist  && ti >= 0)
+			{
+				if (u>v)
+				{
+					if (u > w)
+						nearest_vertex_handle = a_vh;
+					else
+						nearest_vertex_handle = c_vh;
+				}
+				else if (v > w)
+					nearest_vertex_handle = b_vh;
+				else
+					nearest_vertex_handle = c_vh;
+				min_dist = ti;
+			}
+
+		}
+	}
+	if (nearest_vertex_handle.is_valid())
+	{
+		getVertexNeighbors(data.output_mesh, nearest_vertex_handle, k, selected_vertices);
+		selected_vertices.push_back(nearest_vertex_handle);
+	}
+
+	for (size_t i = 0; i < selected_vertices.size(); i++)
+		selected_vertices_ids.push_back(selected_vertices[i].idx());
+}
+
+void myMainWindow::updateSelection()
+{
+	if (!runningStatus && radio_button_smoothing_type_f->isChecked())
+	{
+		vector<size_t> selected_vertices_ids;
+		getSelection(selected_vertices_ids);
+		data.updateOutputSelection(selected_vertices_ids);
+		output_mesh_visualizer_ptr->setSelection(&data.selection);
+		output_mesh_visualizer_ptr->repaint();
+	}
+	
+}
+
+void myMainWindow::selectAndSmooth()
+{
+	if (!runningStatus && radio_button_smoothing_type_f->isChecked())
+	{
+		vector<size_t> selected_vertices_ids;
+		getSelection(selected_vertices_ids);
+		int num_its = slider_fs_smoothness->value();
+		data.output_mesh = uniformLaplacian(data.output_mesh, num_its, 1.0f,selected_vertices_ids);
+		data.updateOutputShape();
+		data.updateOutputSelection(selected_vertices_ids);
+		output_mesh_visualizer_ptr->setSelection(&data.selection);
+		output_mesh_visualizer_ptr->repaint();
+	}
+}
+
+void myMainWindow::removeSelection()
+{
+	output_mesh_visualizer_ptr->removeSelection();
+	output_mesh_visualizer_ptr->repaint();
 }

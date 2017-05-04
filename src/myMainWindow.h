@@ -15,15 +15,31 @@
 #include <QtWidgets\qprogressbar.h>
 #include <QtWidgets\qradiobutton.h>
 #include <QtWidgets\qscrollarea.h>
+#include <QtWidgets\qinputdialog.h>
 
 #include "myGLWindow.h"
 #include "myDataManager.h"
+#include "mesh/neighborhood.h"
+#include "smoothing.h"
+
+enum globalSmoothingStatus { gs_status_init, gs_status_started, gs_status_stopping, gs_status_stopped, gs_status_continuing };
+
+enum globalSmoothingAlgorithm {gs_algorithm_bilateral_normal , gs_algorithm_guided};
+const vector<string> globalSmoothingAlgorithmLabels = {"Bilateral Normal Filtering","Guided Mesh Denoising"};
+
+enum focalizedSmoothingAlgorithm {fs_algorithm_uniform_laplacian, fs_algorithm_hc_laplacian};
+const vector<string> focalizedSmoothingAlgorithmLabels = { "Uniform Laplacian", "HC Laplacian" };
 
 class myMainWindow : public QMainWindow
 {
 	//Q_OBJECT
 
 	myDataManager data;
+	QThread smoothingThread;
+	GlobalSmoothingTask * smoothingTask;
+
+	globalSmoothingAlgorithm currentGlobalSmoothingAlgorithm;
+	focalizedSmoothingAlgorithm currentFocalizedSmoothingAlgorithm;
 
 	myGLWindow * input_mesh_visualizer_ptr;
 	myGLWindow * output_mesh_visualizer_ptr;
@@ -52,12 +68,20 @@ class myMainWindow : public QMainWindow
 	QSlider * slider_fs_radius;
 	QProgressBar * progress_bar;
 
+	bool selectionMode;  //   true if we are pressing shift
+	bool selectionStatus; //   not running: 0          running: 1     
+	bool runningStatus; //   not running: 0          running: 1     
+
+	bool globalSmoothingStopped;
 
 public:
 	myMainWindow();
 	~myMainWindow();
 protected:
-private slots :
+	void keyPressEvent(QKeyEvent* e);
+	void keyReleaseEvent(QKeyEvent* e);
+	bool eventFilter(QObject *object, QEvent *event);
+private:
 	void loadMesh();
 	void saveMesh();
 	void exit();
@@ -65,14 +89,28 @@ private slots :
 	void wireframeMode();
 	void pointsMode();
 	void setShaders();
-	void setAlgorithms();
+	void setGlobalSmoothingAlgorithm();
+	void setFocalizedSmoothingAlgorithm();
 	void about();
 	void userGuide();
-	void runSmoothingGlobal();
+	void runGlobalSmoothing();
 	void enableSmoothingType();
+
+	void getSelection(vector<size_t> & selected_vertices_ids);
+	void updateSelection();
+	void removeSelection();
+	void stopGlobalSmoothing();
+	void continueGlobalSmoothing();
+	void selectAndSmooth();
+
+	void updateGlobalSmoothing();
+	void updateProgressBar();
+	void setGlobalSmoothingStatus(globalSmoothingStatus current_status);
 private:
 	void createActions();
 	void createMenus();
+	void updateWidgetValues();
+	void setSmoothingThread();
 	QMenu *fileMenu;
 	QMenu *viewMenu;
 	QMenu *settingsMenu;
@@ -85,10 +123,11 @@ private:
 	QAction *wireframeModeAct;
 	QAction *pointsModeAct;
 	QAction *setShadersAct;
-	QAction *setAlgorithmsAct;
+	QAction *setGlobalSmoothingAlgorithmAct;
+	QAction *setFocalizedSmoothingAlgorithmAct;
 	QAction *aboutAct;
 	QAction *userGuideAct;
-	
 };
+
 
 #endif // MYMAINWINDOW_H

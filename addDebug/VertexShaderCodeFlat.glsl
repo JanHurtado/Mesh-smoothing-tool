@@ -8,7 +8,7 @@ uniform mat4 modelToProjectionMatrix;
 uniform mat4 modelToWorldMatrix;
 uniform vec3 aditionalProperties;
 
-out vec3 normalWorld;
+flat out vec3 normalWorld;
 out vec3 vertexPositionWorld;
 out vec3 theColor;
 

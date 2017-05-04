@@ -5,6 +5,7 @@
 #include <OpenMesh/Core/Mesh/TriMesh_ArrayKernelT.hh>
 #include <OpenMesh/Core/Geometry/VectorT.hh>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 

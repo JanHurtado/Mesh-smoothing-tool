@@ -12,7 +12,7 @@
 #include "myShape.h"
 #include "myCamera.h"
 
-enum flags {e_draw_faces,e_draw_wireframe,e_draw_points};
+enum myDrawFlags {e_draw_faces,e_draw_wireframe,e_draw_points,e_draw_selection};
 
 class myRenderer
 {
@@ -25,15 +25,19 @@ public:
 	glm::mat4 modelToWorldMatrix;
 
 	myCamera camera;
+	glm::vec4 light;
+	glm::vec3 lightPosition;
 
 	glm::vec2 oldMousePosition;
 
-	int currentDrawFlag;
 	glm::vec3 sceneCentralPoint;
 
 	myRenderer();
 	virtual ~myRenderer();
 	void addShape(ShapeData * _sd);
+	void addShape(ShapeData * _sd, myDrawFlags _draw_mode);
+	void setShapeDrawMode(size_t _shape_index, myDrawFlags _mode);
+	void removeShape(size_t index);
 	void addShader(GLenum _shaderType, const string & _fileName);
 	void addShader(myShader * _shader);
 	void clearShapes();
@@ -45,6 +49,8 @@ public:
 	void sendDataSingleBuffer();
 	void updateVertexBuffer(size_t index);
 	void resendDataSingleBuffer();
+
+
 
 	void draw();
 	void initialize();
@@ -58,6 +64,9 @@ public:
 	GLuint getProgramID(){ return m_programID; }
 	GLsizeiptr getIndexOffsetAt(size_t pos){ return m_elementOffsets[pos]; }
 	GLuint getVertexArrayObjectIDAt(size_t pos){ return m_vertexArrayObjectIDs[pos]; }
+	size_t getNumberOfShapes(){ return m_shapes.size(); }
+	glm::vec3 getRayDirection(glm::vec2 & pos);
+
 
 	void clearData();
 private:
@@ -65,6 +74,7 @@ private:
 	GLuint m_programID;
 
 	vector<ShapeData*> m_shapes;
+	vector<myDrawFlags> m_draw_modes;
 	vector<GLsizeiptr> m_elementOffsets;
 	vector<GLsizeiptr> m_vertexOffsets;
 	vector<GLuint> m_vertexArrayObjectIDs;

@@ -9,6 +9,11 @@ link_directories("${PROJECT_SOURCE_DIR}/../dependencies/Qt/lib" "${PROJECT_SOURC
 
 add_definitions(-D_USE_MATH_DEFINES)
 
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
 file(GLOB_RECURSE sources *.cpp *.h)
 
 add_executable(main ${sources})
