@@ -26,5 +26,5 @@ void main()
 
 	outColor = lightVector + clamp(diffuseLight, 0, 1) + specularLight;
 	outColor = vec4(theColor[0]*outColor[0],theColor[1]*outColor[1],theColor[2]*outColor[2],1.0);
-	outColor = vec4(normalModel,1.0);
+	outColor = vec4(normalModel*theColor,0.5);
 }

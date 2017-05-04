@@ -12,7 +12,7 @@ class myCamera
 	glm::vec3 viewDirection;
 	glm::vec3 UP;
 	glm::vec2 oldMousePosition;
-	static const float MOVEMENT_SPEED;
+	float MOVEMENT_SPEED;
 	glm::vec3 strafeDirection;
 public:
 	myCamera();
@@ -32,6 +32,7 @@ public:
 	glm::vec3 getStrafeDirection() const { return strafeDirection; }
 
 	void setPosition(glm::vec3 _pos){ position = _pos; }
+	void setMOVEMENT_SPEED(float _ms){ MOVEMENT_SPEED = _ms; }
 
 	glm::vec3 objectCentroid;
 };

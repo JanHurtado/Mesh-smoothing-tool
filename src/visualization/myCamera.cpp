@@ -3,7 +3,6 @@
 #include <glm\gtx\transform.hpp>
 #include <algorithm>
 
-const float myCamera::MOVEMENT_SPEED = 1.0f;
 const float myPI = 3.1415f;
 
 myCamera::myCamera() :
@@ -15,6 +14,7 @@ UP(0.0f, 1.0f, 0.0f)
 	UP = glm::normalize(UP);
 	strafeDirection = glm::cross(viewDirection, UP);
 	strafeDirection = glm::normalize(strafeDirection);
+	MOVEMENT_SPEED = 1.0f;
 }
 
 void myCamera::reinitialize()
@@ -26,6 +26,7 @@ void myCamera::reinitialize()
 	UP = glm::normalize(UP);
 	strafeDirection = glm::cross(viewDirection, UP);
 	strafeDirection = glm::normalize(strafeDirection);
+	MOVEMENT_SPEED = 1.0f;
 }
 
 bool myCamera::mouseUpdate(const glm::vec2& newMousePosition)

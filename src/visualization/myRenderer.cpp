@@ -229,7 +229,11 @@ void myRenderer::initialize()
 void myRenderer::initializeInteractor()
 {
 	computeCentralPoint();
-	camera.setPosition(sceneCentralPoint+glm::vec3(0.0f,0.0f,300.0f));
+	computeBoundingSphereRadius();
+	//camera.setPosition(sceneCentralPoint + glm::vec3(0.0f, 0.0f, 300.0f));
+	cout << "boundingSphereRadius: " << boundingSphereRadius << endl;
+	camera.setPosition(sceneCentralPoint+glm::vec3(0.0f,0.0f,2.0f*boundingSphereRadius));
+	camera.setMOVEMENT_SPEED(boundingSphereRadius/100.0f);
 }
 
 void myRenderer::setDefaultValues()
@@ -384,6 +388,23 @@ void myRenderer::computeCentralPoint()
 		}
 	}
 	sceneCentralPoint = t_sceneCentralPoint/num;
+}
+
+void myRenderer::computeBoundingSphereRadius()
+{
+	float max = 0.0f;
+	for (size_t i = 0; i < m_shapes.size(); i++)
+	{
+		for (size_t j = 0; j < m_shapes[i]->numVertices; j++)
+		{
+			glm::vec3 current_point = glm::vec3(m_shapes[i]->vertices[j].position.x, m_shapes[i]->vertices[j].position.y, m_shapes[i]->vertices[j].position.z);
+			float dist = glm::distance(current_point,sceneCentralPoint);
+			if (dist>max)
+				max = dist;
+		}
+	}
+	boundingSphereRadius = max;
+
 }
 
 void myRenderer::rotateObjects(const glm::vec2& newMousePosition)

@@ -31,6 +31,7 @@ public:
 	glm::vec2 oldMousePosition;
 
 	glm::vec3 sceneCentralPoint;
+	float boundingSphereRadius;
 
 	myRenderer();
 	virtual ~myRenderer();
@@ -57,6 +58,7 @@ public:
 	void initializeInteractor();
 	void setDefaultValues();
 	void computeCentralPoint();
+	void computeBoundingSphereRadius();
 	void rotateObjects(const glm::vec2& newMousePosition);
 	void translateCamera(const glm::vec2& newMousePosition);
 	void zoom(float delta);

@@ -204,7 +204,71 @@ TriMesh HCLaplacian(TriMesh & _mesh,int iteration_number,num_t alpha,num_t beta)
     }
     for(TriMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); v_it++)
         mesh.set_point(*v_it, temp_points_p[v_it->idx()]);
+	mesh.request_face_normals();
+	mesh.request_vertex_normals();
+	mesh.update_normals();
     return mesh;
+}
+
+TriMesh HCLaplacian(TriMesh & _mesh, int iteration_number, num_t alpha, num_t beta, vector<size_t> & vertex_ids)
+{
+	TriMesh mesh = _mesh;
+	vector<TriMesh::Point> original_points;
+	getAllPoints(mesh, original_points);
+	TriMesh temp_mesh_p;
+	vector<TriMesh::Point> temp_points_p(original_points);
+	vector<TriMesh::Point> uniform_displacement_points;
+	uniform_displacement_points.resize(mesh.n_vertices());
+	for (int iter = 0; iter < iteration_number; iter++)
+	{
+		vector<TriMesh::Point> temp_points_q(temp_points_p);
+		for (size_t i = 0; i < vertex_ids.size(); i++)
+		{
+			TriMesh::VertexHandle vh((int)vertex_ids[i]);
+			vector<TriMesh::VertexHandle> vertex_neighbors;
+			getVertexNeighbors(_mesh, vh, 1, vertex_neighbors);
+			if (vertex_neighbors.size()>0)
+			{
+				num_t weight = 1.0f / ((num_t)vertex_neighbors.size());
+				TriMesh::Point sum(0.0f, 0.0f, 0.0f);
+				for (int i = 0; i<(int)(vertex_neighbors.size()); i++)
+					sum = sum + ((mesh.point(vertex_neighbors[i]) - mesh.point(vh))*weight);
+				uniform_displacement_points[vh.idx()] = sum;
+				temp_points_p[vh.idx()] += sum;
+			}
+			else
+				uniform_displacement_points[vh.idx()] = TriMesh::Point(0, 0, 0);
+		}
+		for (size_t i = 0; i < vertex_ids.size(); i++)
+		{
+			TriMesh::VertexHandle vh((int)vertex_ids[i]);
+			temp_points_p[vh.idx()] = uniform_displacement_points[vh.idx()] + mesh.point(vh);
+		}
+		vector<TriMesh::Point> temp_points_b(temp_points_p.size());
+		for (size_t i = 0; i<temp_points_p.size(); i++)
+			temp_points_b[i] = temp_points_p[i] - (original_points[i] * alpha + (1.0f - alpha)*temp_points_q[i]);
+		for (size_t i = 0; i < vertex_ids.size(); i++)
+		{
+			TriMesh::VertexHandle vh((int)vertex_ids[i]);
+			TriMesh::Point t_sum(0, 0, 0);
+			num_t num = 0;
+			for (TriMesh::VertexVertexIter vv_it = mesh.vv_iter(vh); vv_it.is_valid(); vv_it++, num += 1.0f)
+				t_sum += temp_points_b[vv_it->idx()];
+
+			TriMesh::Point disp = (beta*temp_points_b[vh.idx()] + ((1.0f - beta) / num)*t_sum);
+			if (!hasIND(disp))
+				temp_points_p[vh.idx()] = temp_points_p[vh.idx()] - disp;
+		}
+	}
+	for (size_t i = 0; i < vertex_ids.size(); i++)
+	{
+		TriMesh::VertexHandle vh((int)vertex_ids[i]);
+		mesh.set_point(vh, temp_points_p[vh.idx()]);
+	}
+	mesh.request_face_normals();
+	mesh.request_vertex_normals();
+	mesh.update_normals();
+	return mesh;
 }
 
 /////////////////////////////////////////////////

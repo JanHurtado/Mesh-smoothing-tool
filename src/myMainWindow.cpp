@@ -733,7 +733,12 @@ void myMainWindow::selectAndSmooth()
 		vector<size_t> selected_vertices_ids;
 		getSelection(selected_vertices_ids);
 		int num_its = slider_fs_smoothness->value();
-		data.output_mesh = uniformLaplacian(data.output_mesh, num_its, 1.0f,selected_vertices_ids);
+		if (currentFocalizedSmoothingAlgorithm == fs_algorithm_uniform_laplacian)
+			data.output_mesh = uniformLaplacian(data.output_mesh, num_its, 1.0f, selected_vertices_ids);
+		else if ((currentFocalizedSmoothingAlgorithm == fs_algorithm_hc_laplacian))
+			data.output_mesh = HCLaplacian(data.output_mesh, num_its, 0.5f,0.5f,selected_vertices_ids);
+		else
+			data.output_mesh = uniformLaplacian(data.output_mesh, num_its, 1.0f, selected_vertices_ids);
 		data.updateOutputShape();
 		data.updateOutputSelection(selected_vertices_ids);
 		output_mesh_visualizer_ptr->setSelection(&data.selection);

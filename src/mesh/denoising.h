@@ -67,6 +67,8 @@ TriMesh uniformLaplacian(TriMesh & _mesh, int iteration_number, num_t scale, vec
 
 TriMesh HCLaplacian(TriMesh & _mesh,int iteration_number,num_t alpha,num_t beta);
 
+TriMesh HCLaplacian(TriMesh & _mesh, int iteration_number, num_t alpha, num_t beta, vector<size_t> & vertex_ids);
+
 /** @} */
 
 
