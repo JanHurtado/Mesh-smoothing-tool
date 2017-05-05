@@ -86,6 +86,34 @@ void updateFilteredNormals(TriMesh &mesh, int normal_iteration_number, num_t sig
 
 TriMesh bilateralNormal(TriMesh &_mesh, int normal_iteration_number, int vertex_iteration_number, num_t sigma_c_scalar,  num_t sigma_s );
 
+/////////////////////////////////////////////////
+/// Guided mesh normal filtering (Zhang et al.)
+/////////////////////////////////////////////////
+
+void getVertexBasedFaceNeighbor(TriMesh &mesh, TriMesh::FaceHandle fh, vector<TriMesh::FaceHandle> &face_neighbor);
+
+void getAllFaceNeighborGMNF(TriMesh &mesh, FaceNeighborType face_neighbor_type, num_t radius, bool include_central_face,
+	vector<vector<TriMesh::FaceHandle> > &all_face_neighbor);
+
+void getAllGuidedNeighborGMNF(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor);
+
+void getFaceNeighborInnerEdge(TriMesh &mesh, vector<TriMesh::FaceHandle> &face_neighbor, vector<TriMesh::EdgeHandle> &inner_edge);
+
+void getRangeAndMeanNormal(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor,
+	vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
+	vector<pair<num_t, TriMesh::Normal> > &range_and_mean_normal);
+
+void getGuidedNormals(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor,
+	vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
+	vector<pair<num_t, TriMesh::Normal> > range_and_mean_normal,
+	vector<TriMesh::Normal> &guided_normals);
+
+
+void updateFilteredNormalsGuided(TriMesh &mesh, vector<TriMesh::Normal> &filtered_normals, num_t radius_scalar,
+	num_t sigma_c_scalar, int normal_iteration_number, num_t sigma_s, int vertex_iteration_number);
+
+TriMesh guided(TriMesh _mesh, int normal_iteration_number, int vertex_iteration_number, num_t sigma_c_scalar, num_t sigma_s, num_t radius_scalar);
+
 
 /** @} */
 

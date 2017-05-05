@@ -15,6 +15,9 @@ myMainWindow::myMainWindow()
 	push_button_global_smoothing_stop = new QPushButton("&Stop", this);
 	push_button_global_smoothing_continue = new QPushButton("&Continue", this);
 
+	push_button_reinitialize_data = new QPushButton("&Restart", this);
+	push_button_update_input_data = new QPushButton("&Update", this);
+
 	slider_gs_smoothness = new QSlider(Qt::Horizontal, this);
 	slider_gs_radius_ratio = new QSlider(Qt::Horizontal, this);
 	slider_gs_detail_preservation = new QSlider(Qt::Horizontal, this);
@@ -49,6 +52,9 @@ myMainWindow::myMainWindow()
 	layout_focalized_smoothing->addWidget(new QLabel("Radius", this));
 	layout_focalized_smoothing->addWidget(slider_fs_radius);
 
+	layout_data_manipulation = new QHBoxLayout;
+	layout_data_manipulation->addWidget(push_button_reinitialize_data);
+	layout_data_manipulation->addWidget(push_button_update_input_data);
 
 	group_box_smoothing_type = new QGroupBox(tr("Smoothing type"));
 	group_box_smoothing_type->setMaximumWidth(control_block_max_width);
@@ -62,10 +68,15 @@ myMainWindow::myMainWindow()
 	group_box_focalized_smoothing->setMaximumWidth(control_block_max_width);
 	group_box_focalized_smoothing->setLayout(layout_focalized_smoothing);
 
+	group_box_data_manipulation = new QGroupBox(tr("Data manipulation"));
+	group_box_data_manipulation->setMaximumWidth(control_block_max_width);
+	group_box_data_manipulation->setLayout(layout_data_manipulation);
+
 	control_layout = new QVBoxLayout;
 	control_layout->addWidget(group_box_smoothing_type);
 	control_layout->addWidget(group_box_global_smoothing);
 	control_layout->addWidget(group_box_focalized_smoothing);
+	control_layout->addWidget(group_box_data_manipulation);
 	control_layout->addStretch();
 
 	QWidget * t_widget = new QWidget(this);
@@ -79,7 +90,6 @@ myMainWindow::myMainWindow()
 	layout->addWidget(input_mesh_visualizer_ptr);
 	layout->addWidget(output_mesh_visualizer_ptr);
 	layout->addWidget(control_scroll_area);
-	//layout->addLayout(control_layout);
 
 	widget = new QWidget;
 	widget->setLayout(layout);
@@ -127,7 +137,8 @@ void myMainWindow::createActions()
 	connect(push_button_global_smoothing_continue, &QPushButton::released, this, &myMainWindow::continueGlobalSmoothing);
 	connect(radio_button_smoothing_type_g, &QRadioButton::released, this, &myMainWindow::enableSmoothingType);
 	connect(radio_button_smoothing_type_f, &QRadioButton::released, this, &myMainWindow::enableSmoothingType);
-
+	connect(push_button_reinitialize_data, &QPushButton::released, this, &myMainWindow::reinitializeOutput);
+	connect(push_button_update_input_data, &QPushButton::released, this, &myMainWindow::setOutputAsInput);
 
 	loadAct = new QAction(tr("&Load"), this);
 	loadAct->setShortcuts(QKeySequence::Open);
@@ -228,8 +239,6 @@ void myMainWindow::updateWidgetValues()
 	slider_fs_radius->setValue(3);
 }
 
-
-
 void myMainWindow::loadMesh()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
@@ -258,7 +267,7 @@ void myMainWindow::saveMesh()
 
 void myMainWindow::exit()
 {
-
+	close();
 }
 
 void myMainWindow::flatMode()
@@ -306,6 +315,9 @@ void myMainWindow::setShaders()
 		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeFlat.glsl");
 		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeFlat.glsl");
 		output_mesh_visualizer_ptr->installShaders();
+
+		QString message = tr(qDialog.textValue().toStdString().c_str());
+		statusBar()->showMessage(message);
 	}
 	else if (qDialog.textValue().toStdString() == "Phong")
 	{
@@ -318,6 +330,9 @@ void myMainWindow::setShaders()
 		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodePhong.glsl");
 		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodePhong.glsl");
 		output_mesh_visualizer_ptr->installShaders();
+
+		QString message = tr(qDialog.textValue().toStdString().c_str());
+		statusBar()->showMessage(message);
 	}
 	else if (qDialog.textValue().toStdString() == "Normal Map")
 	{
@@ -330,6 +345,9 @@ void myMainWindow::setShaders()
 		output_mesh_visualizer_ptr->addShader(GL_VERTEX_SHADER, "VertexShaderCodeNormalMap.glsl");
 		output_mesh_visualizer_ptr->addShader(GL_FRAGMENT_SHADER, "FragmentShaderCodeNormalMap.glsl");
 		output_mesh_visualizer_ptr->installShaders();
+
+		QString message = tr(qDialog.textValue().toStdString().c_str());
+		statusBar()->showMessage(message);
 	}
 }
 
@@ -347,7 +365,6 @@ void myMainWindow::setGlobalSmoothingAlgorithm()
 	qDialog.setLabelText("Choose global smoothing algorithm: ");
 
 	qDialog.setTextValue(globalSmoothingAlgorithmLabels[currentGlobalSmoothingAlgorithm].c_str());
-	//qDialog.textValueSelected("Choice 3");
 
 	if (qDialog.exec())
 	{
@@ -357,7 +374,8 @@ void myMainWindow::setGlobalSmoothingAlgorithm()
 			currentGlobalSmoothingAlgorithm = gs_algorithm_guided;
 		else
 			currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
-		cout << qDialog.textValue().toStdString() << " " <<currentGlobalSmoothingAlgorithm<< endl;
+		QString message = tr(globalSmoothingAlgorithmLabels[currentGlobalSmoothingAlgorithm].c_str());
+		statusBar()->showMessage(message);
 	}
 }
 
@@ -375,7 +393,6 @@ void myMainWindow::setFocalizedSmoothingAlgorithm()
 	qDialog.setLabelText("Choose focalized smoothing algorithm: ");
 
 	qDialog.setTextValue(focalizedSmoothingAlgorithmLabels[currentFocalizedSmoothingAlgorithm].c_str());
-	//qDialog.textValueSelected("Choice 3");
 
 	if (qDialog.exec())
 	{
@@ -385,7 +402,8 @@ void myMainWindow::setFocalizedSmoothingAlgorithm()
 			currentFocalizedSmoothingAlgorithm = fs_algorithm_hc_laplacian;
 		else
 			currentFocalizedSmoothingAlgorithm = fs_algorithm_uniform_laplacian;
-		cout << qDialog.textValue().toStdString() << " " << currentFocalizedSmoothingAlgorithm << endl;
+		QString message = tr(focalizedSmoothingAlgorithmLabels[currentFocalizedSmoothingAlgorithm].c_str());
+		statusBar()->showMessage(message);
 	}
 }
 
@@ -407,6 +425,7 @@ void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_statu
 		push_button_global_smoothing_stop->setEnabled(false);
 		push_button_global_smoothing_continue->setEnabled(false);
 		group_box_smoothing_type->setEnabled(true);
+		group_box_data_manipulation->setEnabled(true);
 		menuBar()->setEnabled(true);
 		runningStatus = 0;
 		globalSmoothingStopped = 0;
@@ -422,6 +441,7 @@ void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_statu
 		push_button_global_smoothing_stop->setEnabled(true);
 		push_button_global_smoothing_continue->setEnabled(false);
 		group_box_smoothing_type->setEnabled(false);
+		group_box_data_manipulation->setEnabled(false);
 		menuBar()->setEnabled(false);
 		QString message = tr("Running ... ");
 		statusBar()->showMessage(message);
@@ -438,6 +458,7 @@ void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_statu
 	{
 		push_button_global_smoothing_run->setEnabled(true);
 		group_box_smoothing_type->setEnabled(true);
+		group_box_data_manipulation->setEnabled(true);
 		menuBar()->setEnabled(true);
 		push_button_global_smoothing_stop->setEnabled(false);
 		push_button_global_smoothing_continue->setEnabled(true);
@@ -454,6 +475,7 @@ void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_statu
 		push_button_global_smoothing_stop->setEnabled(true);
 		push_button_global_smoothing_continue->setEnabled(false);
 		group_box_smoothing_type->setEnabled(false);
+		group_box_data_manipulation->setEnabled(false);
 		menuBar()->setEnabled(false);
 		QString message = tr("Continuing ... ");
 		statusBar()->showMessage(message);
@@ -468,7 +490,6 @@ void myMainWindow::setSmoothingThread()
 	connect(&smoothingThread, &QThread::started, smoothingTask, &GlobalSmoothingTask::run);
 	connect(&smoothingThread, &QThread::finished, this, &myMainWindow::updateGlobalSmoothing);
 	smoothingTask->data = &data;
-	//connect(smoothingTask, &GlobalSmoothingTask::update, this, &myMainWindow::updateProgressBar);
 }
 
 void myMainWindow::stopGlobalSmoothing()
@@ -478,38 +499,31 @@ void myMainWindow::stopGlobalSmoothing()
 
 void myMainWindow::continueGlobalSmoothing()
 {
-	cout << "continue" << endl;
 	smoothingThread.start();
 	setGlobalSmoothingStatus(gs_status_continuing);
 }
 
 void myMainWindow::runGlobalSmoothing()
 {
-	cout << "Smoothing ..." << endl;
-
 	const int default_iteration_step_size = 1;
-
 	int smoothness_i = slider_gs_smoothness->value();
 	float smoothness = static_cast<float>(slider_gs_smoothness->value());
 	float radius_ratio = static_cast<float>(slider_gs_radius_ratio->value());
 	float detail_preservation = static_cast<float>(slider_gs_detail_preservation->value());
-	// smoothing task set values
 	smoothingTask->n_vertex_iterations = static_cast<int>(smoothness/30.0f + 7.0f);
-	cout << "n_vertex_iterations: " << smoothingTask->n_vertex_iterations << endl;
 	smoothingTask->sigma_c_ratio = 0.5 + radius_ratio / 20.0f + smoothness/100.0f;
-	cout<<"sigma_c_ratio: "<<smoothingTask->sigma_c_ratio<<endl;
-	smoothingTask->sigma_s = 0.2f+detail_preservation / 200.0f;
-	cout << "sigma_s: " << smoothingTask->sigma_s << endl;
+	smoothingTask->sigma_s = 0.8f-detail_preservation * 0.006f;
+	cout << smoothingTask->sigma_s << endl;
 	smoothingTask->iteration_step_size = default_iteration_step_size;
 	smoothingTask->currentGlobalSmoothingIteration = 0;
 	smoothingTask->finalGlobalSmoothingIteration = smoothness_i / default_iteration_step_size;
+	smoothingTask->algorithm_flag = currentGlobalSmoothingAlgorithm;
 	smoothingThread.start();
 	setGlobalSmoothingStatus(gs_status_started);
 }
 
 void myMainWindow::updateGlobalSmoothing()
 {
-
 	int current_iteration = smoothingTask->currentGlobalSmoothingIteration;
 	int final_iteration = smoothingTask->finalGlobalSmoothingIteration;
 	if (globalSmoothingStopped)
@@ -537,12 +551,6 @@ void myMainWindow::updateGlobalSmoothing()
 	output_mesh_visualizer_ptr->updateMesh();
 	output_mesh_visualizer_ptr->repaint();
 	progress_bar->setValue(static_cast<int>((static_cast<float>(current_iteration) / static_cast<float>(final_iteration))*100.0f));
-
-}
-
-void myMainWindow::updateProgressBar()
-{
-	cout << "updated" << endl;
 }
 
 void myMainWindow::enableSmoothingType()
@@ -557,6 +565,24 @@ void myMainWindow::enableSmoothingType()
 		group_box_global_smoothing->setEnabled(false);
 		group_box_focalized_smoothing->setEnabled(true);
 	}
+}
+
+void myMainWindow::reinitializeOutput()
+{
+	data.reinitialize();
+	input_mesh_visualizer_ptr->updateMesh();
+	input_mesh_visualizer_ptr->repaint();
+	output_mesh_visualizer_ptr->updateMesh();
+	output_mesh_visualizer_ptr->repaint();
+}
+
+void myMainWindow::setOutputAsInput()
+{
+	data.setOutputAsInput();
+	input_mesh_visualizer_ptr->updateMesh();
+	input_mesh_visualizer_ptr->repaint();
+	output_mesh_visualizer_ptr->updateMesh();
+	output_mesh_visualizer_ptr->repaint();
 }
 
 void myMainWindow::keyPressEvent(QKeyEvent* e)
@@ -723,7 +749,6 @@ void myMainWindow::updateSelection()
 		output_mesh_visualizer_ptr->setSelection(&data.selection);
 		output_mesh_visualizer_ptr->repaint();
 	}
-	
 }
 
 void myMainWindow::selectAndSmooth()

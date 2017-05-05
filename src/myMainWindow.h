@@ -33,6 +33,62 @@ const vector<string> focalizedSmoothingAlgorithmLabels = { "Uniform Laplacian", 
 class myMainWindow : public QMainWindow
 {
 	//Q_OBJECT
+	myGLWindow * input_mesh_visualizer_ptr;
+	myGLWindow * output_mesh_visualizer_ptr;
+
+	QWidget * widget;
+	QHBoxLayout * layout;
+	QScrollArea * control_scroll_area;
+	QVBoxLayout * control_layout;
+
+	QGroupBox * group_box_smoothing_type;
+	QGroupBox * group_box_global_smoothing;
+	QGroupBox * group_box_focalized_smoothing;
+	QGroupBox * group_box_data_manipulation;
+
+	QHBoxLayout * layout_smoothing_type;
+	QVBoxLayout *layout_global_smoothing;
+	QHBoxLayout * layout_global_smoothing_buttons;
+	QVBoxLayout * layout_focalized_smoothing;
+	QHBoxLayout * layout_data_manipulation;
+
+	QRadioButton * radio_button_smoothing_type_g;
+	QRadioButton * radio_button_smoothing_type_f;
+
+	QPushButton * push_button_global_smoothing_run;
+	QPushButton * push_button_global_smoothing_stop;
+	QPushButton * push_button_global_smoothing_continue;
+	QPushButton * push_button_reinitialize_data;
+	QPushButton * push_button_update_input_data;
+
+	QSlider * slider_gs_smoothness;
+	QSlider * slider_gs_radius_ratio;
+	QSlider * slider_gs_detail_preservation;
+	QSlider * slider_fs_smoothness;
+	QSlider * slider_fs_radius;
+
+	QProgressBar * progress_bar;
+
+	//////////////
+
+	QMenu * fileMenu;
+	QMenu * viewMenu;
+	QMenu * settingsMenu;
+	QMenu * helpMenu;
+	QActionGroup * alignmentGroup;
+	QAction * loadAct;
+	QAction * saveAct;
+	QAction * exitAct;
+	QAction * flatModeAct;
+	QAction * wireframeModeAct;
+	QAction * pointsModeAct;
+	QAction * setShadersAct;
+	QAction * setGlobalSmoothingAlgorithmAct;
+	QAction * setFocalizedSmoothingAlgorithmAct;
+	QAction * aboutAct;
+	QAction * userGuideAct;
+
+	//////////////
 
 	myDataManager data;
 	QThread smoothingThread;
@@ -41,38 +97,11 @@ class myMainWindow : public QMainWindow
 	globalSmoothingAlgorithm currentGlobalSmoothingAlgorithm;
 	focalizedSmoothingAlgorithm currentFocalizedSmoothingAlgorithm;
 
-	myGLWindow * input_mesh_visualizer_ptr;
-	myGLWindow * output_mesh_visualizer_ptr;
-
-	QWidget *widget;
-	QHBoxLayout *layout;
-	QScrollArea * control_scroll_area;
-	QVBoxLayout *control_layout;
-	QGroupBox * group_box_smoothing_type;
-	QGroupBox * group_box_global_smoothing;
-	QGroupBox * group_box_focalized_smoothing;
-	QHBoxLayout * layout_smoothing_type;
-	QVBoxLayout *layout_global_smoothing;
-	QHBoxLayout * layout_global_smoothing_buttons;
-	QVBoxLayout * layout_focalized_smoothing;
-
-	QRadioButton * radio_button_smoothing_type_g;
-	QRadioButton * radio_button_smoothing_type_f;
-	QPushButton * push_button_global_smoothing_run;
-	QPushButton * push_button_global_smoothing_stop;
-	QPushButton * push_button_global_smoothing_continue;
-	QSlider * slider_gs_smoothness;
-	QSlider * slider_gs_radius_ratio;
-	QSlider * slider_gs_detail_preservation;
-	QSlider * slider_fs_smoothness;
-	QSlider * slider_fs_radius;
-	QProgressBar * progress_bar;
-
 	bool selectionMode;  //   true if we are pressing shift
 	bool selectionStatus; //   not running: 0          running: 1     
 	bool runningStatus; //   not running: 0          running: 1     
 
-	bool globalSmoothingStopped;
+	bool globalSmoothingStopped;  // true if global smoothing was stopped
 
 public:
 	myMainWindow();
@@ -95,6 +124,8 @@ private:
 	void userGuide();
 	void runGlobalSmoothing();
 	void enableSmoothingType();
+	void reinitializeOutput();
+	void setOutputAsInput();
 
 	void getSelection(vector<size_t> & selected_vertices_ids);
 	void updateSelection();
@@ -104,29 +135,12 @@ private:
 	void selectAndSmooth();
 
 	void updateGlobalSmoothing();
-	void updateProgressBar();
 	void setGlobalSmoothingStatus(globalSmoothingStatus current_status);
-private:
+
 	void createActions();
 	void createMenus();
 	void updateWidgetValues();
 	void setSmoothingThread();
-	QMenu *fileMenu;
-	QMenu *viewMenu;
-	QMenu *settingsMenu;
-	QMenu *helpMenu;
-	QActionGroup *alignmentGroup;
-	QAction *loadAct;
-	QAction *saveAct;
-	QAction *exitAct;
-	QAction *flatModeAct;
-	QAction *wireframeModeAct;
-	QAction *pointsModeAct;
-	QAction *setShadersAct;
-	QAction *setGlobalSmoothingAlgorithmAct;
-	QAction *setFocalizedSmoothingAlgorithmAct;
-	QAction *aboutAct;
-	QAction *userGuideAct;
 };
 
 

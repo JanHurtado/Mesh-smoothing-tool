@@ -10,9 +10,9 @@ myDataManager::~myDataManager()
 {
 	input_mesh.clear();
 	output_mesh.clear();
-	temporal_mesh.clear();
 	input_mesh_shape.clear();
 	output_mesh_shape.clear();
+	selection.clear();
 }
 
 
@@ -20,7 +20,6 @@ void myDataManager::loadInputMesh(string & fileName)
 {
 	input_mesh.clear();
 	output_mesh.clear();
-	temporal_mesh.clear();
 	input_mesh_shape.clear();
 	output_mesh_shape.clear();
 
@@ -28,7 +27,7 @@ void myDataManager::loadInputMesh(string & fileName)
 	input_mesh.request_face_normals();
 	input_mesh.request_vertex_normals();
 	input_mesh.update_normals();
-	temporal_mesh = input_mesh;
+
 	output_mesh = input_mesh;
 }
 
@@ -46,20 +45,10 @@ void myDataManager::updateInputShape()
 	input_mesh_shape.loadMesh(input_mesh);
 }
 
-void myDataManager::updateInputShape(vector<size_t> & indices)
-{
-
-}
-
 void myDataManager::updateOutputShape()
 {
 	output_mesh_shape.clear();
 	output_mesh_shape.loadMesh(output_mesh);
-}
-
-void myDataManager::updateOutputShape(vector<size_t> & indices)
-{
-
 }
 
 void myDataManager::updateShapes()
@@ -72,4 +61,16 @@ void myDataManager::updateOutputSelection(vector<size_t> & indices)
 {
 	selection.clear();
 	selection.loadMeshVertexSelection(output_mesh, indices);
+}
+
+void myDataManager::setOutputAsInput()
+{
+	input_mesh = output_mesh;
+	updateShapes();
+}
+
+void myDataManager::reinitialize()
+{
+	output_mesh = input_mesh;
+	updateShapes();
 }

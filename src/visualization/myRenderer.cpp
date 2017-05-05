@@ -1,6 +1,7 @@
 #include "myRenderer.h"
 
 ///////////////////////COMMON///////////////////////// (begin)
+
 bool checkStatus(GLuint objectID, PFNGLGETSHADERIVPROC objectPropertyGetterFunc, PFNGLGETSHADERINFOLOGPROC getInfoLogFunc, GLenum statusType)
 {
 	GLint status;
@@ -230,10 +231,8 @@ void myRenderer::initializeInteractor()
 {
 	computeCentralPoint();
 	computeBoundingSphereRadius();
-	//camera.setPosition(sceneCentralPoint + glm::vec3(0.0f, 0.0f, 300.0f));
-	cout << "boundingSphereRadius: " << boundingSphereRadius << endl;
 	camera.setPosition(sceneCentralPoint+glm::vec3(0.0f,0.0f,2.0f*boundingSphereRadius));
-	camera.setMOVEMENT_SPEED(boundingSphereRadius/100.0f);
+	camera.setMovementSpeed(boundingSphereRadius/50.0f);
 }
 
 void myRenderer::setDefaultValues()
@@ -243,10 +242,9 @@ void myRenderer::setDefaultValues()
 	m_width = 1000;
 	m_height = 800;
 	m_fov = 45.0f;
-	m_near = 1.0f;
+	m_near = 0.01f;
 	m_far = 1000.0f;
 	modelToWorldMatrix = glm::translate(glm::vec3(0.0f, 0.0f, 0.0f));
-	camera.reinitialize();
 	initializeInteractor();
 }
 
@@ -440,7 +438,7 @@ void myRenderer::translateCamera(const glm::vec2& newMousePosition)
 		oldMousePosition = newMousePosition;
 		return;
 	}
-	const float TRANSLATION_SPEED = 1.0f;
+	float TRANSLATION_SPEED = camera.getMovementSpeed();
 
 	float valx = mouseDelta.x * TRANSLATION_SPEED;
 	float valy = mouseDelta.y * TRANSLATION_SPEED;
@@ -453,10 +451,10 @@ void myRenderer::translateCamera(const glm::vec2& newMousePosition)
 
 void myRenderer::zoom(float delta)
 {
-	const float ZOOM_SPEED = 5.0f;
-	float t_sign = (delta < 0.0f) ? -1.0f : 1.0f;
-
-	camera.setPosition(camera.getPosition() + camera.getViewDirection() *(ZOOM_SPEED*t_sign));
+	if (delta >= 0.0f)
+		camera.moveForward();
+	else
+		camera.moveBackward();
 }
 
 glm::vec3 myRenderer::getRayDirection(glm::vec2 & pos)

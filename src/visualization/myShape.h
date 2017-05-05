@@ -54,13 +54,9 @@ struct ShapeData
 			c += current_point;
 			n++;
 			vertices[currentIndex].position = glm::vec3(current_point[0], current_point[1], current_point[2]);
-			//vertices[currentIndex].color = glm::vec3(current_color[0], current_color[1], current_color[2]);
 			vertices[currentIndex].color = glm::vec3(0.5f, 0.5f, 0.5f);
 			vertices[currentIndex].normal = glm::vec3(current_normal[0], current_normal[1], current_normal[2]);
-			//cout << vertices[currentIndex].position.x << " " << vertices[currentIndex].position.y << " " << vertices[currentIndex].position.z << endl;
 			currentIndex++;
-
-			//verpoint[0];
 		}
 		c = c / n;
 		centroid[0] = c[0];
@@ -74,7 +70,6 @@ struct ShapeData
 				indices[currentIndex] = static_cast<GLuint>(fv_it->idx());
 				currentIndex++;
 			}
-			//cout << endl;
 		}
 	}
 	void loadMeshVertexSelection(TriMesh & _mesh,vector<size_t> & selected_vertices)

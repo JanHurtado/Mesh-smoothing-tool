@@ -19,9 +19,16 @@ public:
 	QThread * current_thread;
 	myDataManager * data;
 
+	int algorithm_flag; //0: bilateralNormal	1: Guided
+
 	void run() {
 		cout << "run" << endl;
-		result = bilateralNormal(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s);
+		if (algorithm_flag == 0)
+			result = bilateralNormal(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s);
+		else if (algorithm_flag == 1)
+			result = guided(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s, 1.5f);
+		else
+			result = bilateralNormal(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s);
 		finishThread();
 	}
 	void finishThread()

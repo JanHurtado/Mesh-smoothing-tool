@@ -1,6 +1,12 @@
 
 #include "myMainWindow.h"
 
+#include <string>
+#include <fstream>
+#include <streambuf>
+
+
+
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
