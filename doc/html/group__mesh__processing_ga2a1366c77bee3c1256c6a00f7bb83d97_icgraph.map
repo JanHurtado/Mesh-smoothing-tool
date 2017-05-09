@@ -1,0 +1,6 @@
+<map id="exportMesh" name="exportMesh">
+<area shape="rect" id="node2" href="$classmy_data_manager.html#aad5fbeb34055e0c4d89e91c216e60cf8" title="saveOutputMesh &#45; save the output mesh in a file supported bu OpenMesh library " alt="" coords="144,5,367,32"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#acfc4e651fdb4afe6cba06e3657c7b0e5" title="saveMesh &#45; save output mesh to a file supported by OpenMesh library " alt="" coords="415,5,595,32"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="643,5,845,32"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="893,5,1108,32"/>
+</map>

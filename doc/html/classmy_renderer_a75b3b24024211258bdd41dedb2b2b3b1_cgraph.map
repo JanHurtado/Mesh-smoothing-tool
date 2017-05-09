@@ -1,0 +1,6 @@
+<map id="myRenderer::getNumberOfShapes" name="myRenderer::getNumberOfShapes">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="273,56,465,83"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="529,5,688,32"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="513,56,704,83"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="544,107,673,133"/>
+</map>

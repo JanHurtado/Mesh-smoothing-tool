@@ -1,0 +1,4 @@
+<map id="myDataManager::loadInputMesh" name="myDataManager::loadInputMesh">
+<area shape="rect" id="node2" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="263,5,385,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga79f1a868fe56a3837a7426b6ce9be285" title="importMesh &#45; read mesh file (.obj, .off, .ply, .stl) " alt="" coords="279,56,369,83"/>
+</map>

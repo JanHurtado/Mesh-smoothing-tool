@@ -1,0 +1,6 @@
+<map id="myGLWindow::getRayDirection" name="myGLWindow::getRayDirection">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="256,56,448,83"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="512,5,671,32"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="496,56,687,83"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="527,107,656,133"/>
+</map>

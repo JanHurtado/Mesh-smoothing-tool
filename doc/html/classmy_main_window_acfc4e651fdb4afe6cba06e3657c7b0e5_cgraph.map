@@ -1,0 +1,4 @@
+<map id="myMainWindow::saveMesh" name="myMainWindow::saveMesh">
+<area shape="rect" id="node2" href="$classmy_data_manager.html#aad5fbeb34055e0c4d89e91c216e60cf8" title="saveOutputMesh &#45; save the output mesh in a file supported bu OpenMesh library " alt="" coords="233,5,456,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga2a1366c77bee3c1256c6a00f7bb83d97" title="exportMesh &#45; write mesh file (.obj, .off, .ply, .stl) " alt="" coords="504,5,595,32"/>
+</map>

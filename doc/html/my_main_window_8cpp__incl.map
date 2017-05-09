@@ -1,0 +1,14 @@
+<map id="myMainWindow.cpp" name="myMainWindow.cpp">
+<area shape="rect" id="node2" href="$my_main_window_8h.html" title="myMainWindow.h" alt="" coords="1851,80,1976,107"/>
+<area shape="rect" id="node20" href="$my_g_l_window_8h.html" title="myGLWindow.h" alt="" coords="3192,155,3307,181"/>
+<area shape="rect" id="node46" href="$my_data_manager_8h.html" title="myDataManager.h" alt="" coords="3728,229,3856,256"/>
+<area shape="rect" id="node47" href="$neighborhood_8h.html" title="mesh/neighborhood.h" alt="" coords="3971,304,4117,331"/>
+<area shape="rect" id="node48" href="$smoothing_8h.html" title="smoothing.h" alt="" coords="3847,155,3940,181"/>
+<area shape="rect" id="node36" href="$my_renderer_8h.html" title="visualization/myRenderer.h" alt="" coords="2379,229,2557,256"/>
+<area shape="rect" id="node38" href="$my_shader_8h.html" title="myShader.h" alt="" coords="3422,304,3514,331"/>
+<area shape="rect" id="node39" href="$my_shape_8h.html" title="myShape.h" alt="" coords="3259,304,3347,331"/>
+<area shape="rect" id="node45" href="$my_camera_8h.html" title="myCamera.h" alt="" coords="2512,304,2608,331"/>
+<area shape="rect" id="node40" href="$iomesh_8h.html" title="../mesh/iomesh.h" alt="" coords="3589,379,3712,405"/>
+<area shape="rect" id="node41" href="$mesh_8h.html" title="mesh.h" alt="" coords="4017,453,4082,480"/>
+<area shape="rect" id="node50" href="$denoising_8h.html" title="mesh/denoising.h" alt="" coords="3931,229,4055,256"/>
+</map>

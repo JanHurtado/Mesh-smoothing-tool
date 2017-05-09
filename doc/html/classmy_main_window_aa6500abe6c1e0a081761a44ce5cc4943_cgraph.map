@@ -1,0 +1,23 @@
+<map id="myMainWindow::keyPressEvent" name="myMainWindow::keyPressEvent">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a1e2a913e5919da6d2856f42539f95e0b" title="updateSelection &#45; update selection in data manager and visualization " alt="" coords="263,369,477,396"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#a9efe3e02fe86ec6cb523fa23d02ec9fc" title="getSelection &#45; get selected vertices for the current mouse position in the output mesh visualizer ..." alt="" coords="529,188,724,215"/>
+<area shape="rect" id="node15" href="$classmy_data_manager.html#a390c14e1ada5177cb08ec9a8fbc75d16" title="updateOutputSelection &#45; generate the selection shape for a set of given vertex indices ..." alt="" coords="525,362,728,403"/>
+<area shape="rect" id="node18" href="$classmy_g_l_window.html#a4f923ea36f889819bf8436a37fb3e79b" title="setSelection &#45; set a selection as current selection (removing previous selection) ..." alt="" coords="535,508,718,535"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#aba83fdd8c098278bfdbe6cb4926cf4d0" title="getCamera &#45; get pointer to the camera of the renderer " alt="" coords="799,5,973,32"/>
+<area shape="rect" id="node6" href="$classmy_g_l_window.html#aea3d054f592eeb18bf5f62a5e48ec355" title="getCurrentMousePosition &#45; get mouse position in the OpenGL Window (Qt Widget) " alt="" coords="781,57,991,98"/>
+<area shape="rect" id="node7" href="$classmy_g_l_window.html#a0c61653495ce443d04ac115b1175f28e" title="getModelToWorldMatrix &#45; get model to world matrix applied to all objects in the renderer ..." alt="" coords="780,122,992,163"/>
+<area shape="rect" id="node9" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="1309,188,1468,215"/>
+<area shape="rect" id="node10" href="$classmy_g_l_window.html#a5c6d68278e3329efad0d8f6582883070" title="getRayDirection &#45; call getRayDirection of the renderer for a given position " alt="" coords="785,239,987,265"/>
+<area shape="rect" id="node14" href="$group__mesh__processing.html#gabfcdb9b83980fdcbb0327f4db97e7254" title="Vertex neighborhood. " alt="" coords="818,289,954,316"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a3f3c620a30ec3f1bee1956c0ae3b1bb3" title="myRenderer::getCamera" alt="" coords="1063,5,1226,32"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#ab77e17f9a22f652870f6c7cfdec6a257" title="myRenderer::getModelToWorld\lMatrix" alt="" coords="1044,122,1245,163"/>
+<area shape="rect" id="node11" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="1049,239,1241,265"/>
+<area shape="rect" id="node12" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="1293,239,1484,265"/>
+<area shape="rect" id="node13" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="1324,289,1453,316"/>
+<area shape="rect" id="node16" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="825,340,947,367"/>
+<area shape="rect" id="node17" href="$struct_shape_data.html#a345365d081614bd1c1837c1ae613a41f" title="loadMeshVertexSelection &#45; load as shape data a subset of vertices (only vertices) from a data structu..." alt="" coords="792,391,980,433"/>
+<area shape="rect" id="node19" href="$classmy_renderer.html#a55a6f54fd9dd89982a2b11342c4fba51" title="addShape &#45; add a shape (shape data) for rendering " alt="" coords="807,457,965,484"/>
+<area shape="rect" id="node20" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="776,508,996,535"/>
+<area shape="rect" id="node21" href="$classmy_renderer.html#aaebe23b9aeff329408f765a26b3802d2" title="removeShape &#45; remove a shape " alt="" coords="797,559,975,585"/>
+<area shape="rect" id="node22" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="785,610,987,651"/>
+</map>

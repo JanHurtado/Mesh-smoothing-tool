@@ -1,0 +1,14 @@
+<map id="myDataManager::updateOutputShape" name="myDataManager::updateOutputShape">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a234a7bacccd7035915b279fdd832255d" title="selectAndSmooth &#45; select and perform focalized smoothing regarding control widget values ..." alt="" coords="256,39,481,65"/>
+<area shape="rect" id="node4" href="$classmy_data_manager.html#a0c9815e67272f8f8f27acd851040aa58" title="updateShapes &#45; generate the corresponding shape data for both meshes (input mesh and output mesh) ..." alt="" coords="265,123,473,149"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#a7f511c323cc6d5f0da0f6e6807970447" title="eventFilter &#45; Qt event filter " alt="" coords="530,5,711,32"/>
+<area shape="rect" id="node5" href="$classmy_data_manager.html#a4384abe2f9727c403ade607a16d81af0" title="setOutputAsInput &#45; set output mesh as input mesh (save all changes) " alt="" coords="529,57,712,98"/>
+<area shape="rect" id="node9" href="$classmy_data_manager.html#a5e77d27b36683163e5f3e1162ceddf07" title="reinitialize &#45; set input mesh as output mesh (undone all changes) " alt="" coords="529,123,712,149"/>
+<area shape="rect" id="node11" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="770,179,949,205"/>
+<area shape="rect" id="node12" href="$classmy_main_window.html#ad6e3df793e90a1e894dd306aa6ecee42" title="updateGlobalSmoothing &#45; global smoothing management (step by step) " alt="" coords="760,230,959,271"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a886fced065e0a0a33c26eede1ff4ef61" title="setOutputAsInput &#45; set output mesh as new input mesh " alt="" coords="762,47,957,89"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="1007,135,1209,161"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1257,179,1472,205"/>
+<area shape="rect" id="node10" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="769,113,949,154"/>
+<area shape="rect" id="node13" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="1007,215,1209,257"/>
+</map>

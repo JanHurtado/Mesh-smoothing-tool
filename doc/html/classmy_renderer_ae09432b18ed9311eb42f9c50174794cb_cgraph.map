@@ -1,0 +1,6 @@
+<map id="myRenderer::initializeInteractor" name="myRenderer::initializeInteractor">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a7ff3295d10de53cb8656c2fdf49bde24" title="computeBoundingSphereRadius &#45; compute the bounding sphere radius centered on the centroid of all poin..." alt="" coords="256,5,460,47"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a59005bbbc469c52c1351b51614b92c73" title="computeCentralPoint &#45; compute the centroid of all points of all shapes " alt="" coords="263,71,453,112"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#a50981b08a9dc0e2dcf614fd7c834cc6a" title="setMovementSpeed &#45; set camera movement speed " alt="" coords="255,137,461,163"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="279,187,437,214"/>
+</map>

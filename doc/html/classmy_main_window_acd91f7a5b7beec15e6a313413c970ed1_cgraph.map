@@ -1,0 +1,20 @@
+<map id="myMainWindow::loadMesh" name="myMainWindow::loadMesh">
+<area shape="rect" id="node2" href="$classmy_data_manager.html#a1109ab33a8c43be866fdc519bb6f5262" title="loadInputMesh &#45; load a mesh file supported by OpenMesh library " alt="" coords="232,31,441,58"/>
+<area shape="rect" id="node5" href="$classmy_g_l_window.html#a9f31b61db49e9cd3e1e4df6df685bae5" title="setShape &#45; set a shape as current shape (removing previous shape) " alt="" coords="253,239,420,266"/>
+<area shape="rect" id="node15" href="$classmy_data_manager.html#a0c9815e67272f8f8f27acd851040aa58" title="updateShapes &#45; generate the corresponding shape data for both meshes (input mesh and output mesh) ..." alt="" coords="233,155,441,182"/>
+<area shape="rect" id="node19" href="$classmy_main_window.html#a1b8b41f14167ae05ac274fc0ce74c86f" title="updateWidgetValues &#45; set default slider widget values (min, max and current) " alt="" coords="235,291,438,332"/>
+<area shape="rect" id="node3" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="779,90,902,117"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#ga79f1a868fe56a3837a7426b6ce9be285" title="importMesh &#45; read mesh file (.obj, .off, .ply, .stl) " alt="" coords="545,31,636,58"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#a55a6f54fd9dd89982a2b11342c4fba51" title="addShape &#45; add a shape (shape data) for rendering " alt="" coords="511,214,670,241"/>
+<area shape="rect" id="node7" href="$classmy_renderer.html#ac6b8d38d0da2334ef778c2171a538f4c" title="clearShapes &#45; erase shape containers without deleting pointers " alt="" coords="505,265,677,291"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="489,316,692,357"/>
+<area shape="rect" id="node9" href="$classmy_renderer.html#a295c62738b1a4eb151bcfd7e18f7de95" title="setDefaultValues &#45; set custom renderer parameters " alt="" coords="491,382,690,409"/>
+<area shape="rect" id="node10" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="740,382,941,409"/>
+<area shape="rect" id="node11" href="$classmy_renderer.html#a59005bbbc469c52c1351b51614b92c73" title="computeCentralPoint &#45; compute the centroid of all points of all shapes " alt="" coords="997,280,1188,321"/>
+<area shape="rect" id="node12" href="$classmy_renderer.html#a7ff3295d10de53cb8656c2fdf49bde24" title="computeBoundingSphereRadius &#45; compute the bounding sphere radius centered on the centroid of all poin..." alt="" coords="991,345,1195,387"/>
+<area shape="rect" id="node13" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="1013,411,1172,438"/>
+<area shape="rect" id="node14" href="$classmy_camera.html#a50981b08a9dc0e2dcf614fd7c834cc6a" title="setMovementSpeed &#45; set camera movement speed " alt="" coords="989,462,1196,489"/>
+<area shape="rect" id="node16" href="$classmy_data_manager.html#a2b03ab3e75fa2c153b6f59367a64e574" title="updateInputShape &#45; generate the corresponding shape data of the input mesh " alt="" coords="495,83,687,124"/>
+<area shape="rect" id="node18" href="$classmy_data_manager.html#ae07e54d445a84500d3815d54807dd2d6" title="updateOutputShape &#45; generate the corresponding shape data of the output mesh " alt="" coords="489,148,692,189"/>
+<area shape="rect" id="node17" href="$struct_shape_data.html#a3933df69395b4afd74097dce526ed803" title="loadMesh &#45; load shape data from a data structure defined in OpenMesh library " alt="" coords="765,149,916,175"/>
+</map>

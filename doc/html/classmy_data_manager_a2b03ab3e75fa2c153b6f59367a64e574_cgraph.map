@@ -1,0 +1,4 @@
+<map id="myDataManager::updateInputShape" name="myDataManager::updateInputShape">
+<area shape="rect" id="node2" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="259,5,382,32"/>
+<area shape="rect" id="node3" href="$struct_shape_data.html#a3933df69395b4afd74097dce526ed803" title="loadMesh &#45; load shape data from a data structure defined in OpenMesh library " alt="" coords="245,56,396,83"/>
+</map>

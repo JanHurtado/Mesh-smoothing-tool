@@ -29,8 +29,8 @@ void myGLWindow::initializeGL()
 
 void myGLWindow::paintGL()
 {
-	renderer->m_width = width();
-	renderer->m_height = height();
+    renderer->setWidth(width());
+    renderer->setHeight(height());
 	renderer->draw();
 }
 
@@ -152,10 +152,10 @@ glm::vec3 myGLWindow::getRayDirection(glm::vec2 & pos)
 
 myCamera * myGLWindow::getCamera()
 { 
-	return &(renderer->camera); 
+    return renderer->getCamera();
 }
 
 glm::mat4 myGLWindow::getModelToWorldMatrix()
 { 
-	return renderer->modelToWorldMatrix;
+    return renderer->getModelToWorldMatrix();
 }

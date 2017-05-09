@@ -1,0 +1,12 @@
+<map id="myMainWindow::setShaders" name="myMainWindow::setShaders">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#a0be068c88e7e9e7c8789037cde6b98ee" title="addShader &#45; add a shader to the renderer " alt="" coords="254,5,427,32"/>
+<area shape="rect" id="node5" href="$classmy_g_l_window.html#a77a8d17b2180a7c30d028651982bbb27" title="clearAndDeleteShaders &#45; clear, deattach and delete shaders of the renderer " alt="" coords="241,57,440,98"/>
+<area shape="rect" id="node7" href="$classmy_g_l_window.html#abda946215471d7872e68fa0e6fcf8aed" title="installShaders &#45; call installShaders of the renderer, in the current context. " alt="" coords="244,123,437,149"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#aba7c76edb7958b08847d472ea2b673af" title="addShader &#45; create and add a shader " alt="" coords="501,5,663,32"/>
+<area shape="rect" id="node4" href="$classmy_shader.html#a2e382b451190346dbdff90cb0ba360a2" title="readShaderCode &#45; read shader code from an input file (file name as const char *) " alt="" coords="724,5,909,32"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#a465553573e3409286a10906f9a5a796d" title="clearAndDeleteShaders &#45; erase shader containers and delete items " alt="" coords="488,57,676,98"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#a376bcce42e2565f089c154be47b7c7bc" title="installShaders &#45; compile and attach shaders to the main program (m_programID) in the current context ..." alt="" coords="491,123,673,149"/>
+<area shape="rect" id="node9" href="$my_renderer_8cpp.html#aab552cb4e22bd84b09ecfdf0501f04f4" title="checkShaderStatus" alt="" coords="749,97,885,124"/>
+<area shape="rect" id="node11" href="$my_renderer_8cpp.html#acf8cc9b0eb1c257cab8b11f4a4de4c59" title="checkProgramStatus" alt="" coords="745,148,889,175"/>
+<area shape="rect" id="node10" href="$my_renderer_8cpp.html#a936de0e543328a11e677535a5fbc1267" title="checkStatus" alt="" coords="957,123,1052,149"/>
+</map>

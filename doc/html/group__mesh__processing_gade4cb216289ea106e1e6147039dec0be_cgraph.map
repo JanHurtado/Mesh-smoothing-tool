@@ -1,0 +1,19 @@
+<map id="guided" name="guided">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga996c33a6d390085b8a848f7aecf671db" title="updateFilteredNormalsGuided &#45; guided bilateral filtering of a normal field (face based) of a mesh ..." alt="" coords="113,208,307,235"/>
+<area shape="rect" id="node17" href="$group__mesh__processing.html#ga9ebe30364b271e06c499cd6bc5fc60f0" title="updateVertexPositions &#45; computes new vertex positions adapted to an input normal field. " alt="" coords="368,5,521,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga084d15ddcebb1fad82113a29268a1ef3" title="getRadius &#45; computation of radius for radius&#45;based face neighborhood, based on the average of face ce..." alt="" coords="405,107,485,133"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#ga3a234b2c2ee62984ccdfb1a00dfe5d91" title="getAllFaceCentroids &#45; centroid computation for all faces " alt="" coords="626,107,765,133"/>
+<area shape="rect" id="node5" href="$group__mesh__processing.html#gac59be088a2652bec7ec0f38b9a604af7" title="Guided mesh normal filtering (Zhang et al.) " alt="" coords="355,208,535,235"/>
+<area shape="rect" id="node8" href="$group__mesh__processing.html#ga950bba0d037fe1a269c61ea0427f8a5c" title="getAllGuidedNeighborsGMNF &#45; neighborhood computation for guidance signal " alt="" coords="599,360,791,387"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#gab0ba001d2ee9ed6b68756db44220e61a" title="getAllFaceNormals &#45; normal computation for all faces " alt="" coords="379,259,511,285"/>
+<area shape="rect" id="node10" href="$group__mesh__processing.html#ga46e8f4061e5c9f6b490fd5cc9fda6af5" title="getSigmaC &#45; sigma_c computation based on the average of face centroid distances (only between adjacen..." alt="" coords="401,309,488,336"/>
+<area shape="rect" id="node11" href="$group__mesh__processing.html#ga08ea199227390c50f74a4f6309b5d787" title="getAllFaceAreas &#45; area computation for all faces " alt="" coords="385,360,504,387"/>
+<area shape="rect" id="node12" href="$group__mesh__processing.html#ga9518bdead01cc21646a34a20640220a6" title="getGuidedNormals &#45; guided normal computation for each face of the mesh " alt="" coords="380,461,509,488"/>
+<area shape="rect" id="node16" href="$group__mesh__processing.html#ga9fc460beb352c92a3e3401a3c30397ee" title="GaussianWeight &#45; gaussian function computation used for bilateral filtering. " alt="" coords="385,56,504,83"/>
+<area shape="rect" id="node6" href="$group__mesh__processing.html#gac41c2005e04ea427e61be7e09fdb3128" title="getFaceNeighbors_VertexBased: get neighboring faces based on face vertices " alt="" coords="856,259,1065,285"/>
+<area shape="rect" id="node7" href="$group__mesh__processing.html#gae7216eec3f33db500095874a97011e62" title="getFaceNeighbors_RadiusBased: get neighboring faces regarding a radius " alt="" coords="590,259,801,285"/>
+<area shape="rect" id="node13" href="$group__mesh__processing.html#gaaf6694789a4da3f4edc93755231b1fee" title="getConsistenciesAndMeanNormals &#45; consistency and mean normal computation for all patches ..." alt="" coords="583,461,808,488"/>
+<area shape="rect" id="node14" href="$group__mesh__processing.html#ga03c1bdd40dcb3686454cce9e0b277d37" title="NormalDistance &#45; computation of normal distance: . " alt="" coords="903,487,1018,513"/>
+<area shape="rect" id="node15" href="$group__mesh__processing.html#ga6a3ddbe15cb750f6223432a4f690f9cb" title="getFaceNeighborsInnerEdges &#45; get all inner edges of a face neighborhood " alt="" coords="865,436,1057,463"/>
+<area shape="rect" id="node18" href="$denoising_8cpp.html#a07cf663aba9efd59fd2a2bfa0f5b9022" title="Auxiliar functions. " alt="" coords="663,5,727,32"/>
+</map>

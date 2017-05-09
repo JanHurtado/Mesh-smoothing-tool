@@ -1,0 +1,11 @@
+<map id="myGLWindow::setShape" name="myGLWindow::setShape">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a55a6f54fd9dd89982a2b11342c4fba51" title="addShape &#45; add a shape (shape data) for rendering " alt="" coords="242,5,401,32"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#ac6b8d38d0da2334ef778c2171a538f4c" title="clearShapes &#45; erase shape containers without deleting pointers " alt="" coords="235,56,407,83"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="220,107,423,149"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a295c62738b1a4eb151bcfd7e18f7de95" title="setDefaultValues &#45; set custom renderer parameters " alt="" coords="222,173,421,200"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="471,173,672,200"/>
+<area shape="rect" id="node7" href="$classmy_renderer.html#a59005bbbc469c52c1351b51614b92c73" title="computeCentralPoint &#45; compute the centroid of all points of all shapes " alt="" coords="728,71,919,113"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#a7ff3295d10de53cb8656c2fdf49bde24" title="computeBoundingSphereRadius &#45; compute the bounding sphere radius centered on the centroid of all poin..." alt="" coords="721,137,925,178"/>
+<area shape="rect" id="node9" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="744,203,903,229"/>
+<area shape="rect" id="node10" href="$classmy_camera.html#a50981b08a9dc0e2dcf614fd7c834cc6a" title="setMovementSpeed &#45; set camera movement speed " alt="" coords="720,253,927,280"/>
+</map>

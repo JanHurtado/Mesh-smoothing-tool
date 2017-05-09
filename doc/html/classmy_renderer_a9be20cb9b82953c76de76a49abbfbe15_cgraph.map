@@ -1,0 +1,13 @@
+<map id="myRenderer::initialize" name="myRenderer::initialize">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a58d7e236b95928e2ebeb4cf8084b885b" title="createProgram &#45; create OpenGl program in the current context " alt="" coords="208,98,393,125"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="200,149,401,175"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#a376bcce42e2565f089c154be47b7c7bc" title="installShaders &#45; compile and attach shaders to the main program (m_programID) in the current context ..." alt="" coords="209,225,392,251"/>
+<area shape="rect" id="node12" href="$classmy_renderer.html#a9bd9ef185d12a3fca36ea23269ff9140" title="sendDataSingleBuffer &#45; send shape data to the GPU using OpenGL " alt="" coords="205,276,396,317"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#a59005bbbc469c52c1351b51614b92c73" title="computeCentralPoint &#45; compute the centroid of all points of all shapes " alt="" coords="457,5,648,47"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a7ff3295d10de53cb8656c2fdf49bde24" title="computeBoundingSphereRadius &#45; compute the bounding sphere radius centered on the centroid of all poin..." alt="" coords="451,71,655,112"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="473,137,632,163"/>
+<area shape="rect" id="node7" href="$classmy_camera.html#a50981b08a9dc0e2dcf614fd7c834cc6a" title="setMovementSpeed &#45; set camera movement speed " alt="" coords="449,187,656,214"/>
+<area shape="rect" id="node9" href="$my_renderer_8cpp.html#aab552cb4e22bd84b09ecfdf0501f04f4" title="checkShaderStatus" alt="" coords="485,238,621,265"/>
+<area shape="rect" id="node11" href="$my_renderer_8cpp.html#acf8cc9b0eb1c257cab8b11f4a4de4c59" title="checkProgramStatus" alt="" coords="481,289,625,315"/>
+<area shape="rect" id="node10" href="$my_renderer_8cpp.html#a936de0e543328a11e677535a5fbc1267" title="checkStatus" alt="" coords="704,263,799,290"/>
+</map>

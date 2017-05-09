@@ -1,0 +1,7 @@
+<map id="myGLWindow::setVisualizationMode" name="myGLWindow::setVisualizationMode">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a8ade2340e6ed9b1bda6825acf313664f" title="flatMode &#45; set triangle rendering " alt="" coords="307,5,478,32"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a0d2f50149d19b527113963912fa1f09b" title="pointsMode &#45; set point rendering " alt="" coords="298,56,487,83"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#adccac5179c69a1a22be5b5ab43c890e2" title="wireframeMode &#45; set wireframe rendering " alt="" coords="288,107,497,133"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="545,56,748,83"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="796,56,1011,83"/>
+</map>

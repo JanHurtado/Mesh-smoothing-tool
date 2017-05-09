@@ -341,85 +341,85 @@ TriMesh bilateralNormal(TriMesh &_mesh, int normal_iteration_number, int vertex_
 /// Guided mesh normal filtering (Zhang et al.)
 /////////////////////////////////////////////////
 
-void getAllFaceNeighborGMNF(TriMesh &mesh, FaceNeighborType face_neighbor_type, num_t radius, bool include_central_face,
-	vector<vector<TriMesh::FaceHandle> > &all_face_neighbor)
+void getAllFaceNeighborsGMNF(TriMesh &mesh, FaceNeighborType face_neighbor_type, num_t radius, bool include_central_face,
+    vector<vector<TriMesh::FaceHandle> > &all_face_neighbors)
 {
-	vector<TriMesh::FaceHandle> face_neighbor;
+    vector<TriMesh::FaceHandle> face_neighbors;
 	for (TriMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); f_it++)
 	{
 		if (face_neighbor_type == kVertexBased)
-			getFaceNeighbors_VertexBased(mesh, *f_it, face_neighbor);
+            getFaceNeighbors_VertexBased(mesh, *f_it, face_neighbors);
 		else if (face_neighbor_type == kRadiusBased)
-			getFaceNeighbors_RadiusBased(mesh, *f_it, radius, face_neighbor);
+            getFaceNeighbors_RadiusBased(mesh, *f_it, radius, face_neighbors);
 
 		if (include_central_face)
-			face_neighbor.push_back(*f_it);
-		all_face_neighbor[f_it->idx()] = face_neighbor;
+            face_neighbors.push_back(*f_it);
+        all_face_neighbors[f_it->idx()] = face_neighbors;
 	}
 }
 
-void getAllGuidedNeighborGMNF(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor)
+void getAllGuidedNeighborsGMNF(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbors)
 {
-	vector<TriMesh::FaceHandle> face_neighbor;
+    vector<TriMesh::FaceHandle> face_neighbors;
 	for (TriMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); f_it++)
 	{
-		getFaceNeighbors_VertexBased(mesh, *f_it, face_neighbor);
-		face_neighbor.push_back(*f_it);
-		all_guided_neighbor[f_it->idx()] = face_neighbor;
+        getFaceNeighbors_VertexBased(mesh, *f_it, face_neighbors);
+        face_neighbors.push_back(*f_it);
+        all_guided_neighbors[f_it->idx()] = face_neighbors;
 	}
 }
 
-void getFaceNeighborInnerEdge(TriMesh &mesh, vector<TriMesh::FaceHandle> &face_neighbor, vector<TriMesh::EdgeHandle> &inner_edge)
+void getFaceNeighborsInnerEdges(TriMesh &mesh, vector<TriMesh::FaceHandle> &face_neighbors, vector<TriMesh::EdgeHandle> &inner_edges)
 {
-	inner_edge.clear();
-	vector<bool> edge_flag((int)mesh.n_edges(), false);
-	vector<bool> face_flag((int)mesh.n_faces(), false);
+    inner_edges.clear();
+    vector<bool> edge_flags((int)mesh.n_edges(), false);
+    vector<bool> face_flags((int)mesh.n_faces(), false);
 
-	for (int i = 0; i < (int)face_neighbor.size(); i++)
-		face_flag[face_neighbor[i].idx()] = true;
+    for (int i = 0; i < (int)face_neighbors.size(); i++)
+        face_flags[face_neighbors[i].idx()] = true;
 
-	for (int i = 0; i < (int)face_neighbor.size(); i++)
+    for (int i = 0; i < (int)face_neighbors.size(); i++)
 	{
-		for (TriMesh::FaceEdgeIter fe_it = mesh.fe_iter(face_neighbor[i]); fe_it.is_valid(); fe_it++)
+        for (TriMesh::FaceEdgeIter fe_it = mesh.fe_iter(face_neighbors[i]); fe_it.is_valid(); fe_it++)
 		{
-			if ((!edge_flag[fe_it->idx()]) && (!mesh.is_boundary(*fe_it)))
+            if ((!edge_flags[fe_it->idx()]) && (!mesh.is_boundary(*fe_it)))
 			{
-				edge_flag[fe_it->idx()] = true;
+                edge_flags[fe_it->idx()] = true;
 				TriMesh::HalfedgeHandle heh = mesh.halfedge_handle(*fe_it, 0);
 				TriMesh::FaceHandle f = mesh.face_handle(heh);
 				TriMesh::HalfedgeHandle heho = mesh.opposite_halfedge_handle(heh);
 				TriMesh::FaceHandle fo = mesh.face_handle(heho);
-				if (face_flag[f.idx()] && face_flag[fo.idx()])
-					inner_edge.push_back(*fe_it);
+                if (face_flags[f.idx()] && face_flags[fo.idx()])
+                    inner_edges.push_back(*fe_it);
 			}
 		}
 	}
 }
 
-void getRangeAndMeanNormal(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor,
-	vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
-	vector<pair<num_t, TriMesh::Normal> > &range_and_mean_normal)
+void getConsistenciesAndMeanNormals(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbors,
+    vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
+    vector<pair<num_t, TriMesh::Normal> > &consistencies_and_mean_normals)
 {
 	const num_t epsilon = 1.0e-9f;
 
 	for (TriMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); f_it++)
 	{
 		int index = f_it->idx();
-		vector<TriMesh::FaceHandle> face_neighbor = all_guided_neighbor[index];
+        vector<TriMesh::FaceHandle> face_neighbors = all_guided_neighbors[index];
 		num_t metric = 0.0f;
 		TriMesh::Normal average_normal(0.0f, 0.0f, 0.0f);
 		num_t maxdiff = -1.0f;
 
-		for (int i = 0; i < (int)face_neighbor.size(); i++)
+        for (int i = 0; i < (int)face_neighbors.size(); i++)
 		{
-			int index_i = face_neighbor[i].idx();
+            int index_i = face_neighbors[i].idx();
 			num_t area_weight = face_areas[index_i];
 			TriMesh::Normal ni = normals[index_i];
 			average_normal += ni * area_weight;
 
-			for (int j = i + 1; j < (int)face_neighbor.size(); j++)
+            for (int j = i + 1; j < (int)face_neighbors.size(); j++)
 			{
-				int index_j = face_neighbor[j].idx();
+                int index_j = face_neighbors[j].idx();
 				TriMesh::Normal nj = normals[index_j];
 				num_t diff = NormalDistance(ni, nj);
 
@@ -430,12 +430,12 @@ void getRangeAndMeanNormal(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &
 			}
 		}
 
-		vector<TriMesh::EdgeHandle> inner_edge_handle;
-		getFaceNeighborInnerEdge(mesh, face_neighbor, inner_edge_handle);
+        vector<TriMesh::EdgeHandle> inner_edge_handles;
+        getFaceNeighborsInnerEdges(mesh, face_neighbors, inner_edge_handles);
 		num_t sum_tv = 0.0, max_tv = -1.0;
-		for (int i = 0; i < (int)inner_edge_handle.size(); i++)
+        for (int i = 0; i < (int)inner_edge_handles.size(); i++)
 		{
-			TriMesh::HalfedgeHandle heh = mesh.halfedge_handle(inner_edge_handle[i], 0);
+            TriMesh::HalfedgeHandle heh = mesh.halfedge_handle(inner_edge_handles[i], 0);
 			TriMesh::FaceHandle f = mesh.face_handle(heh);
 			TriMesh::Normal n1 = normals[f.idx()];
 			TriMesh::HalfedgeHandle heho = mesh.opposite_halfedge_handle(heh);
@@ -448,32 +448,32 @@ void getRangeAndMeanNormal(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &
 		average_normal.normalize_cond();
 		metric = maxdiff * max_tv / (sum_tv + epsilon);
 
-		range_and_mean_normal[index] = make_pair(metric, average_normal);
+        consistencies_and_mean_normals[index] = make_pair(metric, average_normal);
 	}
 }
 
-void getGuidedNormals(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbor,
-	vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
-	vector<pair<num_t, TriMesh::Normal> > range_and_mean_normal,
-	vector<TriMesh::Normal> &guided_normals)
+void getGuidedNormals(TriMesh &mesh, vector<vector<TriMesh::FaceHandle> > &all_guided_neighbors,
+    vector<num_t> &face_areas, vector<TriMesh::Normal> &normals,
+    vector<pair<num_t, TriMesh::Normal> > consistencies_and_mean_normals,
+    vector<TriMesh::Normal> &guided_normals)
 {
-	getRangeAndMeanNormal(mesh, all_guided_neighbor, face_areas, normals, range_and_mean_normal);
+    getConsistenciesAndMeanNormals(mesh, all_guided_neighbors, face_areas, normals, consistencies_and_mean_normals);
 
 	for (TriMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); f_it++)
 	{
-		vector<TriMesh::FaceHandle> face_neighbor = all_guided_neighbor[f_it->idx()];
-		num_t min_range = 1.0e8f;
+        vector<TriMesh::FaceHandle> face_neighbors = all_guided_neighbors[f_it->idx()];
+        num_t min_consistency = 1.0e8f;
 		int min_idx = 0;
-		for (int i = 0; i < (int)face_neighbor.size(); i++)
+        for (int i = 0; i < (int)face_neighbors.size(); i++)
 		{
-			num_t current_range = range_and_mean_normal[face_neighbor[i].idx()].first;
-			if (min_range > current_range){
-				min_range = current_range;
+            num_t current_consistency = consistencies_and_mean_normals[face_neighbors[i].idx()].first;
+            if (min_consistency > current_consistency){
+                min_consistency = current_consistency;
 				min_idx = i;
 			}
 		}
-		TriMesh::FaceHandle min_face_handle = face_neighbor[min_idx];
-		guided_normals[f_it->idx()] = range_and_mean_normal[min_face_handle.idx()].second;
+        TriMesh::FaceHandle min_face_handle = face_neighbors[min_idx];
+        guided_normals[f_it->idx()] = consistencies_and_mean_normals[min_face_handle.idx()].second;
 	}
 }
 
@@ -481,23 +481,21 @@ void updateFilteredNormalsGuided(TriMesh &mesh, vector<TriMesh::Normal> &filtere
 	num_t sigma_c_scalar, int normal_iteration_number, num_t sigma_s, int vertex_iteration_number)
 {
 	filtered_normals.resize((int)mesh.n_faces());
-	int face_neighbor_index = kRadiusBased;
 	bool include_central_face = 1;
-	FaceNeighborType face_neighbor_type = face_neighbor_index == 0 ? kRadiusBased : kVertexBased;
+    FaceNeighborType face_neighbor_type = kRadiusBased;
 	num_t radius;
-	if (face_neighbor_type == kRadiusBased)
-		radius = getRadius(mesh, radius_scalar);
-	vector<vector<TriMesh::FaceHandle> > all_face_neighbor((int)mesh.n_faces());
-	getAllFaceNeighborGMNF(mesh, face_neighbor_type, radius, include_central_face, all_face_neighbor);
-	vector<vector<TriMesh::FaceHandle> > all_guided_neighbor((int)mesh.n_faces());
-	getAllGuidedNeighborGMNF(mesh, all_guided_neighbor);
+    radius = getRadius(mesh, radius_scalar);
+    vector<vector<TriMesh::FaceHandle> > all_face_neighbors((int)mesh.n_faces());
+    getAllFaceNeighborsGMNF(mesh, face_neighbor_type, radius, include_central_face, all_face_neighbors);
+    vector<vector<TriMesh::FaceHandle> > all_guided_neighbors((int)mesh.n_faces());
+    getAllGuidedNeighborsGMNF(mesh, all_guided_neighbors);
 	getAllFaceNormals(mesh, filtered_normals);
 
 	vector<num_t> face_areas((int)mesh.n_faces());
 	vector<TriMesh::Point> face_centroids((int)mesh.n_faces());
 	vector<TriMesh::Normal> previous_normals((int)mesh.n_faces());
 	vector<TriMesh::Normal> guided_normals((int)mesh.n_faces());
-	vector<pair<num_t, TriMesh::Normal> > range_and_mean_normal((int)mesh.n_faces());
+    vector<pair<num_t, TriMesh::Normal> > consistencies_and_mean_normals((int)mesh.n_faces());
 	for (int iter = 0; iter < normal_iteration_number; iter++)
 	{
 		getAllFaceCentroids(mesh, face_centroids);
@@ -505,16 +503,16 @@ void updateFilteredNormalsGuided(TriMesh &mesh, vector<TriMesh::Normal> &filtere
 		getAllFaceAreas(mesh, face_areas);
 		getAllFaceNormals(mesh, previous_normals);
 
-		getGuidedNormals(mesh, all_guided_neighbor, face_areas, previous_normals, range_and_mean_normal, guided_normals);
+        getGuidedNormals(mesh, all_guided_neighbors, face_areas, previous_normals, consistencies_and_mean_normals, guided_normals);
 
 		for (TriMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); f_it++)
 		{
 			int index = f_it->idx();
-			const vector<TriMesh::FaceHandle> face_neighbor = all_face_neighbor[index];
+            const vector<TriMesh::FaceHandle> face_neighbors = all_face_neighbors[index];
 			TriMesh::Normal filtered_normal(0.0f, 0.0f, 0.0f);
-			for (int j = 0; j < (int)face_neighbor.size(); j++)
+            for (int j = 0; j < (int)face_neighbors.size(); j++)
 			{
-				int current_face_index = face_neighbor[j].idx();
+                int current_face_index = face_neighbors[j].idx();
 
 				num_t spatial_dis = (face_centroids[index] - face_centroids[current_face_index]).length();
 				num_t spatial_weight = GaussianWeight(spatial_dis, sigma_c);
@@ -523,7 +521,7 @@ void updateFilteredNormalsGuided(TriMesh &mesh, vector<TriMesh::Normal> &filtere
 
 				filtered_normal += previous_normals[current_face_index] * (face_areas[current_face_index] * spatial_weight * range_weight);
 			}
-			if (face_neighbor.size())
+            if (face_neighbors.size())
 				filtered_normals[index] = filtered_normal.normalize_cond();
 		}
 		updateVertexPositions(mesh, filtered_normals, vertex_iteration_number, false);

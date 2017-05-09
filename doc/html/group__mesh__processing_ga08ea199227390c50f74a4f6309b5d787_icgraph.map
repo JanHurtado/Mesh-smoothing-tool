@@ -1,0 +1,11 @@
+<map id="getAllFaceAreas" name="getAllFaceAreas">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#gaeb6a2df9d99a43e966b2fc34d11fd32f" title="getAllVertexAreas &#45; vertex area computation for all vertices (barycentric areas) " alt="" coords="205,5,332,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga6ff4d502c8c1b9ea46198b9aeda9a759" title="getArea &#45; area computation of a mesh (sum of triangle areas) " alt="" coords="235,56,302,83"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#ga241ba0b0a6bdd8e643694d3570edce0f" title="Bilateral normal filtering for mesh denoising (Zheng et al.) " alt="" coords="193,107,345,133"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#ga996c33a6d390085b8a848f7aecf671db" title="updateFilteredNormalsGuided &#45; guided bilateral filtering of a normal field (face based) of a mesh ..." alt="" coords="172,157,365,184"/>
+<area shape="rect" id="node5" href="$group__mesh__processing.html#gad24881efff19995bc472793b691b4305" title="bilateralNormal &#45; Denoise the input mesh using Bilateral Normal Filtering Algorithm ..." alt="" coords="413,107,521,133"/>
+<area shape="rect" id="node6" href="$class_global_smoothing_task.html#afb679e31438693094cc7333cb3fd2724" title="run &#45; run current algorithm " alt="" coords="569,132,744,159"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="792,125,995,166"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1043,132,1257,159"/>
+<area shape="rect" id="node10" href="$group__mesh__processing.html#gade4cb216289ea106e1e6147039dec0be" title="guided &#45; Denoise the input mesh using Guided Mesh Normal Filtering Algorithm " alt="" coords="437,157,497,184"/>
+</map>

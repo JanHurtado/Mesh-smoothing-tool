@@ -1,0 +1,5 @@
+<map id="myDataManager::loadInputMesh" name="myDataManager::loadInputMesh">
+<area shape="rect" id="node2" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="263,5,441,32"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="489,5,692,32"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="740,5,955,32"/>
+</map>

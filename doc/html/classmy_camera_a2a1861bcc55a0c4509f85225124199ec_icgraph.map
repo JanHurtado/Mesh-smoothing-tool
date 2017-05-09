@@ -1,0 +1,4 @@
+<map id="myCamera::getMovementSpeed" name="myCamera::getMovementSpeed">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a315e138886ac5757d5964e1d9ff63a40" title="translateCamera &#45; translate all shapes (model to world matrix manipulation) regarding a mouse movemen..." alt="" coords="260,5,455,32"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#a70c4b7b1dc23bc55c063348d015a26fa" title="event &#45; event manager for mouse interactions (in myGLWindow) " alt="" coords="503,5,644,32"/>
+</map>

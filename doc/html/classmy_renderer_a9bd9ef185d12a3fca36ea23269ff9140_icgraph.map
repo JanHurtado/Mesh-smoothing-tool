@@ -1,0 +1,5 @@
+<map id="myRenderer::sendDataSingleBuffer" name="myRenderer::sendDataSingleBuffer">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a9be20cb9b82953c76de76a49abbfbe15" title="initialize &#45; renderer initialization " alt="" coords="285,5,431,32"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#ae094c68c7f5649155d797fe57a8cf0f0" title="sendDataToOpenGL &#45; call sendDataToOpenGL of the renderer, in the current context " alt="" coords="244,56,472,83"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#a8c6ed0d7ac4e96a61e8c0e0b60079310" title="initializeGL &#45; initialize the renderer in the current OpenGL context " alt="" coords="520,5,695,32"/>
+</map>

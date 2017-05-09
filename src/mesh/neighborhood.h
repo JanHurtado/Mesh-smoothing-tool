@@ -10,6 +10,12 @@
 
 using namespace std;
 
+/** @addtogroup mesh_processing
+  * @brief Mesh processing neighborhood functions.
+  *
+  * @{
+  */
+
 /////////////////////////////////////////////////
 /// Vertex neighborhood
 /////////////////////////////////////////////////
@@ -93,5 +99,7 @@ void getAllFaceNeighbors_EdgeBased(TriMesh &mesh, bool include_target_face, vect
  * @param all_face_neighbors: vector containing neighbors (output)
  */
 void getAllFaceNeighbors_VertexBased(TriMesh &mesh, bool include_target_face, vector<vector<TriMesh::FaceHandle> > &all_face_neighbors);
+
+/** @} */
 
 #endif // NEIGHBORHOOD_H

@@ -1,0 +1,7 @@
+<map id="getAllFaceNeighborsGMNF" name="getAllFaceNeighborsGMNF">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga996c33a6d390085b8a848f7aecf671db" title="updateFilteredNormalsGuided &#45; guided bilateral filtering of a normal field (face based) of a mesh ..." alt="" coords="233,13,427,39"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#gade4cb216289ea106e1e6147039dec0be" title="guided &#45; Denoise the input mesh using Guided Mesh Normal Filtering Algorithm " alt="" coords="475,13,535,39"/>
+<area shape="rect" id="node4" href="$class_global_smoothing_task.html#afb679e31438693094cc7333cb3fd2724" title="run &#45; run current algorithm " alt="" coords="583,13,757,39"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="805,5,1008,47"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1056,13,1271,39"/>
+</map>

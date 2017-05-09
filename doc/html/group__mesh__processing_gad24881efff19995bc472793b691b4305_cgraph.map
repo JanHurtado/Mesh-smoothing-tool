@@ -1,0 +1,12 @@
+<map id="bilateralNormal" name="bilateralNormal">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga241ba0b0a6bdd8e643694d3570edce0f" title="Bilateral normal filtering for mesh denoising (Zheng et al.) " alt="" coords="162,173,314,199"/>
+<area shape="rect" id="node10" href="$group__mesh__processing.html#ga9ebe30364b271e06c499cd6bc5fc60f0" title="updateVertexPositions &#45; computes new vertex positions adapted to an input normal field. " alt="" coords="161,274,315,301"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga839a6be650b0d89f3d1b5147ce819a8b" title="getAllFaceNeighbors_VertexBased: get all neighboring faces of all faces (vertex based) ..." alt="" coords="363,5,505,47"/>
+<area shape="rect" id="node5" href="$group__mesh__processing.html#gab0ba001d2ee9ed6b68756db44220e61a" title="getAllFaceNormals &#45; normal computation for all faces " alt="" coords="368,71,500,98"/>
+<area shape="rect" id="node6" href="$group__mesh__processing.html#ga08ea199227390c50f74a4f6309b5d787" title="getAllFaceAreas &#45; area computation for all faces " alt="" coords="375,122,493,149"/>
+<area shape="rect" id="node7" href="$group__mesh__processing.html#ga3a234b2c2ee62984ccdfb1a00dfe5d91" title="getAllFaceCentroids &#45; centroid computation for all faces " alt="" coords="365,274,503,301"/>
+<area shape="rect" id="node8" href="$group__mesh__processing.html#ga46e8f4061e5c9f6b490fd5cc9fda6af5" title="getSigmaC &#45; sigma_c computation based on the average of face centroid distances (only between adjacen..." alt="" coords="391,173,477,199"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#ga9fc460beb352c92a3e3401a3c30397ee" title="GaussianWeight &#45; gaussian function computation used for bilateral filtering. " alt="" coords="375,223,493,250"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#gac41c2005e04ea427e61be7e09fdb3128" title="getFaceNeighbors_VertexBased: get neighboring faces based on face vertices " alt="" coords="553,13,763,39"/>
+<area shape="rect" id="node11" href="$denoising_8cpp.html#a07cf663aba9efd59fd2a2bfa0f5b9022" title="Auxiliar functions. " alt="" coords="402,325,466,351"/>
+</map>

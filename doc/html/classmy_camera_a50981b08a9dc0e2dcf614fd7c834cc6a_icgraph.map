@@ -1,0 +1,10 @@
+<map id="myCamera::setMovementSpeed" name="myCamera::setMovementSpeed">
+<area shape="rect" id="node2" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="260,31,461,57"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a9be20cb9b82953c76de76a49abbfbe15" title="initialize &#45; renderer initialization " alt="" coords="535,5,682,32"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a295c62738b1a4eb151bcfd7e18f7de95" title="setDefaultValues &#45; set custom renderer parameters " alt="" coords="509,56,708,83"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#a8c6ed0d7ac4e96a61e8c0e0b60079310" title="initializeGL &#45; initialize the renderer in the current OpenGL context " alt="" coords="756,5,931,32"/>
+<area shape="rect" id="node6" href="$classmy_g_l_window.html#a9f31b61db49e9cd3e1e4df6df685bae5" title="setShape &#45; set a shape as current shape (removing previous shape) " alt="" coords="760,56,927,83"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="979,56,1157,83"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="1205,56,1408,83"/>
+<area shape="rect" id="node9" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1456,56,1671,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="myMainWindow::updateWidgetValues" name="myMainWindow::updateWidgetValues">
+<area shape="rect" id="node2" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="256,13,435,39"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="483,13,685,39"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="733,13,948,39"/>
+</map>

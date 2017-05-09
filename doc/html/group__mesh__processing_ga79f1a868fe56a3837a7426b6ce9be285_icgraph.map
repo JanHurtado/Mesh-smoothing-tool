@@ -1,0 +1,7 @@
+<map id="importMesh" name="importMesh">
+<area shape="rect" id="node2" href="$struct_shape_data.html#aa866d219c844bce91ea6c508d6daa27b" title="loadFromFile &#45; load shape data using a triangular mesh file supported in OpenMesh library ..." alt="" coords="164,5,333,32"/>
+<area shape="rect" id="node3" href="$classmy_data_manager.html#a1109ab33a8c43be866fdc519bb6f5262" title="loadInputMesh &#45; load a mesh file supported by OpenMesh library " alt="" coords="144,56,353,83"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="401,56,580,83"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="628,56,831,83"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="879,56,1093,83"/>
+</map>

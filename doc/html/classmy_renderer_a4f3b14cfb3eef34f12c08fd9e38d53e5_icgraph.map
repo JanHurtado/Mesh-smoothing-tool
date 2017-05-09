@@ -1,0 +1,9 @@
+<map id="myRenderer::updateVertexBuffer" name="myRenderer::updateVertexBuffer">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#a990e8dbfd0c70d779a882670ffdab3f6" title="updateMesh &#45; update vertex data of the current shape (resend vertex data) " alt="" coords="231,78,413,105"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="471,5,651,47"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a886fced065e0a0a33c26eede1ff4ef61" title="setOutputAsInput &#45; set output mesh as new input mesh " alt="" coords="463,71,658,112"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#ad6e3df793e90a1e894dd306aa6ecee42" title="updateGlobalSmoothing &#45; global smoothing management (step by step) " alt="" coords="461,136,660,177"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="708,78,911,105"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="959,109,1173,135"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="708,133,911,175"/>
+</map>

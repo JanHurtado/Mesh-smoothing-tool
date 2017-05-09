@@ -1,0 +1,5 @@
+<map id="myDataManager::reinitialize" name="myDataManager::reinitialize">
+<area shape="rect" id="node2" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="236,5,416,47"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="464,13,667,39"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="715,13,929,39"/>
+</map>

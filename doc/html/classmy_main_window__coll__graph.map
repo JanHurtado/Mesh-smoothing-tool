@@ -1,0 +1,15 @@
+<map id="myMainWindow" name="myMainWindow">
+<area shape="rect" id="node2" href="$class_q_main_window.html" title="QMainWindow" alt="" coords="1502,18,1609,44"/>
+<area shape="rect" id="node5" href="$classmy_g_l_window.html" title="The myGLWindow class &#45; Qt Widget for OpenGL Designed to support only one shape and one selection at t..." alt="" coords="1504,338,1607,364"/>
+<area shape="rect" id="node6" href="$class_q_open_g_l_widget.html" title="QOpenGLWidget" alt="" coords="1105,338,1227,364"/>
+<area shape="rect" id="node7" href="$classmy_renderer.html" title="The myRenderer class &#45; Renderer for multiple shapes (triangular meshes) visualization. " alt="" coords="1120,759,1212,786"/>
+<area shape="rect" id="node19" href="$classmy_camera.html" title="The myCamera class &#45; camera representation in a typical rendering pipeline (i.e. OpenGL) ..." alt="" coords="798,999,883,1026"/>
+<area shape="rect" id="node43" href="$class_global_smoothing_task.html" title="The GlobalSmoothingTask class &#45; global smoothing task. " alt="" coords="1481,1482,1630,1508"/>
+<area shape="rect" id="node16" href="$struct_shape_data.html" title="The ShapeData struct &#45; triangular mesh for OpenGL buffers manipulation. " alt="" coords="457,1196,544,1223"/>
+<area shape="rect" id="node23" href="$classmy_shader.html" title="The myShader class &#45; shader data for OpenGL. " alt="" coords="460,654,541,680"/>
+<area shape="rect" id="node31" href="$classmy_data_manager.html" title="The myDataManager class &#45; data manager for mesh smoothing application. " alt="" coords="1107,1267,1225,1294"/>
+<area shape="rect" id="node17" href="$struct_vertex.html" title="The Vertex struct &#45; single vertex with its corresponding attributes. " alt="" coords="235,1192,295,1219"/>
+<area shape="rect" id="node25" title="STL class. " alt="" coords="225,614,305,640"/>
+<area shape="rect" id="node26" title="STL class. " alt="" coords="5,606,132,648"/>
+<area shape="rect" id="node44" href="$class_q_object.html" title="QObject" alt="" coords="1131,1318,1201,1344"/>
+</map>

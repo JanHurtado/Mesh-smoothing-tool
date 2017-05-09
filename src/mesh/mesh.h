@@ -9,6 +9,15 @@
 
 using namespace std;
 
+/** @addtogroup mesh_processing
+  * @brief Mesh processing half-edge data structure definition (OpenMesh library).
+  *
+  * @{
+  */
+
+/**
+ * @brief The MyTraits struct - OpenMesh custom traits
+ */
 struct MyTraits : OpenMesh::DefaultTraits
 {
   // Let Point and Normal be a vector of doubles
@@ -29,10 +38,18 @@ struct MyTraits : OpenMesh::DefaultTraits
     EdgeAttributes     (OpenMesh::Attributes::Status|OpenMesh::Attributes::Color);
 };
 
+/**
+ * @brief TriMesh - triangular mesh definition
+ */
 typedef OpenMesh::TriMesh_ArrayKernelT<MyTraits> TriMesh;
 
+/**
+ * @brief num_t - type definition for numbers used in mesh processing module
+ */
 typedef float num_t;
-typedef int num_int_t;
+
+
+/** @} */
 
 #endif // MESH_H
 

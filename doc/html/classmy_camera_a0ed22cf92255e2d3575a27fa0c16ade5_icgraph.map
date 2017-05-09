@@ -1,0 +1,4 @@
+<map id="myCamera::moveBackward" name="myCamera::moveBackward">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a7145eea2c510ef0218699ad843947d2e" title="zoom &#45; translate camera position (forward/backward) regarding a step size " alt="" coords="233,5,365,32"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#a70c4b7b1dc23bc55c063348d015a26fa" title="event &#45; event manager for mouse interactions (in myGLWindow) " alt="" coords="413,5,555,32"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="visualization/myShape.h" name="visualization/myShape.h">
+<area shape="rect" id="node2" href="$my_renderer_8h.html" title="visualization/myRenderer.h" alt="" coords="158,80,335,107"/>
+<area shape="rect" id="node9" href="$my_data_manager_8h.html" title="myDataManager.h" alt="" coords="380,80,508,107"/>
+<area shape="rect" id="node13" href="$my_shape_8cpp.html" title="visualization/myShape.cpp" alt="" coords="532,80,708,107"/>
+<area shape="rect" id="node3" href="$my_g_l_window_8h.html" title="myGLWindow.h" alt="" coords="12,155,127,181"/>
+<area shape="rect" id="node8" href="$my_renderer_8cpp.html" title="visualization/myRenderer.cpp" alt="" coords="151,155,342,181"/>
+<area shape="rect" id="node4" href="$my_main_window_8h.html" title="myMainWindow.h" alt="" coords="289,229,415,256"/>
+<area shape="rect" id="node7" href="$my_g_l_window_8cpp.html" title="myGLWindow.cpp" alt="" coords="5,229,133,256"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title="main.cpp" alt="" coords="249,304,324,331"/>
+<area shape="rect" id="node6" href="$my_main_window_8cpp.html" title="myMainWindow.cpp" alt="" coords="348,304,487,331"/>
+<area shape="rect" id="node10" href="$smoothing_8h.html" title="smoothing.h" alt="" coords="417,155,511,181"/>
+<area shape="rect" id="node12" href="$my_data_manager_8cpp.html" title="myDataManager.cpp" alt="" coords="535,155,678,181"/>
+<area shape="rect" id="node11" href="$smoothing_8cpp.html" title="smoothing.cpp" alt="" coords="439,229,545,256"/>
+</map>

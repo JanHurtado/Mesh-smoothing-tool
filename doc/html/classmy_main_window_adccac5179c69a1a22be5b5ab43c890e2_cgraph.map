@@ -1,0 +1,9 @@
+<map id="myMainWindow::wireframeMode" name="myMainWindow::wireframeMode">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#ac0f528abf349f538d7f1d517ecb51ce0" title="setVisualizationMode &#45; set rendering mode of the current shape " alt="" coords="263,81,497,108"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="545,56,765,83"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#a79f3a282da5734315178ee57ae6ebfcc" title="setShapeDrawMode &#45; set rendering mode for a specific shape " alt="" coords="547,107,763,133"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="813,56,1005,83"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="1069,5,1228,32"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="1053,56,1244,83"/>
+<area shape="rect" id="node7" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="1084,107,1213,133"/>
+</map>

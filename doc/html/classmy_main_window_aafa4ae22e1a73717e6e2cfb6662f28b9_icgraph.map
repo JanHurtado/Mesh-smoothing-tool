@@ -1,0 +1,9 @@
+<map id="myMainWindow::setGlobalSmoothingStatus" name="myMainWindow::setGlobalSmoothingStatus">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a6a52859fe82b0125d8b53aa0aaf17648" title="continueGlobalSmoothing &#45; continue global smoothing " alt="" coords="307,5,515,47"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="829,189,1044,215"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a56507c69b51ffe078d3b25349d235ad5" title="runGlobalSmoothing &#45; run global smoothing algorithm " alt="" coords="292,71,531,98"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a139ac8b38840d33342b2bae4d7824607" title="stopGlobalSmoothing &#45; stop global smoothing " alt="" coords="319,123,503,164"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#ad6e3df793e90a1e894dd306aa6ecee42" title="updateGlobalSmoothing &#45; global smoothing management (step by step) " alt="" coords="312,240,511,281"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="579,101,781,127"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="579,240,781,281"/>
+</map>

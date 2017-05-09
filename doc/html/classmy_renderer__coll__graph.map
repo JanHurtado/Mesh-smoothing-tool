@@ -1,0 +1,8 @@
+<map id="myRenderer" name="myRenderer">
+<area shape="rect" id="node13" href="$classmy_camera.html" title="The myCamera class &#45; camera representation in a typical rendering pipeline (i.e. OpenGL) ..." alt="" coords="798,176,883,203"/>
+<area shape="rect" id="node10" href="$struct_shape_data.html" title="The ShapeData struct &#45; triangular mesh for OpenGL buffers manipulation. " alt="" coords="457,316,544,343"/>
+<area shape="rect" id="node17" href="$classmy_shader.html" title="The myShader class &#45; shader data for OpenGL. " alt="" coords="460,541,541,568"/>
+<area shape="rect" id="node11" href="$struct_vertex.html" title="The Vertex struct &#45; single vertex with its corresponding attributes. " alt="" coords="235,341,295,368"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="225,608,305,635"/>
+<area shape="rect" id="node20" title="STL class. " alt="" coords="5,601,132,642"/>
+</map>

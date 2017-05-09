@@ -1,0 +1,9 @@
+<map id="myGLWindow::removeSelection" name="myGLWindow::removeSelection">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="260,56,480,83"/>
+<area shape="rect" id="node7" href="$classmy_renderer.html#aaebe23b9aeff329408f765a26b3802d2" title="removeShape &#45; remove a shape " alt="" coords="281,107,459,133"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="269,158,471,199"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="528,56,720,83"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="784,5,943,32"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="768,56,959,83"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="799,107,928,133"/>
+</map>

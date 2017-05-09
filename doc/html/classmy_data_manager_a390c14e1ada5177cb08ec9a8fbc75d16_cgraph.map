@@ -1,0 +1,4 @@
+<map id="myDataManager::updateOutputSelection" name="myDataManager::updateOutputSelection">
+<area shape="rect" id="node2" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="289,5,411,32"/>
+<area shape="rect" id="node3" href="$struct_shape_data.html#a345365d081614bd1c1837c1ae613a41f" title="loadMeshVertexSelection &#45; load as shape data a subset of vertices (only vertices) from a data structu..." alt="" coords="256,57,444,98"/>
+</map>

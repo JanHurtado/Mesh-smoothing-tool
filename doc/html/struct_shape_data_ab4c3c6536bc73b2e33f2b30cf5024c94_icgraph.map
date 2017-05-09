@@ -1,0 +1,21 @@
+<map id="ShapeData::clear" name="ShapeData::clear">
+<area shape="rect" id="node2" href="$classmy_data_manager.html#a1109ab33a8c43be866fdc519bb6f5262" title="loadInputMesh &#45; load a mesh file supported by OpenMesh library " alt="" coords="460,15,669,41"/>
+<area shape="rect" id="node6" href="$classmy_data_manager.html#a2b03ab3e75fa2c153b6f59367a64e574" title="updateInputShape &#45; generate the corresponding shape data of the input mesh " alt="" coords="194,81,386,122"/>
+<area shape="rect" id="node14" href="$classmy_data_manager.html#a390c14e1ada5177cb08ec9a8fbc75d16" title="updateOutputSelection &#45; generate the selection shape for a set of given vertex indices ..." alt="" coords="189,211,391,253"/>
+<area shape="rect" id="node19" href="$classmy_data_manager.html#ae07e54d445a84500d3815d54807dd2d6" title="updateOutputShape &#45; generate the corresponding shape data of the output mesh " alt="" coords="189,146,391,187"/>
+<area shape="rect" id="node20" href="$classmy_data_manager.html#a2e713c512d87178700a7d76d47264fda" title="myDataManager &#45; destructor " alt="" coords="176,277,404,304"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="741,5,919,32"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="1229,85,1432,112"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1480,116,1695,143"/>
+<area shape="rect" id="node7" href="$classmy_data_manager.html#a0c9815e67272f8f8f27acd851040aa58" title="updateShapes &#45; generate the corresponding shape data for both meshes (input mesh and output mesh) ..." alt="" coords="461,97,669,124"/>
+<area shape="rect" id="node8" href="$classmy_data_manager.html#a5e77d27b36683163e5f3e1162ceddf07" title="reinitialize &#45; set input mesh as output mesh (undone all changes) " alt="" coords="739,56,921,83"/>
+<area shape="rect" id="node10" href="$classmy_data_manager.html#a4384abe2f9727c403ade607a16d81af0" title="setOutputAsInput &#45; set output mesh as input mesh (save all changes) " alt="" coords="739,107,921,149"/>
+<area shape="rect" id="node12" href="$classmy_main_window.html#ad6e3df793e90a1e894dd306aa6ecee42" title="updateGlobalSmoothing &#45; global smoothing management (step by step) " alt="" coords="983,175,1181,217"/>
+<area shape="rect" id="node9" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="992,45,1172,86"/>
+<area shape="rect" id="node11" href="$classmy_main_window.html#a886fced065e0a0a33c26eede1ff4ef61" title="setOutputAsInput &#45; set output mesh as new input mesh " alt="" coords="985,110,1179,151"/>
+<area shape="rect" id="node13" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="1229,139,1432,181"/>
+<area shape="rect" id="node15" href="$classmy_main_window.html#a234a7bacccd7035915b279fdd832255d" title="selectAndSmooth &#45; select and perform focalized smoothing regarding control widget values ..." alt="" coords="452,209,677,236"/>
+<area shape="rect" id="node17" href="$classmy_main_window.html#a1e2a913e5919da6d2856f42539f95e0b" title="updateSelection &#45; update selection in data manager and visualization " alt="" coords="457,260,672,287"/>
+<area shape="rect" id="node16" href="$classmy_main_window.html#a7f511c323cc6d5f0da0f6e6807970447" title="eventFilter &#45; Qt event filter " alt="" coords="739,224,921,251"/>
+<area shape="rect" id="node18" href="$classmy_main_window.html#aa6500abe6c1e0a081761a44ce5cc4943" title="keyPressEvent &#45; Qt key press event " alt="" coords="725,275,935,301"/>
+</map>

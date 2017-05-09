@@ -1,0 +1,11 @@
+<map id="getAllFaceCentroids" name="getAllFaceCentroids">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga084d15ddcebb1fad82113a29268a1ef3" title="getRadius &#45; computation of radius for radius&#45;based face neighborhood, based on the average of face ce..." alt="" coords="229,5,309,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga996c33a6d390085b8a848f7aecf671db" title="updateFilteredNormalsGuided &#45; guided bilateral filtering of a normal field (face based) of a mesh ..." alt="" coords="393,56,587,83"/>
+<area shape="rect" id="node8" href="$group__mesh__processing.html#ga241ba0b0a6bdd8e643694d3570edce0f" title="Bilateral normal filtering for mesh denoising (Zheng et al.) " alt="" coords="193,157,345,184"/>
+<area shape="rect" id="node10" href="$group__mesh__processing.html#ga9ebe30364b271e06c499cd6bc5fc60f0" title="updateVertexPositions &#45; computes new vertex positions adapted to an input normal field. " alt="" coords="192,107,345,133"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#gade4cb216289ea106e1e6147039dec0be" title="guided &#45; Denoise the input mesh using Guided Mesh Normal Filtering Algorithm " alt="" coords="635,107,695,133"/>
+<area shape="rect" id="node5" href="$class_global_smoothing_task.html#afb679e31438693094cc7333cb3fd2724" title="run &#45; run current algorithm " alt="" coords="743,132,917,159"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="965,125,1168,166"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1216,132,1431,159"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#gad24881efff19995bc472793b691b4305" title="bilateralNormal &#45; Denoise the input mesh using Bilateral Normal Filtering Algorithm ..." alt="" coords="436,157,544,184"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="myCamera::getPosition" name="myCamera::getPosition">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a80f6de56c8b3c3fb42261321d63be14e" title="draw &#45; draw al shapes considering their rendering modes " alt="" coords="246,5,373,32"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="213,107,405,133"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a9efe3e02fe86ec6cb523fa23d02ec9fc" title="getSelection &#45; get selected vertices for the current mouse position in the output mesh visualizer ..." alt="" coords="743,56,937,83"/>
+<area shape="rect" id="node27" href="$classmy_renderer.html#a315e138886ac5757d5964e1d9ff63a40" title="translateCamera &#45; translate all shapes (model to world matrix manipulation) regarding a mouse movemen..." alt="" coords="212,183,407,209"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#aa7fef842778a1d243494b70e2a10d1d7" title="paintGL &#45; call renderer draw functions " alt="" coords="487,5,643,32"/>
+<area shape="rect" id="node5" href="$classmy_g_l_window.html#a5c6d68278e3329efad0d8f6582883070" title="getRayDirection &#45; call getRayDirection of the renderer for a given position " alt="" coords="463,107,666,133"/>
+<area shape="rect" id="node11" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="455,157,675,184"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a1e2a913e5919da6d2856f42539f95e0b" title="updateSelection &#45; update selection in data manager and visualization " alt="" coords="1011,56,1225,83"/>
+<area shape="rect" id="node10" href="$classmy_main_window.html#a234a7bacccd7035915b279fdd832255d" title="selectAndSmooth &#45; select and perform focalized smoothing regarding control widget values ..." alt="" coords="1005,107,1231,133"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#aa6500abe6c1e0a081761a44ce5cc4943" title="keyPressEvent &#45; Qt key press event " alt="" coords="1279,56,1488,83"/>
+<area shape="rect" id="node9" href="$classmy_main_window.html#a7f511c323cc6d5f0da0f6e6807970447" title="eventFilter &#45; Qt event filter " alt="" coords="1293,107,1474,133"/>
+<area shape="rect" id="node12" href="$classmy_g_l_window.html#ac0f528abf349f538d7f1d517ecb51ce0" title="setVisualizationMode &#45; set rendering mode of the current shape " alt="" coords="723,431,957,457"/>
+<area shape="rect" id="node18" href="$classmy_g_l_window.html#a0c0c783f45099f6f96fc9665700879fc" title="removeSelection &#45; remove current selection " alt="" coords="737,157,943,184"/>
+<area shape="rect" id="node21" href="$classmy_g_l_window.html#a4f923ea36f889819bf8436a37fb3e79b" title="setSelection &#45; set a selection as current selection (removing previous selection) ..." alt="" coords="749,107,931,133"/>
+<area shape="rect" id="node22" href="$classmy_g_l_window.html#a990e8dbfd0c70d779a882670ffdab3f6" title="updateMesh &#45; update vertex data of the current shape (resend vertex data) " alt="" coords="749,248,931,275"/>
+<area shape="rect" id="node13" href="$classmy_main_window.html#a8ade2340e6ed9b1bda6825acf313664f" title="flatMode &#45; set triangle rendering " alt="" coords="1033,507,1203,533"/>
+<area shape="rect" id="node16" href="$classmy_main_window.html#adccac5179c69a1a22be5b5ab43c890e2" title="wireframeMode &#45; set wireframe rendering " alt="" coords="1013,405,1223,432"/>
+<area shape="rect" id="node17" href="$classmy_main_window.html#a0d2f50149d19b527113963912fa1f09b" title="pointsMode &#45; set point rendering " alt="" coords="1023,456,1213,483"/>
+<area shape="rect" id="node14" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="1282,376,1485,403"/>
+<area shape="rect" id="node15" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1536,317,1751,344"/>
+<area shape="rect" id="node19" href="$classmy_main_window.html#a7150fd71bd23674858bf58d2f9b8d821" title="removeSelection &#45; remove selection from data manager and visualization " alt="" coords="1009,157,1227,184"/>
+<area shape="rect" id="node20" href="$classmy_main_window.html#ae247cfa54b0429ec29d0726904872aec" title="keyReleaseEvent &#45; Qt key release event " alt="" coords="1288,158,1479,199"/>
+<area shape="rect" id="node23" href="$classmy_main_window.html#ad6e3df793e90a1e894dd306aa6ecee42" title="updateGlobalSmoothing &#45; global smoothing management (step by step) " alt="" coords="1019,209,1217,250"/>
+<area shape="rect" id="node25" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="1028,339,1208,381"/>
+<area shape="rect" id="node26" href="$classmy_main_window.html#a886fced065e0a0a33c26eede1ff4ef61" title="setOutputAsInput &#45; set output mesh as new input mesh " alt="" coords="1021,274,1215,315"/>
+<area shape="rect" id="node24" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="1282,281,1485,322"/>
+<area shape="rect" id="node28" href="$classmy_g_l_window.html#a70c4b7b1dc23bc55c063348d015a26fa" title="event &#45; event manager for mouse interactions (in myGLWindow) " alt="" coords="494,208,635,235"/>
+</map>

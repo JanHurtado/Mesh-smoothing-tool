@@ -113,7 +113,6 @@ myMainWindow::myMainWindow()
 	output_mesh_visualizer_ptr->installEventFilter(this);
 
 	selectionMode = 0;
-	selectionStatus = 0;
 	runningStatus = 0;
 
 	globalSmoothingStopped = 0;
@@ -409,12 +408,17 @@ void myMainWindow::setFocalizedSmoothingAlgorithm()
 
 void myMainWindow::about()
 {
-
+	QMessageBox msgBox;
+	msgBox.setWindowTitle("About");
+	msgBox.setText("Mesh Smoothing Tool v1.0");
+	msgBox.setInformativeText("A mesh processing tool for surface smoothing");
+	int ret = msgBox.exec();
 }
 
 void myMainWindow::userGuide()
 {
-
+	QString link = "http://www.google.com";
+	QDesktopServices::openUrl(QUrl(link));
 }
 
 void myMainWindow::setGlobalSmoothingStatus( globalSmoothingStatus current_status)

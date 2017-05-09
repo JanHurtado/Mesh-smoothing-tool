@@ -1,0 +1,6 @@
+<map id="GlobalSmoothingTask" name="GlobalSmoothingTask">
+<area shape="rect" id="node2" href="$class_q_object.html" title="QObject" alt="" coords="5,376,76,403"/>
+<area shape="rect" id="node5" href="$classmy_data_manager.html" title="The myDataManager class &#45; data manager for mesh smoothing application. " alt="" coords="186,376,303,403"/>
+<area shape="rect" id="node6" href="$struct_shape_data.html" title="The ShapeData struct &#45; triangular mesh for OpenGL buffers manipulation. " alt="" coords="236,250,323,277"/>
+<area shape="rect" id="node7" href="$struct_vertex.html" title="The Vertex struct &#45; single vertex with its corresponding attributes. " alt="" coords="249,124,309,151"/>
+</map>

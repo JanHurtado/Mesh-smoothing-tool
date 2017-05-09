@@ -1,0 +1,10 @@
+<map id="mesh/neighborhood.h" name="mesh/neighborhood.h">
+<area shape="rect" id="node2" href="$my_main_window_8h.html" title="myMainWindow.h" alt="" coords="45,229,171,256"/>
+<area shape="rect" id="node5" href="$denoising_8h.html" title="mesh/denoising.h" alt="" coords="146,80,270,107"/>
+<area shape="rect" id="node9" href="$neighborhood_8cpp.html" title="mesh/neighborhood.cpp" alt="" coords="295,80,455,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="main.cpp" alt="" coords="5,304,80,331"/>
+<area shape="rect" id="node4" href="$my_main_window_8cpp.html" title="myMainWindow.cpp" alt="" coords="104,304,243,331"/>
+<area shape="rect" id="node6" href="$smoothing_8h.html" title="smoothing.h" alt="" coords="153,155,247,181"/>
+<area shape="rect" id="node8" href="$denoising_8cpp.html" title="mesh/denoising.cpp" alt="" coords="271,155,409,181"/>
+<area shape="rect" id="node7" href="$smoothing_8cpp.html" title="smoothing.cpp" alt="" coords="195,229,301,256"/>
+</map>

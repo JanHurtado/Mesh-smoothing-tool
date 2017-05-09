@@ -1,0 +1,13 @@
+<map id="getFaceNeighbors_VertexBased" name="getFaceNeighbors_VertexBased">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga839a6be650b0d89f3d1b5147ce819a8b" title="getAllFaceNeighbors_VertexBased: get all neighboring faces of all faces (vertex based) ..." alt="" coords="297,5,439,47"/>
+<area shape="rect" id="node8" href="$group__mesh__processing.html#gac59be088a2652bec7ec0f38b9a604af7" title="Guided mesh normal filtering (Zhang et al.) " alt="" coords="527,97,707,123"/>
+<area shape="rect" id="node11" href="$group__mesh__processing.html#ga950bba0d037fe1a269c61ea0427f8a5c" title="getAllGuidedNeighborsGMNF &#45; neighborhood computation for guidance signal " alt="" coords="521,159,713,186"/>
+<area shape="rect" id="node12" href="$group__mesh__processing.html#gae7216eec3f33db500095874a97011e62" title="getFaceNeighbors_RadiusBased: get neighboring faces regarding a radius " alt="" coords="263,122,473,149"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#ga241ba0b0a6bdd8e643694d3570edce0f" title="Bilateral normal filtering for mesh denoising (Zheng et al.) " alt="" coords="541,30,693,57"/>
+<area shape="rect" id="node4" href="$group__mesh__processing.html#gad24881efff19995bc472793b691b4305" title="bilateralNormal &#45; Denoise the input mesh using Bilateral Normal Filtering Algorithm ..." alt="" coords="1003,41,1111,67"/>
+<area shape="rect" id="node5" href="$class_global_smoothing_task.html#afb679e31438693094cc7333cb3fd2724" title="run &#45; run current algorithm " alt="" coords="1159,69,1333,95"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a6df8be54fd8bd62721edd531af140372" title="setSmoothingThread &#45; set thread for global smoothing " alt="" coords="1381,61,1584,103"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1632,69,1847,95"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#ga996c33a6d390085b8a848f7aecf671db" title="updateFilteredNormalsGuided &#45; guided bilateral filtering of a normal field (face based) of a mesh ..." alt="" coords="761,97,955,123"/>
+<area shape="rect" id="node10" href="$group__mesh__processing.html#gade4cb216289ea106e1e6147039dec0be" title="guided &#45; Denoise the input mesh using Guided Mesh Normal Filtering Algorithm " alt="" coords="1027,95,1087,122"/>
+</map>

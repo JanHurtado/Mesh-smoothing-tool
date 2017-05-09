@@ -1,0 +1,7 @@
+<map id="myRenderer::translateCamera" name="myRenderer::translateCamera">
+<area shape="rect" id="node2" href="$classmy_camera.html#a2a1861bcc55a0c4509f85225124199ec" title="getMovementSpeed &#45; get camera movement speed " alt="" coords="248,5,455,32"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="272,56,431,83"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ac733fe86e1e98a2e030fa0736655c7a1" title="getStrafeDirection &#45; get strafe direction " alt="" coords="253,107,449,133"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="287,157,416,184"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="272,208,431,235"/>
+</map>

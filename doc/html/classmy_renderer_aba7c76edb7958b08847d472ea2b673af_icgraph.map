@@ -1,0 +1,7 @@
+<map id="myRenderer::addShader" name="myRenderer::addShader">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#a0be068c88e7e9e7c8789037cde6b98ee" title="addShader &#45; add a shader to the renderer " alt="" coords="217,5,390,32"/>
+<area shape="rect" id="node6" href="$classmy_g_l_window.html#a8c6ed0d7ac4e96a61e8c0e0b60079310" title="initializeGL &#45; initialize the renderer in the current OpenGL context " alt="" coords="216,56,391,83"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aea2bdf22486853e55edeb98797e1fab2" title="setShaders &#45; set shaders profile (customizable) " alt="" coords="439,5,627,32"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="675,5,877,32"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="925,5,1140,32"/>
+</map>

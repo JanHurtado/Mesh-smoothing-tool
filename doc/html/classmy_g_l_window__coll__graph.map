@@ -1,0 +1,10 @@
+<map id="myGLWindow" name="myGLWindow">
+<area shape="rect" id="node2" href="$class_q_open_g_l_widget.html" title="QOpenGLWidget" alt="" coords="1105,397,1227,424"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html" title="The myRenderer class &#45; Renderer for multiple shapes (triangular meshes) visualization. " alt="" coords="1120,448,1212,475"/>
+<area shape="rect" id="node15" href="$classmy_camera.html" title="The myCamera class &#45; camera representation in a typical rendering pipeline (i.e. OpenGL) ..." alt="" coords="798,179,883,205"/>
+<area shape="rect" id="node12" href="$struct_shape_data.html" title="The ShapeData struct &#45; triangular mesh for OpenGL buffers manipulation. " alt="" coords="457,319,544,345"/>
+<area shape="rect" id="node19" href="$classmy_shader.html" title="The myShader class &#45; shader data for OpenGL. " alt="" coords="460,544,541,571"/>
+<area shape="rect" id="node13" href="$struct_vertex.html" title="The Vertex struct &#45; single vertex with its corresponding attributes. " alt="" coords="235,344,295,371"/>
+<area shape="rect" id="node21" title="STL class. " alt="" coords="225,611,305,637"/>
+<area shape="rect" id="node22" title="STL class. " alt="" coords="5,603,132,645"/>
+</map>

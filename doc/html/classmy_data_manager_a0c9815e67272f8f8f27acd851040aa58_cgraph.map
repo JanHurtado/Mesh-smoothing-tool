@@ -1,0 +1,6 @@
+<map id="myDataManager::updateShapes" name="myDataManager::updateShapes">
+<area shape="rect" id="node2" href="$classmy_data_manager.html#a2b03ab3e75fa2c153b6f59367a64e574" title="updateInputShape &#45; generate the corresponding shape data of the input mesh " alt="" coords="267,5,459,47"/>
+<area shape="rect" id="node5" href="$classmy_data_manager.html#ae07e54d445a84500d3815d54807dd2d6" title="updateOutputShape &#45; generate the corresponding shape data of the output mesh " alt="" coords="261,71,464,112"/>
+<area shape="rect" id="node3" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="526,17,649,43"/>
+<area shape="rect" id="node4" href="$struct_shape_data.html#a3933df69395b4afd74097dce526ed803" title="loadMesh &#45; load shape data from a data structure defined in OpenMesh library " alt="" coords="512,71,663,98"/>
+</map>

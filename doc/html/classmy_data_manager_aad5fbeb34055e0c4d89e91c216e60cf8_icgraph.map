@@ -1,0 +1,5 @@
+<map id="myDataManager::saveOutputMesh" name="myDataManager::saveOutputMesh">
+<area shape="rect" id="node2" href="$classmy_main_window.html#acfc4e651fdb4afe6cba06e3657c7b0e5" title="saveMesh &#45; save output mesh to a file supported by OpenMesh library " alt="" coords="276,5,456,32"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="504,5,707,32"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="755,5,969,32"/>
+</map>

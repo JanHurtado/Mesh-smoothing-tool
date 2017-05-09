@@ -1,0 +1,16 @@
+<map id="myGLWindow::initializeGL" name="myGLWindow::initializeGL">
+<area shape="rect" id="node2" href="$classmy_renderer.html#aba7c76edb7958b08847d472ea2b673af" title="addShader &#45; create and add a shader " alt="" coords="228,35,391,61"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#a9be20cb9b82953c76de76a49abbfbe15" title="initialize &#45; renderer initialization " alt="" coords="236,115,383,141"/>
+<area shape="rect" id="node3" href="$classmy_shader.html#a2e382b451190346dbdff90cb0ba360a2" title="readShaderCode &#45; read shader code from an input file (file name as const char *) " alt="" coords="447,5,632,32"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a58d7e236b95928e2ebeb4cf8084b885b" title="createProgram &#45; create OpenGl program in the current context " alt="" coords="447,56,632,83"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#a9bd9ef185d12a3fca36ea23269ff9140" title="sendDataSingleBuffer &#45; send shape data to the GPU using OpenGL " alt="" coords="444,107,635,149"/>
+<area shape="rect" id="node7" href="$classmy_renderer.html#a376bcce42e2565f089c154be47b7c7bc" title="installShaders &#45; compile and attach shaders to the main program (m_programID) in the current context ..." alt="" coords="448,173,631,200"/>
+<area shape="rect" id="node11" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="439,297,640,324"/>
+<area shape="rect" id="node8" href="$my_renderer_8cpp.html#aab552cb4e22bd84b09ecfdf0501f04f4" title="checkShaderStatus" alt="" coords="723,123,859,149"/>
+<area shape="rect" id="node10" href="$my_renderer_8cpp.html#acf8cc9b0eb1c257cab8b11f4a4de4c59" title="checkProgramStatus" alt="" coords="719,173,863,200"/>
+<area shape="rect" id="node9" href="$my_renderer_8cpp.html#a936de0e543328a11e677535a5fbc1267" title="checkStatus" alt="" coords="943,148,1037,175"/>
+<area shape="rect" id="node12" href="$classmy_renderer.html#a59005bbbc469c52c1351b51614b92c73" title="computeCentralPoint &#45; compute the centroid of all points of all shapes " alt="" coords="696,225,887,266"/>
+<area shape="rect" id="node13" href="$classmy_renderer.html#a7ff3295d10de53cb8656c2fdf49bde24" title="computeBoundingSphereRadius &#45; compute the bounding sphere radius centered on the centroid of all poin..." alt="" coords="689,290,893,331"/>
+<area shape="rect" id="node14" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="712,356,871,383"/>
+<area shape="rect" id="node15" href="$classmy_camera.html#a50981b08a9dc0e2dcf614fd7c834cc6a" title="setMovementSpeed &#45; set camera movement speed " alt="" coords="688,407,895,433"/>
+</map>

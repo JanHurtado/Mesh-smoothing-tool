@@ -1,0 +1,5 @@
+<map id="myRenderer::getRayDirection" name="myRenderer::getRayDirection">
+<area shape="rect" id="node2" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="261,5,420,32"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="276,56,405,83"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="245,107,436,133"/>
+</map>

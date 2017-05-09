@@ -1,0 +1,51 @@
+<map id="myMainWindow::createActions" name="myMainWindow::createActions">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a702dc0fe375678263de68db8468d76cf" title="about &#45; show about window " alt="" coords="304,5,459,32"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#a6a52859fe82b0125d8b53aa0aaf17648" title="continueGlobalSmoothing &#45; continue global smoothing " alt="" coords="277,122,485,163"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#ad0b14936275982aeaf088ac884375fe6" title="enableSmoothingType &#45; enable widgets for current smoothing type " alt="" coords="256,239,507,265"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a0088bc01f78eb4798380b9454429390b" title="exit &#45; close the application " alt="" coords="310,289,453,316"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a8ade2340e6ed9b1bda6825acf313664f" title="flatMode &#45; set triangle rendering " alt="" coords="296,391,467,417"/>
+<area shape="rect" id="node12" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="585,624,763,651"/>
+<area shape="rect" id="node27" href="$classmy_main_window.html#a0d2f50149d19b527113963912fa1f09b" title="pointsMode &#45; set point rendering " alt="" coords="287,441,476,468"/>
+<area shape="rect" id="node28" href="$classmy_main_window.html#aae71de306c04b765442a41d885876e6b" title="reinitializeOutput &#45; reinitialize output mesh (regarding input mesh) " alt="" coords="291,493,471,534"/>
+<area shape="rect" id="node32" href="$classmy_main_window.html#a56507c69b51ffe078d3b25349d235ad5" title="runGlobalSmoothing &#45; run global smoothing algorithm " alt="" coords="262,188,501,215"/>
+<area shape="rect" id="node33" href="$classmy_main_window.html#acfc4e651fdb4afe6cba06e3657c7b0e5" title="saveMesh &#45; save output mesh to a file supported by OpenMesh library " alt="" coords="291,675,471,701"/>
+<area shape="rect" id="node36" href="$classmy_main_window.html#ad5c81fbb29b9a3f82a266b8876752a65" title="setFocalizedSmoothingAlgorithm &#45; set focalized smoothing algorithm " alt="" coords="283,726,479,767"/>
+<area shape="rect" id="node37" href="$classmy_main_window.html#a0cc8ea1fa15b926bf3c9fb1e701932ed" title="setGlobalSmoothingAlgorithm &#45; set global smoothing algorithm " alt="" coords="262,791,501,833"/>
+<area shape="rect" id="node38" href="$classmy_main_window.html#a886fced065e0a0a33c26eede1ff4ef61" title="setOutputAsInput &#45; set output mesh as new input mesh " alt="" coords="284,558,479,599"/>
+<area shape="rect" id="node40" href="$classmy_main_window.html#aea2bdf22486853e55edeb98797e1fab2" title="setShaders &#45; set shaders profile (customizable) " alt="" coords="287,857,475,884"/>
+<area shape="rect" id="node48" href="$classmy_main_window.html#a139ac8b38840d33342b2bae4d7824607" title="stopGlobalSmoothing &#45; stop global smoothing " alt="" coords="289,57,473,98"/>
+<area shape="rect" id="node49" href="$classmy_main_window.html#a52ea63097d5c074e94a9e78caafc9e47" title="userGuide &#45; show user guide " alt="" coords="291,908,472,935"/>
+<area shape="rect" id="node50" href="$classmy_main_window.html#adccac5179c69a1a22be5b5ab43c890e2" title="wireframeMode &#45; set wireframe rendering " alt="" coords="277,340,486,367"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#aafa4ae22e1a73717e6e2cfb6662f28b9" title="setGlobalSmoothingStatus &#45; set current global smoothing status " alt="" coords="555,122,793,163"/>
+<area shape="rect" id="node8" href="$classmy_g_l_window.html#ac0f528abf349f538d7f1d517ecb51ce0" title="setVisualizationMode &#45; set rendering mode of the current shape " alt="" coords="557,391,791,417"/>
+<area shape="rect" id="node9" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="841,392,1061,419"/>
+<area shape="rect" id="node11" href="$classmy_renderer.html#a79f3a282da5734315178ee57ae6ebfcc" title="setShapeDrawMode &#45; set rendering mode for a specific shape " alt="" coords="843,341,1059,368"/>
+<area shape="rect" id="node10" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="1115,389,1307,416"/>
+<area shape="rect" id="node13" href="$classmy_data_manager.html#a1109ab33a8c43be866fdc519bb6f5262" title="loadInputMesh &#45; load a mesh file supported by OpenMesh library " alt="" coords="847,579,1056,605"/>
+<area shape="rect" id="node16" href="$classmy_data_manager.html#a0c9815e67272f8f8f27acd851040aa58" title="updateShapes &#45; generate the corresponding shape data for both meshes (input mesh and output mesh) ..." alt="" coords="847,515,1055,541"/>
+<area shape="rect" id="node20" href="$classmy_g_l_window.html#a9f31b61db49e9cd3e1e4df6df685bae5" title="setShape &#45; set a shape as current shape (removing previous shape) " alt="" coords="868,720,1035,747"/>
+<area shape="rect" id="node26" href="$classmy_main_window.html#a1b8b41f14167ae05ac274fc0ce74c86f" title="updateWidgetValues &#45; set default slider widget values (min, max and current) " alt="" coords="850,630,1053,671"/>
+<area shape="rect" id="node14" href="$struct_shape_data.html#ab4c3c6536bc73b2e33f2b30cf5024c94" title="clear &#45; erase arrays and reinitialize values " alt="" coords="1399,513,1522,540"/>
+<area shape="rect" id="node15" href="$group__mesh__processing.html#ga79f1a868fe56a3837a7426b6ce9be285" title="importMesh &#45; read mesh file (.obj, .off, .ply, .stl) " alt="" coords="1165,623,1256,649"/>
+<area shape="rect" id="node17" href="$classmy_data_manager.html#a2b03ab3e75fa2c153b6f59367a64e574" title="updateInputShape &#45; generate the corresponding shape data of the input mesh " alt="" coords="1115,441,1307,482"/>
+<area shape="rect" id="node19" href="$classmy_data_manager.html#ae07e54d445a84500d3815d54807dd2d6" title="updateOutputShape &#45; generate the corresponding shape data of the output mesh " alt="" coords="1109,506,1312,547"/>
+<area shape="rect" id="node18" href="$struct_shape_data.html#a3933df69395b4afd74097dce526ed803" title="loadMesh &#45; load shape data from a data structure defined in OpenMesh library " alt="" coords="1385,456,1536,483"/>
+<area shape="rect" id="node21" href="$classmy_renderer.html#a55a6f54fd9dd89982a2b11342c4fba51" title="addShape &#45; add a shape (shape data) for rendering " alt="" coords="1131,740,1290,767"/>
+<area shape="rect" id="node22" href="$classmy_renderer.html#ac6b8d38d0da2334ef778c2171a538f4c" title="clearShapes &#45; erase shape containers without deleting pointers " alt="" coords="1125,791,1297,817"/>
+<area shape="rect" id="node23" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="1109,674,1312,715"/>
+<area shape="rect" id="node24" href="$classmy_renderer.html#a295c62738b1a4eb151bcfd7e18f7de95" title="setDefaultValues &#45; set custom renderer parameters " alt="" coords="1111,841,1310,868"/>
+<area shape="rect" id="node25" href="$classmy_renderer.html#ae09432b18ed9311eb42f9c50174794cb" title="initializeInteractor &#45; default initialization of renderer parameters based on shape data ..." alt="" coords="1360,841,1561,868"/>
+<area shape="rect" id="node29" href="$classmy_data_manager.html#a5e77d27b36683163e5f3e1162ceddf07" title="reinitialize &#45; set input mesh as output mesh (undone all changes) " alt="" coords="583,507,765,533"/>
+<area shape="rect" id="node30" href="$classmy_g_l_window.html#a990e8dbfd0c70d779a882670ffdab3f6" title="updateMesh &#45; update vertex data of the current shape (resend vertex data) " alt="" coords="583,456,765,483"/>
+<area shape="rect" id="node31" href="$classmy_renderer.html#a4f3b14cfb3eef34f12c08fd9e38d53e5" title="updateVertexBuffer &#45; update and send vertex data for a single shape " alt="" coords="863,449,1040,490"/>
+<area shape="rect" id="node34" href="$classmy_data_manager.html#aad5fbeb34055e0c4d89e91c216e60cf8" title="saveOutputMesh &#45; save the output mesh in a file supported bu OpenMesh library " alt="" coords="563,715,785,741"/>
+<area shape="rect" id="node35" href="$group__mesh__processing.html#ga2a1366c77bee3c1256c6a00f7bb83d97" title="exportMesh &#45; write mesh file (.obj, .off, .ply, .stl) " alt="" coords="906,771,997,797"/>
+<area shape="rect" id="node39" href="$classmy_data_manager.html#a4384abe2f9727c403ade607a16d81af0" title="setOutputAsInput &#45; set output mesh as input mesh (save all changes) " alt="" coords="583,558,765,599"/>
+<area shape="rect" id="node41" href="$classmy_g_l_window.html#a77a8d17b2180a7c30d028651982bbb27" title="clearAndDeleteShaders &#45; clear, deattach and delete shaders of the renderer " alt="" coords="575,927,773,969"/>
+<area shape="rect" id="node43" href="$classmy_g_l_window.html#a0be068c88e7e9e7c8789037cde6b98ee" title="addShader &#45; add a shader to the renderer " alt="" coords="587,825,761,852"/>
+<area shape="rect" id="node46" href="$classmy_g_l_window.html#abda946215471d7872e68fa0e6fcf8aed" title="installShaders &#45; call installShaders of the renderer, in the current context. " alt="" coords="577,876,771,903"/>
+<area shape="rect" id="node42" href="$classmy_renderer.html#a465553573e3409286a10906f9a5a796d" title="clearAndDeleteShaders &#45; erase shader containers and delete items " alt="" coords="857,927,1045,969"/>
+<area shape="rect" id="node44" href="$classmy_renderer.html#aba7c76edb7958b08847d472ea2b673af" title="addShader &#45; create and add a shader " alt="" coords="870,825,1033,852"/>
+<area shape="rect" id="node45" href="$classmy_shader.html#a2e382b451190346dbdff90cb0ba360a2" title="readShaderCode &#45; read shader code from an input file (file name as const char *) " alt="" coords="1118,892,1303,919"/>
+<area shape="rect" id="node47" href="$classmy_renderer.html#a376bcce42e2565f089c154be47b7c7bc" title="installShaders &#45; compile and attach shaders to the main program (m_programID) in the current context ..." alt="" coords="860,876,1043,903"/>
+</map>

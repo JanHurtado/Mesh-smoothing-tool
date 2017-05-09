@@ -1,0 +1,4 @@
+<map id="getAllFaceNeighborsGMNF" name="getAllFaceNeighborsGMNF">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#gae7216eec3f33db500095874a97011e62" title="getFaceNeighbors_RadiusBased: get neighboring faces regarding a radius " alt="" coords="233,5,444,32"/>
+<area shape="rect" id="node3" href="$group__mesh__processing.html#gac41c2005e04ea427e61be7e09fdb3128" title="getFaceNeighbors_VertexBased: get neighboring faces based on face vertices " alt="" coords="492,31,701,57"/>
+</map>

@@ -6,6 +6,13 @@
 #include <streambuf>
 
 
+/** @defgroup mesh_processing Mesh Processing
+*   Module containing mesh processing tools useful for the application
+*/
+
+/** @defgroup visualization Visualization based in OpenGL
+*   Module containing OpenGL abstractions for visualization of triangular meshes
+*/
 
 int main(int argc, char **argv)
 {
@@ -14,7 +21,6 @@ int main(int argc, char **argv)
 	main_window.show();
 	/*myGLWindow myWindow;
 	myWindow.show();*/
-	printf("OpenGL version supported by this platform (%s): \n",
-	glGetString(GL_VERSION));
+	printf("OpenGL version supported by this platform (%s): \n",glGetString(GL_VERSION));
 	return app.exec();
 }

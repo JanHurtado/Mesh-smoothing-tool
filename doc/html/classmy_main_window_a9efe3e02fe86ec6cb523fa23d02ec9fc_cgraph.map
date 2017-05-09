@@ -1,0 +1,13 @@
+<map id="myMainWindow::getSelection" name="myMainWindow::getSelection">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#aba83fdd8c098278bfdbe6cb4926cf4d0" title="getCamera &#45; get pointer to the camera of the renderer " alt="" coords="267,5,441,32"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#aea3d054f592eeb18bf5f62a5e48ec355" title="getCurrentMousePosition &#45; get mouse position in the OpenGL Window (Qt Widget) " alt="" coords="249,57,459,98"/>
+<area shape="rect" id="node5" href="$classmy_g_l_window.html#a0c61653495ce443d04ac115b1175f28e" title="getModelToWorldMatrix &#45; get model to world matrix applied to all objects in the renderer ..." alt="" coords="248,122,460,163"/>
+<area shape="rect" id="node7" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="773,188,932,215"/>
+<area shape="rect" id="node8" href="$classmy_g_l_window.html#a5c6d68278e3329efad0d8f6582883070" title="getRayDirection &#45; call getRayDirection of the renderer for a given position " alt="" coords="253,239,455,265"/>
+<area shape="rect" id="node12" href="$group__mesh__processing.html#gabfcdb9b83980fdcbb0327f4db97e7254" title="Vertex neighborhood. " alt="" coords="286,289,422,316"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a3f3c620a30ec3f1bee1956c0ae3b1bb3" title="myRenderer::getCamera" alt="" coords="527,5,690,32"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#ab77e17f9a22f652870f6c7cfdec6a257" title="myRenderer::getModelToWorld\lMatrix" alt="" coords="508,122,709,163"/>
+<area shape="rect" id="node9" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="513,239,705,265"/>
+<area shape="rect" id="node10" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="757,239,948,265"/>
+<area shape="rect" id="node11" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="788,289,917,316"/>
+</map>

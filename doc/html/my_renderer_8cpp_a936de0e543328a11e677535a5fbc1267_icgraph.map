@@ -1,0 +1,11 @@
+<map id="checkStatus" name="checkStatus">
+<area shape="rect" id="node2" href="$my_renderer_8cpp.html#acf8cc9b0eb1c257cab8b11f4a4de4c59" title="checkProgramStatus" alt="" coords="148,5,292,32"/>
+<area shape="rect" id="node10" href="$my_renderer_8cpp.html#aab552cb4e22bd84b09ecfdf0501f04f4" title="checkShaderStatus" alt="" coords="152,56,288,83"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a376bcce42e2565f089c154be47b7c7bc" title="installShaders &#45; compile and attach shaders to the main program (m_programID) in the current context ..." alt="" coords="340,31,523,57"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#abda946215471d7872e68fa0e6fcf8aed" title="installShaders &#45; call installShaders of the renderer, in the current context. " alt="" coords="571,5,764,32"/>
+<area shape="rect" id="node8" href="$classmy_renderer.html#a9be20cb9b82953c76de76a49abbfbe15" title="initialize &#45; renderer initialization " alt="" coords="594,56,741,83"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#aea2bdf22486853e55edeb98797e1fab2" title="setShaders &#45; set shaders profile (customizable) " alt="" coords="812,5,1000,32"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="1048,5,1251,32"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="1299,5,1513,32"/>
+<area shape="rect" id="node9" href="$classmy_g_l_window.html#a8c6ed0d7ac4e96a61e8c0e0b60079310" title="initializeGL &#45; initialize the renderer in the current OpenGL context " alt="" coords="819,56,993,83"/>
+</map>

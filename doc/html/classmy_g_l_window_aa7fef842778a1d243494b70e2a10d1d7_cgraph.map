@@ -1,0 +1,7 @@
+<map id="myGLWindow::paintGL" name="myGLWindow::paintGL">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a80f6de56c8b3c3fb42261321d63be14e" title="draw &#45; draw al shapes considering their rendering modes " alt="" coords="223,42,350,69"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#aab04c90670a35d6581a592b292e3be8e" title="myRenderer::setHeight" alt="" coords="209,93,364,119"/>
+<area shape="rect" id="node6" href="$classmy_renderer.html#a9c0ac17c2641d37a957f414c53de5917" title="setters " alt="" coords="211,143,363,170"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#af572b5eafe40c846531de4aa0e233805" title="getWorldToViewMatrix: generates world to view matrix " alt="" coords="412,5,599,47"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="426,71,585,98"/>
+</map>

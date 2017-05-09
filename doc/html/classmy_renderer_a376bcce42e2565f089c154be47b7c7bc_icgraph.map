@@ -1,0 +1,8 @@
+<map id="myRenderer::installShaders" name="myRenderer::installShaders">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a9be20cb9b82953c76de76a49abbfbe15" title="initialize &#45; renderer initialization " alt="" coords="259,5,406,32"/>
+<area shape="rect" id="node4" href="$classmy_g_l_window.html#abda946215471d7872e68fa0e6fcf8aed" title="installShaders &#45; call installShaders of the renderer, in the current context. " alt="" coords="236,56,429,83"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#a8c6ed0d7ac4e96a61e8c0e0b60079310" title="initializeGL &#45; initialize the renderer in the current OpenGL context " alt="" coords="484,5,659,32"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#aea2bdf22486853e55edeb98797e1fab2" title="setShaders &#45; set shaders profile (customizable) " alt="" coords="477,56,665,83"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="713,56,916,83"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="964,56,1179,83"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="myGLWindow::event" name="myGLWindow::event">
+<area shape="rect" id="node2" href="$classmy_renderer.html#a786fcbec6798a27d4e9166de7591697c" title="rotateObjects &#45; rotate all shapes (model to world matrix manipulation) regarding a mouse movement bas..." alt="" coords="203,81,381,108"/>
+<area shape="rect" id="node3" href="$classmy_renderer.html#a315e138886ac5757d5964e1d9ff63a40" title="translateCamera &#45; translate all shapes (model to world matrix manipulation) regarding a mouse movemen..." alt="" coords="195,132,389,159"/>
+<area shape="rect" id="node9" href="$classmy_renderer.html#a7145eea2c510ef0218699ad843947d2e" title="zoom &#45; translate camera position (forward/backward) regarding a step size " alt="" coords="226,259,358,285"/>
+<area shape="rect" id="node4" href="$classmy_camera.html#a2a1861bcc55a0c4509f85225124199ec" title="getMovementSpeed &#45; get camera movement speed " alt="" coords="437,5,644,32"/>
+<area shape="rect" id="node5" href="$classmy_camera.html#ad36d107d90919511c332a2bf7b4bc6d5" title="setPosition &#45; set camera position " alt="" coords="461,56,620,83"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="461,107,620,133"/>
+<area shape="rect" id="node7" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="476,157,605,184"/>
+<area shape="rect" id="node8" href="$classmy_camera.html#ac733fe86e1e98a2e030fa0736655c7a1" title="getStrafeDirection &#45; get strafe direction " alt="" coords="443,208,639,235"/>
+<area shape="rect" id="node10" href="$classmy_camera.html#a51fd44bad52f9a892830eea261998e29" title="moveForward &#45; moves camera position following view direction (regarding movement speed) ..." alt="" coords="456,259,625,285"/>
+<area shape="rect" id="node11" href="$classmy_camera.html#a0ed22cf92255e2d3575a27fa0c16ade5" title="moveBackward &#45; moves camera position following the opposite direction of view direction (regarding mo..." alt="" coords="451,309,631,336"/>
+</map>

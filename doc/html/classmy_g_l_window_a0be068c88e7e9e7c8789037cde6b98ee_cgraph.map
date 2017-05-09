@@ -1,0 +1,4 @@
+<map id="myGLWindow::addShader" name="myGLWindow::addShader">
+<area shape="rect" id="node2" href="$classmy_renderer.html#aba7c76edb7958b08847d472ea2b673af" title="addShader &#45; create and add a shader " alt="" coords="227,5,389,32"/>
+<area shape="rect" id="node3" href="$classmy_shader.html#a2e382b451190346dbdff90cb0ba360a2" title="readShaderCode &#45; read shader code from an input file (file name as const char *) " alt="" coords="437,5,623,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="getVertexNeighbors" name="getVertexNeighbors">
+<area shape="rect" id="node2" href="$group__mesh__processing.html#ga6d49094d6512e3b3acbb6dd9f7065480" title="getAllVertexNeighbors: get all neighboring vertices of all vertices regarding a depth k (k&#45;ring) ..." alt="" coords="211,5,362,32"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#a9efe3e02fe86ec6cb523fa23d02ec9fc" title="getSelection &#45; get selected vertices for the current mouse position in the output mesh visualizer ..." alt="" coords="189,56,384,83"/>
+<area shape="rect" id="node8" href="$group__mesh__processing.html#ga6f787b227992ef026c62a83153112585" title="HC Laplacian smoothing (Vollmer et al.) " alt="" coords="239,107,334,133"/>
+<area shape="rect" id="node9" href="$group__mesh__processing.html#ga17658ab94aab8337ac007921435febfc" title="Uniform Laplacian smoothing. " alt="" coords="227,157,346,184"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a1e2a913e5919da6d2856f42539f95e0b" title="updateSelection &#45; update selection in data manager and visualization " alt="" coords="437,56,652,83"/>
+<area shape="rect" id="node7" href="$classmy_main_window.html#a234a7bacccd7035915b279fdd832255d" title="selectAndSmooth &#45; select and perform focalized smoothing regarding control widget values ..." alt="" coords="432,107,657,133"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#aa6500abe6c1e0a081761a44ce5cc4943" title="keyPressEvent &#45; Qt key press event " alt="" coords="705,56,915,83"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#a7f511c323cc6d5f0da0f6e6807970447" title="eventFilter &#45; Qt event filter " alt="" coords="719,107,901,133"/>
+</map>

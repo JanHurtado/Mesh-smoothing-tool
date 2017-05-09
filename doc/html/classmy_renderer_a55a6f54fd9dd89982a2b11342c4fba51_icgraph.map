@@ -1,0 +1,11 @@
+<map id="myRenderer::addShape" name="myRenderer::addShape">
+<area shape="rect" id="node2" href="$classmy_g_l_window.html#a4f923ea36f889819bf8436a37fb3e79b" title="setSelection &#45; set a selection as current selection (removing previous selection) ..." alt="" coords="212,56,395,83"/>
+<area shape="rect" id="node7" href="$classmy_g_l_window.html#a9f31b61db49e9cd3e1e4df6df685bae5" title="setShape &#45; set a shape as current shape (removing previous shape) " alt="" coords="220,107,387,133"/>
+<area shape="rect" id="node3" href="$classmy_main_window.html#a234a7bacccd7035915b279fdd832255d" title="selectAndSmooth &#45; select and perform focalized smoothing regarding control widget values ..." alt="" coords="443,5,668,32"/>
+<area shape="rect" id="node5" href="$classmy_main_window.html#a1e2a913e5919da6d2856f42539f95e0b" title="updateSelection &#45; update selection in data manager and visualization " alt="" coords="448,56,663,83"/>
+<area shape="rect" id="node4" href="$classmy_main_window.html#a7f511c323cc6d5f0da0f6e6807970447" title="eventFilter &#45; Qt event filter " alt="" coords="730,5,911,32"/>
+<area shape="rect" id="node6" href="$classmy_main_window.html#aa6500abe6c1e0a081761a44ce5cc4943" title="keyPressEvent &#45; Qt key press event " alt="" coords="716,56,925,83"/>
+<area shape="rect" id="node8" href="$classmy_main_window.html#acd91f7a5b7beec15e6a313413c970ed1" title="loadMesh &#45; load input mesh from a file supported by OpenMesh library " alt="" coords="466,107,645,133"/>
+<area shape="rect" id="node9" href="$classmy_main_window.html#aa8f15f5c8d5a6445782a567d7146212e" title="createActions &#45; create menu actions and connect all signals and slots " alt="" coords="719,107,922,133"/>
+<area shape="rect" id="node10" href="$classmy_main_window.html#a35fe9a7a2525be7bd1b401b399f88e35" title="myMainWindow &#45; default constructor: dynamic building of all the interface " alt="" coords="973,107,1188,133"/>
+</map>

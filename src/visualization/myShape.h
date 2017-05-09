@@ -5,28 +5,75 @@
 #include <GL/glew.h>
 #include "../mesh/iomesh.h"
 
+/** @addtogroup visualization
+  * @brief Shape data.
+  *
+  * @{
+  */
+
+/**
+ * @brief The Vertex struct - single vertex with its corresponding attributes
+ */
 struct Vertex
 {
-	glm::vec3 position;
+    /**
+     * @brief position - vertex position (x,y,z)
+     */
+    glm::vec3 position;
+    /**
+     * @brief color - vertex color (r,g,b)
+     */
 	glm::vec3 color;
+    /**
+     * @brief normal - vertex normal (nx,ny,nz)
+     */
 	glm::vec3 normal;
 };
 
+/**
+ * @brief The ShapeData struct - triangular mesh for OpenGL buffers manipulation
+ */
 struct ShapeData
 {
-	glm::vec3 centroid;
-	Vertex* vertices;
-	GLuint numVertices;
-	GLuint* indices;
-	GLuint numIndices;
+    /**
+     * @brief numVertices - number of vertices of the mesh
+     */
+    GLuint numVertices;
+    /**
+     * @brief numIndices - number of indices of all triangles
+     */
+    GLuint numIndices;
 
-	ShapeData() :
-	vertices(0), numVertices(0),
-	indices(0), numIndices(0) {}
+    /**
+     * @brief vertices - array containing all vertices
+     */
+    Vertex* vertices;
+    /**
+     * @brief indices - array containing all indices
+     */
+    GLuint* indices;
+
+    /**
+     * @brief centroid - shape centroid
+     */
+	glm::vec3 centroid;
+
+    /**
+     * @brief ShapeData - default constructor
+     */
+    ShapeData():vertices(0), numVertices(0),indices(0), numIndices(0){}
+    /**
+     * @brief ShapeData - generates shape data using a triangular mesh file supported in OpenMesh library
+     * @param fileName - mesh file name
+     */
 	ShapeData(string fileName)
 	{
 		loadFromFile(fileName);
 	}
+    /**
+     * @brief loadFromFile - load shape data using a triangular mesh file supported in OpenMesh library
+     * @param fileName - mesh file name
+     */
 	void loadFromFile(string fileName)
 	{
 		TriMesh _mesh;
@@ -36,6 +83,10 @@ struct ShapeData
 		_mesh.update_normals();
 		loadMesh(_mesh);
 	}
+    /**
+     * @brief loadMesh - load shape data from a data structure defined in OpenMesh library
+     * @param _mesh - triangular mesh
+     */
 	void loadMesh(TriMesh & _mesh)
 	{
 		numVertices = static_cast<GLuint>(_mesh.n_vertices());
@@ -72,6 +123,11 @@ struct ShapeData
 			}
 		}
 	}
+    /**
+     * @brief loadMeshVertexSelection - load as shape data a subset of vertices (only vertices) from a data structure defined in OpenMesh library
+     * @param _mesh - triangular mesh
+     * @param selected_vertices - subset of vertices ids of _mesh
+     */
 	void loadMeshVertexSelection(TriMesh & _mesh,vector<size_t> & selected_vertices)
 	{
 		numVertices = static_cast<GLuint>(_mesh.n_vertices());
@@ -96,14 +152,25 @@ struct ShapeData
 		centroid[1] = c[1];
 		centroid[2] = c[2];
 	}
+    /**
+     * @brief vertexBufferSize - get size of the array of vertices
+     * @return - size of array of vertices
+     */
 	GLsizeiptr vertexBufferSize() const
 	{
 		return numVertices * sizeof(Vertex);
 	}
+    /**
+     * @brief indexBufferSize - get size of the array of indices
+     * @return - size of array of indices
+     */
 	GLsizeiptr indexBufferSize() const
 	{
 		return numIndices * sizeof(GLuint);
 	}
+    /**
+     * @brief clear - erase arrays and reinitialize values
+     */
 	void clear()
 	{
 		delete[] vertices;
@@ -114,5 +181,7 @@ struct ShapeData
 		centroid = glm::vec3(0.0f,0.0f,0.0f);
 	}
 };
+
+/** @} */
 
 #endif // MYSHAPE_H

@@ -1,0 +1,11 @@
+<map id="myMainWindow::keyReleaseEvent" name="myMainWindow::keyReleaseEvent">
+<area shape="rect" id="node2" href="$classmy_main_window.html#a7150fd71bd23674858bf58d2f9b8d821" title="removeSelection &#45; remove selection from data manager and visualization " alt="" coords="244,107,461,133"/>
+<area shape="rect" id="node3" href="$classmy_g_l_window.html#a0c0c783f45099f6f96fc9665700879fc" title="removeSelection &#45; remove current selection " alt="" coords="509,107,716,133"/>
+<area shape="rect" id="node4" href="$classmy_renderer.html#a75b3b24024211258bdd41dedb2b2b3b1" title="getNumberOfShapes &#45; get the number of shapes contained in the renderer " alt="" coords="764,56,984,83"/>
+<area shape="rect" id="node9" href="$classmy_renderer.html#aaebe23b9aeff329408f765a26b3802d2" title="removeShape &#45; remove a shape " alt="" coords="785,107,963,133"/>
+<area shape="rect" id="node10" href="$classmy_renderer.html#afda57308a306fe30617d9d72f06be9c5" title="resendDataSingleBuffer &#45; resend shape data to the GPU using OpenGL " alt="" coords="773,158,975,199"/>
+<area shape="rect" id="node5" href="$classmy_renderer.html#a82d6100af47c809819e1c08c7f5f744a" title="getRayDirection &#45; computation of the direction of a ray starting in camera position and ending in a p..." alt="" coords="1032,56,1224,83"/>
+<area shape="rect" id="node6" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="1288,5,1447,32"/>
+<area shape="rect" id="node7" href="$classmy_camera.html#ac50d793fe3a1677b0bdb34c097469de4" title="getViewDirection &#45; get view direction " alt="" coords="1272,56,1463,83"/>
+<area shape="rect" id="node8" href="$classmy_camera.html#a69b05f5c6977b1b883369d5f54ba18fb" title="getUP &#45; get up direction " alt="" coords="1303,107,1432,133"/>
+</map>

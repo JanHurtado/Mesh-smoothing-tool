@@ -1,0 +1,4 @@
+<map id="myRenderer::draw" name="myRenderer::draw">
+<area shape="rect" id="node2" href="$classmy_camera.html#ae3f1cab799b167ffa21a4d39a7c06683" title="getPosition &#45; get camera position " alt="" coords="194,5,353,32"/>
+<area shape="rect" id="node3" href="$classmy_camera.html#af572b5eafe40c846531de4aa0e233805" title="getWorldToViewMatrix: generates world to view matrix " alt="" coords="180,57,367,98"/>
+</map>
