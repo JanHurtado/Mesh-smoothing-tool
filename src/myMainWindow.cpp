@@ -154,8 +154,8 @@ void myMainWindow::createActions()
 	exitAct->setStatusTip(tr("Exit program"));
 	connect(exitAct, &QAction::triggered, this, &myMainWindow::exit);
 
-	flatModeAct = new QAction(tr("&Flat"), this);
-	flatModeAct->setStatusTip(tr("Flat rendering"));
+	flatModeAct = new QAction(tr("&Shaded"), this);
+	flatModeAct->setStatusTip(tr("Shaded rendering"));
 	connect(flatModeAct, &QAction::triggered, this, &myMainWindow::flatMode);
 
 	wireframeModeAct = new QAction(tr("&Wireframe"), this);
@@ -357,6 +357,7 @@ void myMainWindow::setGlobalSmoothingAlgorithm()
 	QStringList items;
 	items << QString(globalSmoothingAlgorithmLabels[gs_algorithm_bilateral_normal].c_str());
 	items << QString(globalSmoothingAlgorithmLabels[gs_algorithm_guided].c_str());
+	items << QString(globalSmoothingAlgorithmLabels[gs_algorithm_uniform].c_str());
 
 	qDialog.setOptions(QInputDialog::UseListViewForComboBoxItems);
 	qDialog.setComboBoxItems(items);
@@ -371,6 +372,8 @@ void myMainWindow::setGlobalSmoothingAlgorithm()
 			currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
 		else if (qDialog.textValue().toStdString() == globalSmoothingAlgorithmLabels[gs_algorithm_guided])
 			currentGlobalSmoothingAlgorithm = gs_algorithm_guided;
+		else if (qDialog.textValue().toStdString() == globalSmoothingAlgorithmLabels[gs_algorithm_uniform])
+			currentGlobalSmoothingAlgorithm = gs_algorithm_uniform;
 		else
 			currentGlobalSmoothingAlgorithm = gs_algorithm_bilateral_normal;
 		QString message = tr(globalSmoothingAlgorithmLabels[currentGlobalSmoothingAlgorithm].c_str());

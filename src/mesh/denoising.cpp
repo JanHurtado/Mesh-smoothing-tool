@@ -37,7 +37,8 @@ void updateVertexPositions(TriMesh &mesh, vector<TriMesh::Normal> &filtered_norm
                     temp_point += temp_normal * (temp_normal | (temp_centroid - p));
                     face_num++;
                 }
-                p += temp_point / face_num;
+				if (face_num != 0)
+					p += temp_point / face_num;
                 if (!hasIND(p))
                 {
                     new_points.at(v_it->idx()) = p;
@@ -85,7 +86,10 @@ num_t getRadius(TriMesh &mesh , num_t scalar )
             num++;
         }
     }
-    return radius * scalar / num;
+	num_t res = 0.0f;
+	if (num != 0.0f)
+		res = radius * scalar / num;
+	return res;
 }
 
 /////////////////////////////////////////////////

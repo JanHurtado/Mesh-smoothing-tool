@@ -60,6 +60,8 @@ public:
 			result = bilateralNormal(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s);
 		else if (algorithm_flag == 1)
 			result = guided(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s, 1.5f);
+		else if (algorithm_flag == 2)
+			result = uniformLaplacian(data->output_mesh, 1, 0.5);
 		else
 			result = bilateralNormal(data->output_mesh, iteration_step_size, n_vertex_iterations, sigma_c_ratio, sigma_s);
 		finishThread();

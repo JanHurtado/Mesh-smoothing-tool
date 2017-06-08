@@ -40,13 +40,15 @@ enum globalSmoothingStatus {
  */
 enum globalSmoothingAlgorithm {
     gs_algorithm_bilateral_normal, /**< bilateral normal filtering */
-    gs_algorithm_guided /**< guided mesh denoising */
+    gs_algorithm_guided, /**< guided mesh denoising */
+	gs_algorithm_uniform
 };
 
 ///Global smoothing algorithm names
 const vector<string> globalSmoothingAlgorithmLabels = {
     "Bilateral Normal Filtering",
-    "Guided Mesh Denoising"
+    "Guided Mesh Denoising",
+	"Uniform Laplacian"
 };
 
 /**

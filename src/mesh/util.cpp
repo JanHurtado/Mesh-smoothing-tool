@@ -46,7 +46,8 @@ num_t getAverageEdgeLength(TriMesh &mesh)
     for(TriMesh::EdgeIter e_it = mesh.edges_begin(); e_it != mesh.edges_end(); e_it++)
         average_edge_length += mesh.calc_edge_length(*e_it);
     num_t edgeNum = (num_t)mesh.n_edges();
-    average_edge_length /= edgeNum;
+	if (average_edge_length != 0)
+		average_edge_length /= edgeNum;
 
     return average_edge_length;
 }
