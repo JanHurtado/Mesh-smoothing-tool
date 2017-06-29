@@ -1,6 +1,6 @@
 # Mesh-smoothing-tool
 
-Jan Jose Hurtado Jauregui
+Author: Jan Jose Hurtado Jauregui
 
 ![Alt text](screenshot.png?raw=true "Mesh Smoothin Tool Screenshot")
 
