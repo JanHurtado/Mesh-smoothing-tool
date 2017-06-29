@@ -20,7 +20,7 @@ Author: Jan Jose Hurtado Jauregui
 
 ## How to run
 
-* Run de executable
+* Run the executable
 * QT5 and OpenMesh required
 * Copy corresponding dlls in the executable path (dlls generated in your installation)
 * Add platforms/qwindows.dll from QT_DIR/plugins if it is required 
